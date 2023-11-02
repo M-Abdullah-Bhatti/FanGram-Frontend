@@ -1,5 +1,6 @@
 // import './App.css';
 // import FeaturedCelebrity from './components/FeaturedCelebrity';
+import Footer from "./components/Shared/Footer";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         {/* <FeaturedCelebrity /> */}
       </Routes>
+      <Footer />
     </div>
   );
 }
