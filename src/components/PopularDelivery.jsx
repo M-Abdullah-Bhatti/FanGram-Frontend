@@ -2,7 +2,7 @@ import React, {useRef} from 'react'
 import FeaturedCelebrityCard from './FeaturedCelebrityCard';
 import { featuredCelebrityData } from '../Data';
 
-function FeaturedCelebrity() {
+function PopularDelivery() {
 
     const scrollContainerRef = useRef(null);
 
@@ -21,9 +21,8 @@ function FeaturedCelebrity() {
 
   return (
     <div className="w-full bg-black text-white">
-      <div className="py-4 px-16">
-        <div className="flex items-center justify-between">
-            <h2 className="text-4xl font-semibold">Featured Celebrity</h2>
+        <div className="flex items-center justify-between py-4 px-16">
+            <h2 className="text-4xl font-semibold">Next Day Delivery</h2>
             <div className="flex items-center space-x-4">
                 <button
                     onClick={scrollLeft}
@@ -40,8 +39,6 @@ function FeaturedCelebrity() {
                 </button>
             </div>
         </div>
-        <p className='text-lg'>Get personalised video messages from your favourite celebrity! What's more? The price you see is the price you pay!</p>
-      </div>
       <div className="overflow-x-scroll" ref={scrollContainerRef} style={{scrollBehavior: 'smooth'}}>
         <div className="flex space-x-4 p-4">
           {featuredCelebrityData.map((card) => (
@@ -65,4 +62,4 @@ function FeaturedCelebrity() {
   )
 }
 
-export default FeaturedCelebrity
+export default PopularDelivery

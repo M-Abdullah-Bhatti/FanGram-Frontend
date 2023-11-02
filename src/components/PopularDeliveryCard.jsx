@@ -1,14 +1,14 @@
 import React from 'react'
 
-function FeaturedCelebrityCard({celebrity}) {
+function PopularDeliveryCard({celebrity}) {
   return (
-    <div className="h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg"
+    <div className="h-[450px] bg-[#292929] relative rounded-lg shadow-lg"
         style={{minWidth: '325px', overflow: 'hidden'}}
     >
       <img
-        src={celebrity.featuredImage}
+        src={celebrity.popImage}
         alt="celebrity"
-        className="object-cover w-full h-full"
+        className=""
       />
       <div className="absolute top-4 right-4 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
         <img 
@@ -16,9 +16,7 @@ function FeaturedCelebrityCard({celebrity}) {
             alt="heart"
         />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-4"
-        style={{background: 'linear-gradient(182.63deg, rgba(169, 45, 169, 0) 37.18%, #A82DAA 110.27%)'}}
-      >
+      <div className="p-4">
         <h3 className="text-white text-4xl font-bold text-4xl mb-2 mr-8" style={{lineHeight: '52.5px'}}>{celebrity.name}</h3>
         <div className="flex flex-wrap mb-2">
           {celebrity.tags.map((tag) => (
@@ -42,4 +40,4 @@ function FeaturedCelebrityCard({celebrity}) {
   )
 }
 
-export default FeaturedCelebrityCard
+export default PopularDeliveryCard

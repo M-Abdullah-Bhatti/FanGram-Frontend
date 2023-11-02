@@ -1,10 +1,13 @@
 // import './App.css';
 import FeaturedCelebrity from './components/FeaturedCelebrity';
-// import FeaturedCelebrityCard from './components/FeaturedCelebrityCard';
+import PopularDelivery from './components/PopularDelivery';
 
 function App() {
   return (
-    <FeaturedCelebrity />
+    <>
+      {/* <FeaturedCelebrity /> */}
+      <PopularDelivery />
+    </>
   );
 }
 
