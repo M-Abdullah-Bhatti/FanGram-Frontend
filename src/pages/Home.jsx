@@ -1,12 +1,12 @@
-import React from 'react'
-import PopularDelivery from '../components/Home/PopularDelivery'
+import React from "react";
+import PopularDelivery from "../components/Home/PopularDelivery";
 
 const Home = () => {
   return (
     <div>
-        <PopularDelivery />
+      <PopularDelivery />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
