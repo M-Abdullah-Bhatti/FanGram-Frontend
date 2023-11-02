@@ -52,26 +52,28 @@ const Hero = () => {
 
       {/* Right Container */}
       <div className="w-[40%] border-2 flex justify-center items-start ">
-        <div>
-          <div className="flex ">
+        <div className="flex gap-5 ">
+          <div className="flex flex-col gap-5 ">
             <img
               src="/images/hero__slider__img1.png"
               alt="logo"
               className="w-[180px]"
             />
-            <img
-              src="/images/hero__slider__img2.png"
-              alt="logo"
-              className="w-[180px] mt-5"
-            />
-          </div>
 
-          <div className="flex ">
             <img
               src="/images/hero__slider__img3.png"
               alt="logo"
               className="w-[180px]"
             />
+          </div>
+
+          <div className="flex flex-col gap-5 mt-10">
+            <img
+              src="/images/hero__slider__img2.png"
+              alt="logo"
+              className="w-[180px] "
+            />
+
             <img
               src="/images/hero__slider__img4.png"
               alt="logo"
