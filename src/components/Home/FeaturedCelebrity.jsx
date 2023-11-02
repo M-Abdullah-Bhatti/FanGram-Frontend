@@ -4,16 +4,19 @@ import { featuredCelebrityData } from "../../Data";
 
 function FeaturedCelebrity() {
   const scrollContainerRef = useRef(null);
+  const secondaryScrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft -= 350;
+      secondaryScrollContainerRef.current.scrollLeft -= 350;
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += 340;
+      secondaryScrollContainerRef.current.scrollLeft += 340;
     }
   };
 
@@ -23,18 +26,15 @@ function FeaturedCelebrity() {
         <div className="flex items-center justify-between">
           <h2 className="text-4xl font-semibold">Featured Celebrity</h2>
           <div className="flex items-center space-x-4">
-            <button
-              onClick={scrollLeft}
-              className="w-[50px] h-[50px] text-lg border border-[#D42978] text-[#D42978] rounded-full transition duration-300"
-              style={{ fontSize: "18px" }}
+            <button onClick={scrollLeft}
+              className="w-[50px] h-[50px] text-lg border border-[#D42978] flex items-center justify-center rounded-full transition duration-300"
             >
-              &#8249;
+              <img src="/images/back.svg" alt="back" />
             </button>
-            <button
-              onClick={scrollRight}
-              className="w-[50px] h-[50px] bg-[#D42978] rounded-full transition duration-300"
+            <button onClick={scrollRight}
+              className="w-[50px] h-[50px] bg-[#D42978] flex items-center justify-center rounded-full transition duration-300"
             >
-              &#8250;
+              <img src="/images/forward.svg" alt="forward" />
             </button>
           </div>
         </div>
@@ -44,7 +44,7 @@ function FeaturedCelebrity() {
         </p>
       </div>
       <div
-        className="overflow-x-scroll"
+        className="overflow-x-scroll no-scrollbar"
         ref={scrollContainerRef}
         style={{ scrollBehavior: "smooth" }}
       >
@@ -55,17 +55,15 @@ function FeaturedCelebrity() {
         </div>
       </div>
 
-      {/* <div className="overflow-x-scroll mt-16" ref={scrollContainerRef}
-        style={{
-          scrollBehavior: 'smooth'
-        }}
+      <div className="overflow-x-scroll mt-12 no-scrollbar" ref={secondaryScrollContainerRef}
+        style={{ scrollBehavior: 'smooth' }}
       >
         <div className="flex space-x-4 p-4">
-          {cards.map((card) => (
-            <FeaturedCelebrityCard />
+          {featuredCelebrityData.map((card) => (
+            <FeaturedCelebrityCard celebrity={card} />
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

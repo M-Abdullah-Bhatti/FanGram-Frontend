@@ -1,10 +1,12 @@
 import React from 'react'
-import PopularDelivery from '../components/Home/PopularDelivery'
+import PopularCategories from '../components/Home/PopularCategories'
+import FeaturedCelebrity from '../components/Home/FeaturedCelebrity'
 
 const Home = () => {
   return (
     <div>
-        <PopularDelivery />
+      <FeaturedCelebrity />
+      <PopularCategories />
     </div>
   )
 }
