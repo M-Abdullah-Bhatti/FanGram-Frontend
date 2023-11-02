@@ -1,13 +1,16 @@
 // import './App.css';
-import FeaturedCelebrity from './components/FeaturedCelebrity';
-import PopularDelivery from './components/PopularDelivery';
+// import FeaturedCelebrity from './components/FeaturedCelebrity';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <>
+    <div>
+      <Routes>
+
+        <Route path="/" element={<Home/>}></Route>
       {/* <FeaturedCelebrity /> */}
-      <PopularDelivery />
-    </>
+      </Routes>
+    </div>
   );
 }
 
