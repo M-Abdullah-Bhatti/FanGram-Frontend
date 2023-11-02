@@ -19,7 +19,7 @@ function PopularDeliveryCard({celebrity}) {
         {celebrity.tags.map((tag) => (
           <span
             key={tag}
-            className="text-gray-700 py-1 px-2 rounded-full text-sm mr-2 mb-1 text-white"
+            className="text-gray-700 py-1 rounded-full text-sm mr-2 mb-1 text-white"
             style={{fontFamily: 'Satisfy'}}
           >
             #{tag}

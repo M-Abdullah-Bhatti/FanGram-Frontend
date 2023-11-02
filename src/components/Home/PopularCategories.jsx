@@ -13,7 +13,7 @@ function PopularCategories() {
   const divStyle = {
     backgroundImage: `url('/images/background.png')`,
     backgroundSize: 'cover',
-    backgroundPosition: 'top',
+    backgroundPosition: 'cover',
   };
 
   return (
@@ -34,8 +34,8 @@ function PopularCategories() {
       <PopularDelivery />
       <TringDhamaka />
 
-      <div className="flex bg-[#FCAE4B] bg-[`/images/background.png`] min-h-[275px] rounded-xl mt-6" style={divStyle}>
-        <div className='w-1/2 p-6 space-y-4'>
+      <div className="flex bg-[#FCAE4B] bg-[`/images/background.png`] min-h-[350px] rounded-xl mt-10" style={divStyle}>
+        <div className='w-1/2 p-10 space-y-8 mt-4'>
           <h1 className='font-bold text-5xl'>Promote your business through <b className='text-black'>celebrity</b></h1>
           <p className='font-normal text-xl'>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries</p>
           <button className='bg-white text-[#D42978] text-medium px-4 py-2 rounded-3xl'>Fill The Form</button>
