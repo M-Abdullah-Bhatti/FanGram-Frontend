@@ -15,7 +15,7 @@ SwiperCore.use([Navigation, Pagination]);
 
 const Hero = () => {
   return (
-    <div className="flex justify-center items-center gap-8  min-h-[85vh] relative bg-[#000] px-20">
+    <div className="flex justify-center items-center gap-8  min-h-[85vh] relative bg-[#000] px-20 overflow-hidden">
       <img
         src="/images/hero__ladder__1.png"
         alt="logo"
