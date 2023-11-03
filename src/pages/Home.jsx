@@ -8,9 +8,7 @@ import FAQS from "../components/Shared/FAQs";
 const Home = () => {
   return (
     <div>
-      <div>
-        <Hero />
-      </div>
+      <Hero />
       <FeaturedCelebrity />
       <PopularCategories />
       <Feedback />
