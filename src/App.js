@@ -1,5 +1,4 @@
 // import './App.css';
-// import FeaturedCelebrity from './components/FeaturedCelebrity';
 import Footer from "./components/Shared/Footer";
 import Header from "./components/Shared/Header";
 import CelebrityPage from "./pages/CelebrityPage";
