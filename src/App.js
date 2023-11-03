@@ -3,7 +3,6 @@
 import Login from "./components/Login/Login";
 import Footer from "./components/Shared/Footer";
 import Header from "./components/Shared/Header";
-import SignUp from "./components/SignUp/SignUp";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 
@@ -13,7 +12,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        {/* <FeaturedCelebrity /> */}
+        <Route path="/celebrity" element={<CelebrityPage />} />
       </Routes>
       {/* <Footer /> */}
     </div>

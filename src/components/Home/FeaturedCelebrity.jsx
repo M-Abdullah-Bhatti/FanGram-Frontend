@@ -8,6 +8,7 @@ function FeaturedCelebrity() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
+      console.log("Scroll Left Triggered")
       scrollContainerRef.current.scrollLeft -= 360;
       secondaryScrollContainerRef.current.scrollLeft -= 360;
     }
@@ -15,6 +16,7 @@ function FeaturedCelebrity() {
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
+      console.log("Scroll Right Triggered")
       scrollContainerRef.current.scrollLeft += 360;
       secondaryScrollContainerRef.current.scrollLeft += 360;
     }
@@ -27,7 +29,7 @@ function FeaturedCelebrity() {
           <h2 className="text-4xl font-semibold">Featured Celebrity</h2>
           <div className="flex items-center space-x-4">
             <button onClick={scrollLeft}
-              className="w-[50px] h-[50px] text-lg border border-[#D42978] flex items-center justify-center rounded-full transition duration-300"
+              className="w-[50px] h-[50px] border border-[#D42978] flex items-center justify-center rounded-full transition duration-300"
             >
               <img src="/images/back.svg" alt="back" />
             </button>
@@ -49,8 +51,8 @@ function FeaturedCelebrity() {
         style={{ scrollBehavior: "smooth" }}
       >
         <div className="flex space-x-4 px-8 py-4">
-          {featuredCelebrityData.map((card) => (
-            <FeaturedCelebrityCard celebrity={card} />
+          {featuredCelebrityData.map((card, index) => (
+            <FeaturedCelebrityCard celebrity={card} key={index} />
           ))}
         </div>
       </div>
@@ -59,8 +61,8 @@ function FeaturedCelebrity() {
         style={{ scrollBehavior: 'smooth' }}
       >
         <div className="flex space-x-4 px-8 py-4">
-          {featuredCelebrityData.map((card) => (
-            <FeaturedCelebrityCard celebrity={card} />
+          {featuredCelebrityData.map((card, index) => (
+            <FeaturedCelebrityCard celebrity={card} key={index} />
           ))}
         </div>
       </div>

@@ -25,18 +25,7 @@ body {
   height: 0;
 }
 
-.home__hero__bg {
-  /* background: linear-gradient(
-    91deg,
-    rgba(253, 193, 93, 0.3) 11.73%,
-    rgba(209, 41, 122, 0.3) 60.63%,
-    rgba(171, 45, 167, 0.3) 100.3%
-  ); */
-
-  background-color: black;
-
-  /* filter: blur(192px); */
-}
+/* Hero Section Styling */
 
 .hero__message {
   background: linear-gradient(
@@ -54,4 +43,19 @@ body {
   font-weight: 400;
   line-height: normal;
   width: fit-content;
+}
+
+.hero__caurosel
+  .swiper-pagination
+  .swiper-pagination-bullets
+  .swiper-pagination-horizontal {
+  margin-top: 4rem !important;
+}
+
+.hero__caurosel .swiper-pagination-bullet-active {
+  background: #fff !important;
+}
+
+.hero__caurosel .swiper-pagination-bullet {
+  background: #dbdbdb !important;
 }

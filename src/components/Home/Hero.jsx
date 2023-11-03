@@ -1,8 +1,21 @@
 import React from "react";
 
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import SwiperCore from "swiper";
+import { heroSliderImages } from "../../Data";
+
+SwiperCore.use([Navigation, Pagination]);
+
 const Hero = () => {
   return (
-    <div className="flex justify-center items-center min-h-[80vh] relative home__hero__bg border-2 px-20">
+    <div className="flex justify-center items-center gap-8  min-h-[85vh] relative bg-[#000] px-20">
       <img
         src="/images/hero__ladder__1.png"
         alt="logo"
@@ -14,8 +27,20 @@ const Hero = () => {
         className="absolute bottom-0 left-2/4"
       />
 
+      <img
+        src="/images/hero__ellipse1.png"
+        alt="logo"
+        className="absolute left-0 top-0"
+      />
+
+      <img
+        src="/images/hero__ellipse2.png"
+        alt="logo"
+        className="absolute right-0 top-0"
+      />
+
       {/* Left Container */}
-      <div className="w-[60%] relative border-2 flex justify-center items-start flex-col">
+      <div className="w-[60%] relative flex justify-center items-start flex-col">
         <img
           src="/images/hero__shape__1.png"
           alt="logo"
@@ -51,36 +76,52 @@ const Hero = () => {
       </div>
 
       {/* Right Container */}
-      <div className="w-[40%] border-2 flex justify-center items-start ">
-        <div className="flex gap-5 ">
-          <div className="flex flex-col gap-5 ">
-            <img
-              src="/images/hero__slider__img1.png"
-              alt="logo"
-              className="w-[180px]"
-            />
+      <div className="w-[40%]  flex justify-center items-center hero__caurosel  ">
+        <Swiper
+          modules={[Navigation, Pagination, A11y, Autoplay]}
+          slidesPerView={1}
+          spaceBetween={1}
+          slidesPerGroup={1}
+          autoplay={true}
+          pagination={true}
+          slideActiveClass="activeSlide"
+          className="swiper-container"
+        >
+          {heroSliderImages.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex gap-5 ">
+                <div className="flex flex-col gap-5 ">
+                  <img
+                    src={slide.images[0]}
+                    alt="logo"
+                    className="w-[200px] rounded-lg"
+                  />
 
-            <img
-              src="/images/hero__slider__img3.png"
-              alt="logo"
-              className="w-[180px]"
-            />
-          </div>
+                  <img
+                    src={slide.images[1]}
+                    alt="logo"
+                    className="w-[200px] rounded-lg"
+                  />
+                </div>
 
-          <div className="flex flex-col gap-5 mt-10">
-            <img
-              src="/images/hero__slider__img2.png"
-              alt="logo"
-              className="w-[180px] "
-            />
+                <div className="flex flex-col gap-5 mt-10">
+                  <img
+                    src={slide.images[2]}
+                    alt="logo"
+                    className="w-[200px] rounded-lg"
+                  />
 
-            <img
-              src="/images/hero__slider__img4.png"
-              alt="logo"
-              className="w-[180px]"
-            />
-          </div>
-        </div>
+                  <img
+                    src={slide.images[3]}
+                    alt="logo"
+                    className="w-[200px] rounded-lg"
+                  />
+                </div>
+              </div>
+              <div className="h-10"></div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
