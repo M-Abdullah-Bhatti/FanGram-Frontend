@@ -33,6 +33,24 @@ export const heroSliderImages = [
   },
 ]
 
+export const featuredCelebrity = [
+    {
+        name: 'Munmun datta',
+        image: '/images/babita.png'
+    },
+    {
+        name: 'Munmun datta',
+        image: '/images/munmun.png'
+    },
+    {
+        name: 'Munmun datta',
+        image: '/images/munmun.png'
+    },
+    {
+        name: 'Munmun datta',
+        image: '/images/munmun.png'
+    }
+];
 
 export const featuredCelebrityData = [
     {
