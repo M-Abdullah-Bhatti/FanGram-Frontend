@@ -34,6 +34,56 @@ export const heroSliderImages = [
 ]
 
 
+export const feedbackSliderData=[
+    {
+        images:[
+            "/images/feedback__img2.png",
+            "/images/feedback__img1.png",
+        ],
+        feedback:" Lorem ipsum is placeholder text commonly used in the graphic,              print, and publishing industries for previewing layouts and visual mockups",
+        givenBy:"Nathalie Grossman",
+        designation:"CEO of Advisor Fuel"
+
+
+    },
+    {
+        images:[
+            "/images/feedback__img1.png",
+            "/images/feedback__img2.png",
+        ],
+        feedback:" Lorem ipsum is placeholder text commonly used in the graphic,              print, and publishing industries for previewing layouts and visual mockups",
+        givenBy:"Johnson Grossman",
+        designation:"CEO of Advisor Fuel"
+
+
+    },
+
+    {
+       images:[
+           "/images/feedback__img2.png",
+           "/images/feedback__img1.png",
+        ],
+        feedback:" Lorem ipsum is placeholder text commonly used in the graphic,              print, and publishing industries for previewing layouts and visual mockups",
+        givenBy:"Nathalie Grossman",
+        designation:"CEO of Advisor Fuel"
+
+
+    },
+
+    {
+       images:[
+           "/images/feedback__img1.png",
+           "/images/feedback__img2.png",
+        ],
+        feedback:" Lorem ipsum is placeholder text commonly used in the graphic,              print, and publishing industries for previewing layouts and visual mockups",
+        givenBy:"Carels Grossman",
+        designation:"CEO of Advisor Fuel"
+
+
+    },
+]
+
+
 export const featuredCelebrityData = [
     {
         featuredImage: '/images/sunny.png',
