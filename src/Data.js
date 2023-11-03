@@ -93,6 +93,14 @@ export const featuredCelebrityData = [
     tags: ["Movie Star", "Baby Doll"],
     price: "9999",
   },
+
+  {
+    featuredImage: "/images/priya.png",
+    popImage: "/images/sunny-page.png",
+    name: "Priya Mani Raj",
+    tags: ["Movie Star", "Baby Doll"],
+    price: "5999",
+  },
   {
     featuredImage: "/images/shankar.png",
     popImage: "/images/shankar-pop.png",
@@ -101,15 +109,8 @@ export const featuredCelebrityData = [
     price: "9999",
   },
   {
-    featuredImage: "/images/priya.png",
-    popImage: "/images/shankar-pop.png",
-    name: "Priya Mani Raj",
-    tags: ["Movie Star", "Baby Doll"],
-    price: "5999",
-  },
-  {
     featuredImage: "/images/salim.png",
-    popImage: "/images/shankar-pop.png",
+    popImage: "/images/sunny-page.png",
     name: "Salim Merchant",
     tags: ["Movie Star", "Baby Doll"],
     price: "5999",
@@ -123,7 +124,7 @@ export const featuredCelebrityData = [
   },
   {
     featuredImage: "/images/salim.png",
-    popImage: "/images/shankar-pop.png",
+    popImage: "/images/sunny-page.png",
     name: "Salim Merchant",
     tags: ["Movie Star", "Baby Doll"],
     price: "5999",
