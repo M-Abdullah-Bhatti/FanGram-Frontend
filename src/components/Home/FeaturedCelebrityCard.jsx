@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function FeaturedCelebrityCard({celebrity}) {
   return (
     <div className="h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg"
         style={{minWidth: '325px', overflow: 'hidden'}}
     >
+    <Link to="/celebrity">
       <img
         src={celebrity.featuredImage}
         alt="celebrity"
@@ -38,6 +40,7 @@ function FeaturedCelebrityCard({celebrity}) {
           </button>
         </div>
       </div>
+    </Link>
     </div>
   )
 }

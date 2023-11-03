@@ -3,6 +3,7 @@ import PopularCategories from "../components/Home/PopularCategories";
 import FeaturedCelebrity from "../components/Home/FeaturedCelebrity";
 import Hero from "../components/Home/Hero";
 import Feedback from "../components/Home/Feedback";
+
 const Home = () => {
   return (
     <div>

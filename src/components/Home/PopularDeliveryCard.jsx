@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function PopularDeliveryCard({celebrity}) {
   return (
+    <Link to="/celebrity">
     <div className="h-[350px] bg-[#292929] relative flex flex-col items-center justify-center rounded-lg shadow-lg px-8 space-y-2" style={{minWidth: '250px', overflow: 'hidden'}}>
       <div className="absolute top-3 right-3 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
         <img 
@@ -31,6 +33,7 @@ function PopularDeliveryCard({celebrity}) {
         Book Now
       </button>
     </div>
+    </Link>
   )
 }
 
