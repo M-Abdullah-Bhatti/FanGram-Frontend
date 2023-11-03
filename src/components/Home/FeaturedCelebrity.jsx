@@ -23,7 +23,7 @@ function FeaturedCelebrity() {
   };
 
   return (
-    <div className="w-full bg-black text-white">
+    <div className="w-full bg-black text-white py-10">
       <div className="py-4 px-16">
         <div className="flex items-center justify-between">
           <h2 className="text-4xl font-semibold">Featured Celebrity</h2>
@@ -46,7 +46,7 @@ function FeaturedCelebrity() {
         </p>
       </div>
       <div
-        className="overflow-x-scroll no-scrollbar"
+        className="overflow-x-auto no-scrollbar"
         ref={scrollContainerRef}
         style={{ scrollBehavior: "smooth" }}
       >
@@ -57,7 +57,7 @@ function FeaturedCelebrity() {
         </div>
       </div>
 
-      <div className="overflow-x-scroll mt-12 no-scrollbar" ref={secondaryScrollContainerRef}
+      <div className="overflow-x-auto mt-12 no-scrollbar" ref={secondaryScrollContainerRef}
         style={{ scrollBehavior: 'smooth' }}
       >
         <div className="flex space-x-4 px-8 py-4">

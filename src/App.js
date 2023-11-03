@@ -4,6 +4,7 @@ import Login from "./components/Login/Login";
 import Footer from "./components/Shared/Footer";
 import Header from "./components/Shared/Header";
 import Home from "./pages/Home";
+import CelebrityPage from "./pages/CelebrityPage";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
