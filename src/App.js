@@ -2,6 +2,7 @@
 // import FeaturedCelebrity from './components/FeaturedCelebrity';
 import Footer from "./components/Shared/Footer";
 import Header from "./components/Shared/Header";
+import CelebrityPage from "./pages/CelebrityPage";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 
@@ -12,7 +13,7 @@ function App() {
       <Header />      
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        {/* <FeaturedCelebrity /> */}
+        <Route path="/celebrity" element={<CelebrityPage />} />
       </Routes>
       {/* <Footer /> */}
     </div>
