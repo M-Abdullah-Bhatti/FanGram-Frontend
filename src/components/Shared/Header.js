@@ -26,7 +26,7 @@ const headerLinks = [
 const Header = () => {
   const location = useLocation();
   return (
-    <div className=" bg-[#000] py-3">
+    <div className=" bg-[#000] py-3 border-b-[1px] border-[#4b4b4b]">
       <div className="w-[85%] mx-auto flex justify-between items-center">
         <div className="flex justify-between items-center gap-16">
           <img src="/images/header__logo.png" alt="logo" />

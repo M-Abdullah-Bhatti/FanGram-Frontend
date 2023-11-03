@@ -1,3 +1,39 @@
+export const heroSliderImages = [
+     {
+    images: [
+      "/images/hero__slider__img1.png",
+      "/images/hero__slider__img3.png",
+      "/images/hero__slider__img2.png",
+      "/images/hero__slider__img4.png",
+    ],
+  },
+    {
+    images: [
+        "/images/hero__slider__img2.png",
+        "/images/hero__slider__img1.png",
+      "/images/hero__slider__img4.png",
+      "/images/hero__slider__img3.png",
+    ],
+  },
+    {
+    images: [
+        "/images/hero__slider__img2.png",
+        "/images/hero__slider__img3.png",
+        "/images/hero__slider__img4.png",
+        "/images/hero__slider__img1.png",
+    ],
+  },
+    {
+    images: [
+        "/images/hero__slider__img3.png",
+      "/images/hero__slider__img1.png",
+      "/images/hero__slider__img2.png",
+      "/images/hero__slider__img4.png",
+    ],
+  },
+]
+
+
 export const featuredCelebrityData = [
     {
         featuredImage: '/images/sunny.png',
