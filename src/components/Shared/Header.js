@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import SignUp from "../SignUp/SignUp";
 
 const headerLinks = [
   {
@@ -25,6 +26,8 @@ const headerLinks = [
 
 const Header = () => {
   const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => setShowModal(false);
   return (
     <div className=" bg-[#000] py-3">
       <div className="w-[85%] mx-auto flex justify-between items-center">
@@ -45,11 +48,9 @@ const Header = () => {
                   {item.linkText}
                 </Link>
 
-                {
-                  location.pathname === item.linkTo  &&   <div className="bg-[#D42978] h-[1px] w-[80%]"></div>
-                }
-
-              
+                {location.pathname === item.linkTo && (
+                  <div className="bg-[#D42978] h-[1px] w-[80%]"></div>
+                )}
               </div>
             ))}
           </div>
@@ -59,9 +60,13 @@ const Header = () => {
           <button className="outline-none border-[1px] py-2 px-4 rounded-[40px] border-[#fff] text-[#fff]">
             Promote My Business
           </button>
-          <button className="outline-none  py-2 px-4  rounded-[40px] bg-[#D42978] text-[#fff]">
+          <button
+            className="outline-none  py-2 px-4  rounded-[40px] bg-[#D42978] text-[#fff]"
+            onClick={() => setShowModal(true)}
+          >
             Login/Signup
           </button>
+          {showModal && <SignUp closeModal={closeModal} />}
         </div>
       </div>
     </div>
