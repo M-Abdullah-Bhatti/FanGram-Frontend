@@ -44,32 +44,32 @@ function PopularCategories() {
 
         {/* Slider */}
         <div className="w-[33%]  flex justify-center items-center hero__caurosel  ">
-        <Swiper
-          modules={[Navigation, Pagination, A11y, Autoplay]}
-          slidesPerView={1}
-          spaceBetween={1}
-          slidesPerGroup={1}
-          autoplay={true}
-          pagination={true}
-          slideActiveClass="activeSlide"
-          className="swiper-container"
-        >
-          {featuredCelebrity.map((slide, index) => (
-            <SwiperSlide key={index}>
-              <div className="flex gap-5 justify-center">
-                <div className="flex flex-col gap-5">
-                  <img
-                    src={slide.image}
-                    alt="logo"
-                    className="w-[300px] rounded-lg"
-                  />
-                  <p className="text-center text-black text-xl" style={{fontFamily: 'Satisfy'}}>#{slide.name}</p>
+          <Swiper
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            slidesPerView={1}
+            spaceBetween={1}
+            slidesPerGroup={1}
+            autoplay={true}
+            pagination={true}
+            slideActiveClass="activeSlide"
+            className="swiper-container"
+          >
+            {featuredCelebrity.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex gap-5 justify-center">
+                  <div className="flex flex-col gap-5">
+                    <img
+                      src={slide.image}
+                      alt="logo"
+                      className="w-[300px] rounded-lg"
+                    />
+                    <p className="text-center text-black text-xl" style={{fontFamily: 'Satisfy'}}>#{slide.name}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="h-10"></div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                <div className="h-10"></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>
