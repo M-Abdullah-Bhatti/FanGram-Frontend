@@ -27,7 +27,7 @@ const headerLinks = [
 const Header = () => {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
-  const closeModal = () => setShowModal(false);
+  const closeModal = () => setShowModal(!showModal);
   return (
     <div className=" bg-[#000] py-3 border-b-[1px] border-[#4b4b4b]">
       <div className="w-[85%] mx-auto flex justify-between items-center">
