@@ -3,8 +3,12 @@ import { FaTimes } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
+import { useStateContext } from "../../StateContext";
 
-const Login = ({ closeModal }) => {
+const Login = () => {
+
+    const { openSignupModal, setOpenSignupModal, setOpenLoginModal} = useStateContext()
+
   return (
     <div className="w-full  flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
       <div className="bg-white rounded-xl">
@@ -12,7 +16,9 @@ const Login = ({ closeModal }) => {
           <div className="text-end ">
             <button
               className="bg-[#CA2981] text-white p-1 rounded-full mt-2 mr-2"
-              onClick={closeModal}
+              onClick={()=>{
+                setOpenLoginModal(false)
+              }}
             >
               <FaTimes />
             </button>
@@ -63,7 +69,10 @@ const Login = ({ closeModal }) => {
             </div>
             <p className="text-center my-10">
               Not on FanGram?
-              <a href="#" className="text-[#CA2981]">
+              <a href="#" className="text-[#CA2981]" onClick={()=>{
+               setOpenLoginModal(false)
+               setOpenSignupModal(true)
+              }}>
                 Sign up
               </a>
             </p>

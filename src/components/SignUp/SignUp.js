@@ -4,13 +4,15 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import Login from "../Login/Login";
+import { useStateContext } from "../../StateContext";
 
-const SignUp = ({ closeModal }) => {
-  const [showModalLogin, setShowModalLogin] = useState(false);
-  const closeModalLogin = () => setShowModalLogin(false);
+const SignUp = () => {
+
+  const {  setOpenSignupModal, setOpenLoginModal} = useStateContext()
+  
   return (
     <div className="w-full flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
-      <div className="w-[1062px] h-[677px] bg-[#CA2981] flex rounded-[30px]">
+      <div className="w-[1062px] h-[620px] bg-[#CA2981] flex rounded-[30px]">
         <div className="w-1/2 h-full grid place-items-center  ">
           <div className="w-[397px] h-[513px] absolute">
             <img
@@ -28,12 +30,12 @@ const SignUp = ({ closeModal }) => {
           <div className="text-end ">
             <button
               className="bg-[#CA2981] text-white p-1 rounded-full mt-2"
-              onClick={closeModal}
+              onClick={()=>setOpenSignupModal(false)}
             >
               <FaTimes />
             </button>
           </div>
-          <p className="text-[#D42978] font-satisfy text-2xl my-6">Welcome</p>
+          <p className="text-[#D42978] font-satisfy text-2xl my-4">Welcome</p>
           <h2 className="font-extrabold text-3xl">Sign up with FanGram</h2>
           <div className="flex  mt-6">
             <div className="bg-[#EAEAEA] p-2 rounded-full">
@@ -87,19 +89,19 @@ const SignUp = ({ closeModal }) => {
               Sign up
             </a>
           </div>
-          <p className="text-center my-10">
+          <p className="text-center mt-5">
             Already on FanGram?
             <a
               href="#"
               className="text-[#CA2981]"
               onClick={() => {
-                closeModal();
-                setShowModalLogin(true);
+               setOpenSignupModal(false)
+               setOpenLoginModal(true)
               }}
             >
               Login
             </a>
-            {showModalLogin && <Login closeModal={closeModal} />}
+            
           </p>
         </div>
       </div>
