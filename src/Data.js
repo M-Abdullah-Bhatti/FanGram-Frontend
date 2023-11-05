@@ -339,3 +339,32 @@ export const cartoonData = [
     price: "₹299",
   },
 ];
+
+export const celebrityDemoData = [
+  {
+    img: '/images/sunny__vid.png',
+    ratings: 5,
+    button: 'Motivation',
+    tagline: 'Absolutely Mesmerised!...'
+  },
+  {
+    img: '/images/sunny__vid.png',
+    ratings: 5,
+    button: 'Birthday',
+    tagline: 'Good Nice'
+  },
+  {
+    img: '/images/sunny__vid.png',
+    ratings: 5,
+    button: 'Birthday',
+    tagline: 'Good Nice'
+  },
+  {
+    img: '/images/sunny__vid.png',
+    ratings: 5,
+    button: 'Birthday',
+    tagline: 'Good Nice'
+  },
+];
+
+export const discoverOptions = ['Celebrities', 'Movies', 'Tv Shows', 'Web Series', 'Sports Events', 'Events', 'Wishes', 'Gifts', 'Quotes', 'Invitations', 'Captions', 'Aarti'];
