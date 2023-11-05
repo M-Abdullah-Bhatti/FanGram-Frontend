@@ -1,3 +1,14 @@
+export const signupSliderImages = [
+  {
+    image: "/images/signup_left_nora.jpeg",
+  },
+  {
+    image: "/images/hero__slider__img1.png",
+  },
+  {
+    image: "/images/signup_left_nora.jpeg",
+  },
+];
 export const heroSliderImages = [
   {
     images: [
