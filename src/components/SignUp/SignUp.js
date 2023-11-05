@@ -6,31 +6,63 @@ import { FaApple } from "react-icons/fa";
 import Login from "../Login/Login";
 import { useStateContext } from "../../StateContext";
 
-const SignUp = () => {
+// slider
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-  const {  setOpenSignupModal, setOpenLoginModal} = useStateContext()
-  
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import SwiperCore from "swiper";
+import { signupSliderImages } from "../../Data";
+
+const SignUp = () => {
+  const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
+
   return (
     <div className="w-full flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
       <div className="w-[1062px] h-[620px] bg-[#CA2981] flex rounded-[30px]">
-        <div className="w-1/2 h-full grid place-items-center  ">
-          <div className="w-[397px] h-[513px] absolute">
+        <div className="w-1/2 h-full flex items-center justify-center  ">
+          {/* <div className="w-[397px] h-[513px] absolute">
             <img
               src="/images/signup_left_nora.jpeg"
               alt=""
               className="w-full h-full"
             />
-          </div>
+          </div> */}
 
-          <p className="px-4 py-2 bg-[#806D67] rounded-full w-fit text-white relative top-0 font-bold relative top-52 left-2">
+          {/* <p className="px-4 py-2 bg-[#806D67] rounded-full w-fit text-white relative top-0 font-bold relative top-52 left-2">
             Nora Fatehi
-          </p>
+          </p> */}
+          <Swiper
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            slidesPerView={1}
+            spaceBetween={1}
+            slidesPerGroup={1}
+            autoplay={true}
+            pagination={true}
+            slideActiveClass="activeSlide"
+            className="w-[397px] "
+          >
+            {signupSliderImages.map((slide, index) => (
+              <SwiperSlide key={index} className="absolute">
+                <div className="w-[397px] h-[513px]  ">
+                  <img src={slide.image} alt="" className="w-full h-full" />
+                </div>
+                <p className="px-4 py-2 bg-[#806D67] rounded-full w-fit text-white  font-bold relative bottom-[90px] left-[140px] z-20 ">
+                  Nora Fatehi
+                </p>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
         <div className="w-1/2 border-solid border-2 bg-white px-6 rounded-[30px]">
           <div className="text-end ">
             <button
               className="bg-[#CA2981] text-white p-1 rounded-full mt-2"
-              onClick={()=>setOpenSignupModal(false)}
+              onClick={() => setOpenSignupModal(false)}
             >
               <FaTimes />
             </button>
@@ -95,13 +127,12 @@ const SignUp = () => {
               href="#"
               className="text-[#CA2981]"
               onClick={() => {
-               setOpenSignupModal(false)
-               setOpenLoginModal(true)
+                setOpenSignupModal(false);
+                setOpenLoginModal(true);
               }}
             >
               Login
             </a>
-            
           </p>
         </div>
       </div>
