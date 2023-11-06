@@ -18,7 +18,7 @@ function CelebrityHeader() {
   return (
     <div className="flex bg-[#161616] relative rounded-xl overflow-hidden px-8 py-6 text-white">
       <div
-        className="min-h-[275px] rounded-2xl overflow-hidden border border-[#ccc]"
+        className="max-h-[275px] rounded-2xl overflow-hidden border border-[#ccc]"
         style={{
           background: "lightgray 50%",
           minWidth: "225px",
@@ -26,9 +26,9 @@ function CelebrityHeader() {
         }}
       >
         <img
-          src="/images/jayati.png"
+          src="/images/sunny.png"
           alt="celebrity"
-          className="w-full h-full object-cover"
+          className="w-full h-[275px] object-fill"
         />
       </div>
       <div className="ml-6 w-full">
@@ -53,8 +53,8 @@ function CelebrityHeader() {
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <img src="/images/flag.svg" alt="flag" />
-            <p>India’s largest celebrity engagement platform</p>
+            {/* <img src="/images/flag.svg" alt="flag" />
+            <p>India’s largest celebrity engagement platform</p> */}
             <div className="bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <img src="/images/heart.png" alt="heart" />
             </div>
@@ -63,14 +63,14 @@ function CelebrityHeader() {
         <p className="py-4 text-xl font-medium">
           Responds in <b className="text-[#D42978] font-bold">5 Days</b>
         </p>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mr-[150px]">
           {tags.map((tag) => (
-            <span className="text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-4 mr-4">
+            <span className="text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 mr-4">
               {tag}
             </span>
           ))}
         </div>
-        <div className="flex flex-wrap space-x-4">
+        <div className="flex flex-wrap space-x-4 mr-[150px]">
           <span className="bg-[#D42978] font-medium text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
             Book Video @ <b>&#8377; 9999</b>{" "}
             <span className="line-through ml-2 text-sm">10,999</span>
@@ -148,7 +148,7 @@ function CelebrityHeader() {
       </div>
 
       {/* Slider */}
-      <div className="right-5 bottom-3 w-[10%] absolute flex justify-center items-center hero__caurosel  ">
+      <div className="right-5 bottom-3 w-[150px] absolute flex justify-center items-center hero__caurosel  ">
         <Swiper
           modules={[Navigation, Pagination, A11y, Autoplay]}
           slidesPerView={1}

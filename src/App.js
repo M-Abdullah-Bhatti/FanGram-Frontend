@@ -7,6 +7,7 @@ import Header from "./components/Shared/Header";
 import Home from "./pages/Home";
 // import CelebrityPage from "./pages/CelebrityPage";
 import { Route, Routes } from "react-router-dom";
+import CelebrityOrder from "./pages/CelebrityOrder";
 import MyProfile from "./pages/MyProfile";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/celebrity" element={<CelebrityPage />} />
+        <Route path="/order" element={<CelebrityOrder />} />
         <Route path="/myprofile" element={<MyProfile />} />
       </Routes>
       <Footer />
