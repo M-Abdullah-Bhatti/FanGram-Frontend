@@ -59,3 +59,14 @@ body {
 .hero__caurosel .swiper-pagination-bullet {
   background: #dbdbdb !important;
 }
+
+/* My Profile Page */
+.form__elements
+{
+  width: 100%;
+  padding: 10px 5px;
+  outline: none;
+  background-color: #292929;
+  border: 1px solid rgba(255, 255, 255, 0.664);
+  border-radius: 6px;
+}
