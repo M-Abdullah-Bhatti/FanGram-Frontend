@@ -379,3 +379,35 @@ export const celebrityDemoData = [
 ];
 
 export const discoverOptions = ['Celebrities', 'Movies', 'Tv Shows', 'Web Series', 'Sports Events', 'Events', 'Wishes', 'Gifts', 'Quotes', 'Invitations', 'Captions', 'Aarti'];
+
+export const ocassions = [
+  'Birthday', 'Anniversary', 'Wedding', 'Get Well Soon', 'All the Best', 'Romantic', 'Motivation', 'New Born',
+  'Super Fan', 'Engagement', 'Navratri', 'Diwali'
+];
+
+export const extras = [
+  {
+    icon: '/images/order__gift.svg',
+    title: 'Remove the FanRang logo',
+    subtitle: 'Download your video without a tring watermark',
+    price: 750
+  },
+  {
+    icon: '/images/order__gift.svg',
+    title: 'Gifting Experience',
+    subtitle: 'Gift wrap your video with special effects.',
+    price: 600
+  },
+  {
+    icon: '/images/order__fullhd.svg',
+    title: 'Full HD',
+    subtitle: 'Video is recorded with full HD 1080x1920. Pick this if the video quality is extra important.',
+    price: 300
+  },
+  {
+    icon: '/images/order__instagram.svg',
+    title: 'Dm On Instagram',
+    subtitle: 'Want To your Order',
+    price: 600
+  }
+];

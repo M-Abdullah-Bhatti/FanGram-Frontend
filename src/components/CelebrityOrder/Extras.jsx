@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
 
-function Extras() {
+function Extras({extra}) {
   return (
-    <div className="flex justify-between items-center m-24 px-4 py-2 bg-gradient-to-l from-gray-900 via-gray-800 to-gray-800 rounded-xl">
+    <div className="flex justify-between items-center px-4 py-2 bg-[#202020] rounded-xl">
         <div className="flex items-center gap-4">
-            <div>
-                <img src="/images/order__gift.svg" alt="" />
+            <div className="bg-[#D42978] h-full rounded-xl p-4" style={{height: '100%', padding: 'auto'}}>
+                <img className="w-[50px]" src={extra.icon} alt="" />
             </div>
             <div className="text-white">
-                <h2 className="text-xl font-semibold">Remove the FanGram logo</h2>
-                <p className="text-[#737373] font-medium text-sm">Download your video without a tring watermark</p>
-                <span className="text-[#737373] text-base">₹750</span>
+                <h2 className="text-xl font-semibold">{extra.title}</h2>
+                <p className="text-[#737373] font-medium text-sm">{extra.subtitle}</p>
+                <span className="text-[#737373] text-base">₹{extra.price}</span>
             </div>
         </div>
         <div className="flex items-center justify-center w-[35px] h-[35px] bg-[#D42978] rounded-2xl cursor-pointer">
