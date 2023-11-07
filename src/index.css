@@ -70,3 +70,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.664);
   border-radius: 6px;
 }
+
+.ticket {
+  width: calc(100% - 20px);
+}
