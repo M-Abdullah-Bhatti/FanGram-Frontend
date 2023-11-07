@@ -2,6 +2,7 @@ import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import PaymentExtrasSection from './PaymentExtrasSection'
+import TicketDesign from './TicketDesign'
 
 function Payment() {
   return (
@@ -56,13 +57,7 @@ function Payment() {
             </div>
 
             {/* Design */}
-            <div className="flex justify-between items-center w-full">
-                <div className="w-[20px] h-[20px] bg-black rounded-3xl ml-[-10px]"></div>
-                {/* <div className="w-full h-[2px] bg-black"></div> */}
-                {/* <hr className="w-full border-dotted border-[4px] bg-[#E9E9E9]" style={{}} /> */}
-                <img src="/images/line.svg" alt="" className="w-full" />
-                <div className="w-[20px] h-[20px] bg-black rounded-3xl mr-[-10px]"></div>
-            </div>
+            <TicketDesign />
 
             <div className="px-6 py-3">
                 {/* Your Detail */}
