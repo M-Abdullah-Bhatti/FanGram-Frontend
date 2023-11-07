@@ -4,10 +4,18 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import { useStateContext } from "../../StateContext";
+import apiUrl from "../../utils/baseUrl";
 
 const Login = () => {
 
-    const { openSignupModal, setOpenSignupModal, setOpenLoginModal} = useStateContext()
+    const {  setOpenSignupModal, setOpenLoginModal} = useStateContext()
+
+    const handleGoogleLogin = async()=>{
+
+      window.open(`${apiUrl}/auth/google`, "_self")
+    
+     
+    }
 
   return (
     <div className="w-full  flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
@@ -29,8 +37,8 @@ const Login = () => {
               <div className="bg-[#EAEAEA] p-2 rounded-full">
                 <FaFacebook className=" text-[#3b5998] text-3xl" />
               </div>
-              <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">
-                <FaGoogle className="text-[#3b5998] text-3xl" />
+              <div className="bg-[#EAEAEA] p-2 rounded-full ml-3 cursor-pointer" onClick={handleGoogleLogin}>
+                <FaGoogle className="text-[#3b5998] text-3xl " />
               </div>
               <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">
                 <FaApple className="text-black text-3xl" />

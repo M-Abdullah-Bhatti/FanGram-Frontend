@@ -17,9 +17,17 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
 import { signupSliderImages } from "../../Data";
+import apiUrl from "../../utils/baseUrl";
 
 const SignUp = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
+
+   const handleGoogleLogin = async()=>{
+
+      window.open(`${apiUrl}/auth/google`, "_self")
+    
+     
+    }
 
   return (
     <div className="w-full flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
@@ -73,7 +81,7 @@ const SignUp = () => {
             <div className="bg-[#EAEAEA] p-2 rounded-full">
               <FaFacebook className=" text-[#3b5998] text-3xl" />
             </div>
-            <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">
+            <div className="bg-[#EAEAEA] p-2 rounded-full ml-3" onClick={handleGoogleLogin}>
               <FaGoogle className="text-[#3b5998] text-3xl" />
             </div>
             <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">

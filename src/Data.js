@@ -593,3 +593,119 @@ export const orderdeliveryicons = [
     ),
   },
 ];
+
+export const extras = [
+  {
+    icon: '/images/order__gift.svg',
+    title: 'Remove the FanRang logo',
+    subtitle: 'Download your video without a tring watermark',
+    price: 750
+  },
+  {
+    icon: '/images/order__gift.svg',
+    title: 'Gifting Experience',
+    subtitle: 'Gift wrap your video with special effects.',
+    price: 600
+  },
+  {
+    icon: '/images/order__fullhd.svg',
+    title: 'Full HD',
+    subtitle: 'Video is recorded with full HD 1080x1920. Pick this if the video quality is extra important.',
+    price: 300
+  },
+  {
+    icon: '/images/order__instagram.svg',
+    title: 'Dm On Instagram',
+    subtitle: 'Want To your Order',
+    price: 600
+  }
+];
+
+export const ocassions = [
+  'Birthday', 'Anniversary', 'Wedding', 'Get Well Soon', 'All the Best', 'Romantic',
+  'Motivation', 'New Born', 'Super Fan', 'Engagement', 'Navratri', 'Diwali'
+];
+
+export const initialMessages = [
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining"
+];
+
+export const paymentExtras = [
+  {
+    icon: '/images/payment__one.svg',
+    title: 'Money-back Guarantee!',
+    subtitle: 'If for some reason, your request could not be completed, we’ll refund your money within 3-5 working days.'
+  },
+  {
+    icon: '/images/payment__two.svg',
+    title: 'Need help?',
+    subtitle: 'Reach out to us on WhatsApp or Email for queries. Our support team shall get back to you within 2-3 working days.'
+  },
+  {
+    icon: '/images/payment__three.svg',
+    title: 'Secured & safe payments',
+    subtitle: 'Every transaction is 100% safe. Your payment details are encrypted during the transaction to safeguard your data.'
+  }
+];
+
+export const surpriseGift = [
+  {
+    icon: '',
+    title: 'Remove the FanRang Logo',
+    subtitle: 'Remove the logo and show off in your circle',
+    price: 625,
+    underPrice: 'Free',
+    underPriceColor: '#D42978'
+  },
+  {
+    icon: '',
+    title: 'Get Full Hd Videos',
+    subtitle: 'Display this video on the big Screen',
+    price: 250,
+    underPrice: 'ADD',
+    underPriceColor: '#008115'
+  }
+];
+
+export const transactionsData = [
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Failed',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Success',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Failed',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Success',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Failed',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Success',
+  },
+];
