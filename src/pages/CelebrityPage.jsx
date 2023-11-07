@@ -5,7 +5,7 @@ import RecentViewed from '../components/CelebrityPage/RecentViewed';
 import MayAlsoLike from '../components/CelebrityPage/MayAlsoLike';
 import FAQS from '../components/Shared/FAQs';
 import DemoVideos from '../components/CelebrityPage/DemoVideos';
-import DiscoverMore from '../components/CelebrityPage/DiscoverMore';
+import DiscoverMore from '../components/Shared/DiscoverMore';
 
 function CelebrityPage() {
   return (

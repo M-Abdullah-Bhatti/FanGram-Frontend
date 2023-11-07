@@ -15,8 +15,8 @@ function Payment() {
                     <div>
                         <h1 className='text-2xl font-extrabold mb-1'>Sunny Leone</h1>
                         <span className="flex gap-2 text-[#D42978]">
-                            Show/Edit
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <span className="flex gap-2 text-[#D42978] cursor-pointer">Show/Edit</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" className="cursor-pointer" viewBox="0 0 22 22" fill="none">
                                 <path d="M11 15.125C10.9097 15.1251 10.8203 15.1074 10.7369 15.0728C10.6535 15.0382 10.5777 14.9875 10.514 14.9236L3.63898 8.04861C3.37034 7.77996 3.37034 7.34495 3.63898 7.07648C3.90762 6.80801 4.34264 6.80784 4.61111 7.07648L11 13.4654L17.389 7.07648C17.6576 6.80784 18.0926 6.80784 18.3611 7.07648C18.6296 7.34512 18.6297 7.78014 18.3611 8.04861L11.4861 14.9236C11.4223 14.9875 11.3466 15.0382 11.2632 15.0728C11.1798 15.1074 11.0903 15.1251 11 15.125Z" fill="#D42978"/>
                             </svg>
                         </span>
@@ -35,7 +35,7 @@ function Payment() {
                     </div>
                 </div>
 
-                {/* Search */}
+                {/* Coupon Code */}
                 <div className="flex justify-between items-center gap-3 p-1 mt-5 border-[1px] rounded-xl border-[#D2D1D1]">
                 <input
                     type="text"
@@ -75,7 +75,7 @@ function Payment() {
                                 required: true,
                                 autoFocus: true
                             }}
-                            searchClass='phone_input'
+                            country={'pk'}
                         />
                     </div>
                     <div className='flex items-center gap-2 my-2'>

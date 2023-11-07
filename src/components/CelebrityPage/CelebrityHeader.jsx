@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import { Link } from "react-router-dom";
 
 const tags = [
   "Celebrity Of the Week",
@@ -71,10 +72,12 @@ function CelebrityHeader() {
           ))}
         </div>
         <div className="flex flex-wrap space-x-4 mr-[150px]">
-          <span className="bg-[#D42978] font-medium text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
-            Book Video @ <b>&#8377; 9999</b>{" "}
-            <span className="line-through ml-2 text-sm">10,999</span>
-          </span>
+            <span className="bg-[#D42978] font-medium text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
+              <Link to="/order">
+                Book Video @ <b>&#8377; 9999</b>{" "}
+                <span className="line-through ml-2 text-sm">10,999</span>
+              </Link>
+            </span>
           <div
             class="flex w-fit items-center border border-[#D42978] cursor-pointer my-4"
             style={{

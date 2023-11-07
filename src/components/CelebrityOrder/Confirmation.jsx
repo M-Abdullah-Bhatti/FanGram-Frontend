@@ -117,8 +117,8 @@ function Confirmation({setCurrentIndex}) {
                           name: 'phone',
                           required: true,
                           autoFocus: true
-                          }}
-                        searchClass='phone_input'
+                        }}
+                        country={'pk'}
                     />
                 </div>
                 <div className="mt-6 w-full space-y-2">
