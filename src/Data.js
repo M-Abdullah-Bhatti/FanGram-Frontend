@@ -353,36 +353,29 @@ export const cartoonData = [
 
 export const celebrityDemoData = [
   {
-    img: '/images/sunny__vid.png',
+    img: "/images/sunny__vid.png",
     ratings: 5,
-    button: 'Motivation',
-    tagline: 'Absolutely Mesmerised!...'
+    button: "Motivation",
+    tagline: "Absolutely Mesmerised!...",
   },
   {
-    img: '/images/sunny__vid.png',
+    img: "/images/sunny__vid.png",
     ratings: 5,
-    button: 'Birthday',
-    tagline: 'Good Nice'
+    button: "Birthday",
+    tagline: "Good Nice",
   },
   {
-    img: '/images/sunny__vid.png',
+    img: "/images/sunny__vid.png",
     ratings: 5,
-    button: 'Birthday',
-    tagline: 'Good Nice'
+    button: "Birthday",
+    tagline: "Good Nice",
   },
   {
-    img: '/images/sunny__vid.png',
+    img: "/images/sunny__vid.png",
     ratings: 5,
-    button: 'Birthday',
-    tagline: 'Good Nice'
+    button: "Birthday",
+    tagline: "Good Nice",
   },
-];
-
-export const discoverOptions = ['Celebrities', 'Movies', 'Tv Shows', 'Web Series', 'Sports Events', 'Events', 'Wishes', 'Gifts', 'Quotes', 'Invitations', 'Captions', 'Aarti'];
-
-export const ocassions = [
-  'Birthday', 'Anniversary', 'Wedding', 'Get Well Soon', 'All the Best', 'Romantic', 'Motivation', 'New Born',
-  'Super Fan', 'Engagement', 'Navratri', 'Diwali'
 ];
 
 export const extras = [
@@ -410,4 +403,133 @@ export const extras = [
     subtitle: 'Want To your Order',
     price: 600
   }
+];
+
+export const discoverOptions = [
+  "Celebrities",
+  "Movies",
+  "Tv Shows",
+  "Web Series",
+  "Sports Events",
+  "Events",
+  "Wishes",
+  "Gifts",
+  "Quotes",
+  "Invitations",
+  "Captions",
+  "Aarti",
+];
+
+export const ocassions = [
+  'Birthday', 'Anniversary', 'Wedding', 'Get Well Soon', 'All the Best', 'Romantic',
+  'Motivation', 'New Born', 'Super Fan', 'Engagement', 'Navratri', 'Diwali'
+];
+
+export const initialMessages = [
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,132 characters remaining"
+];
+
+export const paymentExtras = [
+  {
+    icon: '/images/payment__one.svg',
+    title: 'Money-back Guarantee!',
+    subtitle: 'If for some reason, your request could not be completed, we’ll refund your money within 3-5 working days.'
+  },
+  {
+    icon: '/images/payment__two.svg',
+    title: 'Need help?',
+    subtitle: 'Reach out to us on WhatsApp or Email for queries. Our support team shall get back to you within 2-3 working days.'
+  },
+  {
+    icon: '/images/payment__three.svg',
+    title: 'Secured & safe payments',
+    subtitle: 'Every transaction is 100% safe. Your payment details are encrypted during the transaction to safeguard your data.'
+  }
+];
+
+export const surpriseGift = [
+  {
+    icon: '',
+    title: 'Remove the FanRang Logo',
+    subtitle: 'Remove the logo and show off in your circle',
+    price: 625,
+    underPrice: 'Free',
+    underPriceColor: '#D42978'
+  },
+  {
+    icon: '',
+    title: 'Get Full Hd Videos',
+    subtitle: 'Display this video on the big Screen',
+    price: 250,
+    underPrice: 'ADD',
+    underPriceColor: '#008115'
+  }
+];
+
+export const myProfilePageIcons = {
+  icon: (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_92_33207)">
+        <path
+          d="M10.5804 9.07985C10.5804 10.5027 9.4229 11.6603 8 11.6603C6.5771 11.6603 5.42003 10.5027 5.42003 9.07985C5.42003 7.65695 6.5771 6.49943 8 6.49943C9.4229 6.49943 10.5804 7.65739 10.5804 9.07985ZM16 5.41578V12.7448C16 13.214 15.8136 13.664 15.4818 13.9958C15.15 14.3276 14.7 14.514 14.2308 14.514H1.76923C1.3 14.514 0.849989 14.3276 0.518194 13.9958C0.1864 13.664 0 13.214 0 12.7448V5.41578C0 4.94655 0.1864 4.49654 0.518194 4.16475C0.849989 3.83295 1.3 3.64655 1.76923 3.64655H3.94538V3.0344C3.94538 2.62383 4.10848 2.23007 4.3988 1.93975C4.68912 1.64943 5.08287 1.48633 5.49345 1.48633H10.5066C10.9171 1.48633 11.3109 1.64943 11.6012 1.93975C11.8915 2.23007 12.0546 2.62383 12.0546 3.0344V3.64611H14.2308C15.2078 3.64655 16 4.43873 16 5.41578ZM11.9073 9.07985C11.9073 6.92537 10.1545 5.17251 8 5.17251C5.84597 5.17251 4.09311 6.92537 4.09311 9.07985C4.09311 11.2343 5.84597 12.9872 8 12.9872C10.1545 12.9872 11.9073 11.2343 11.9073 9.07985Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_92_33207">
+          <rect width="16" height="16" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  ),
+};
+
+// Links below the myprofile page
+export const myProfilePageLinks = [
+  {
+    text: "Celebrities",
+  },
+  {
+    text: "Movies",
+  },
+  {
+    text: "Tv Shows",
+  },
+  {
+    text: "Web Series",
+  },
+  {
+    text: "Sports Events",
+  },
+  {
+    text: "Events",
+  },
+  {
+    text: "Wishes",
+  },
+  {
+    text: "Gifts",
+  },
+  {
+    text: "Quotes",
+  },
+  {
+    text: "Invitations",
+  },
+  {
+    text: "Captions",
+  },
+  {
+    text: "Aartri",
+  },
 ];
