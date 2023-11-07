@@ -1,5 +1,6 @@
 import React from "react";
 import { myProfilePageIcons } from "../../Data";
+import PhoneInput from "react-phone-input-2";
 
 const MyProfileForm = () => {
   return (
@@ -50,7 +51,7 @@ const MyProfileForm = () => {
           <br></br>
           <label for="phone">Phone Number</label>
           <br></br>
-          <input
+          {/* <input
             type="tel"
             id="phone"
             name="phone"
@@ -58,6 +59,16 @@ const MyProfileForm = () => {
             required
             className="form__elements"
             placeholder="Enter Your Phone Number"
+          /> */}
+          <PhoneInput
+            inputProps={{
+              name: "phone",
+              required: true,
+              autoFocus: true,
+              className: "form__elements",
+            }}
+            country={"pk"}
+            buttonClass="buttonClass"
           />
           <br></br>
           <br></br>

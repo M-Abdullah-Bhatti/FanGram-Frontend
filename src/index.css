@@ -64,7 +64,7 @@ body {
 .form__elements
 {
   width: 100%;
-  padding: 10px 5px;
+  padding: 13px 15px;
   outline: none;
   background-color: #292929;
   border: 1px solid rgba(255, 255, 255, 0.664);
@@ -74,3 +74,10 @@ body {
 .ticket {
   width: calc(100% - 20px);
 }
+
+.buttonClass
+{
+  background-color: #292929;
+}
+
+
