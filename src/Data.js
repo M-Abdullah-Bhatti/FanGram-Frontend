@@ -709,3 +709,22 @@ export const transactionsData = [
     paymentStatus: 'Success',
   },
 ];
+
+export const bookingData = [
+  {
+    img: '/images/sunny.png',
+    name: 'Sunny Leone',
+  },
+  {
+    img: '/images/priya.png',
+    name: 'Priya Mani Raj',
+  },
+  {
+    img: '/images/sunny.png',
+    name: 'Sunny Leone',
+  },
+  {
+    img: '/images/priya.png',
+    name: 'Priya Mani Raj',
+  }
+];
