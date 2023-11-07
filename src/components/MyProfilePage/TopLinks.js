@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const TopLinks = () => {
+const TopLinks = ({activeTab, setActiveTab}) => {
   return (
     <>
       <h1 className="pb-6 font-semibold text-2xl text-center">My Account</h1>
       <div className="w-full grid place-items-center">
-        <div className="bg-[#292929] w-1/3 px-4 py-3 rounded-full flex items-center justify-between">
-          <Link>Profile</Link>
-          <Link>Booking</Link>
-          <Link>Wallet</Link>
-          <Link>Wishlist</Link>
+        <div className="bg-[#292929] gap-3 px-4 py-2 rounded-full flex items-center">
+          <Link className="px-6 py-2 rounded-3xl" style={{backgroundColor: activeTab === 0 && '#D42978'}} onClick={()=> setActiveTab(0)}>Profile</Link>
+          <Link className="px-6 py-2 rounded-3xl" style={{backgroundColor: activeTab === 1 && '#D42978'}} onClick={()=> setActiveTab(1)}>Booking</Link>
+          <Link className="px-6 py-2 rounded-3xl" style={{backgroundColor: activeTab === 2 && '#D42978'}} onClick={()=> setActiveTab(2)}>Wallet</Link>
+          <Link className="px-6 py-2 rounded-3xl" style={{backgroundColor: activeTab === 3 && '#D42978'}} onClick={()=> setActiveTab(3)}>Wishlist</Link>
         </div>
       </div>
     </>
