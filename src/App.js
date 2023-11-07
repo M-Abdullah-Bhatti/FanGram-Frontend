@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import CelebrityOrder from "./pages/CelebrityOrder";
 import MyProfile from "./pages/MyProfile";
+import OrderDelivery from "./pages/OrderDelivery";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/celebrity" element={<CelebrityPage />} />
         <Route path="/order" element={<CelebrityOrder />} />
         <Route path="/myprofile" element={<MyProfile />} />
+        <Route path="/orderdelivery" element={<OrderDelivery />} />
       </Routes>
       <Footer />
     </div>

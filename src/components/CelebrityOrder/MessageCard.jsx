@@ -22,12 +22,13 @@ function MessageCard({message, onEdit}) {
       <div className="bg-[#292929] border border-[#D42978] text-white rounded-lg shadow-lg p-4">
         {isEditing ? (
           <textarea
-            className="w-full h-20 border text-black rounded p-2"
+            className="w-full border text-black rounded p-2"
             value={editedMessage}
             onChange={(e) => setEditedMessage(e.target.value)}
+            style={{minHeight: '220px'}}
           />
         ) : (
-          <p className="text-lg">{message}</p>
+          <p className="text-lg overflow-y-scroll no-scrollbar" style={{height: '220px'}}>{message}</p>
         )}
       </div>
 

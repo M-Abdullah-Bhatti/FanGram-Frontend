@@ -141,27 +141,27 @@ function Confirmation({setCurrentIndex}) {
               <div className="mt-6 w-full space-y-4 border-b-2 pb-4">
                 <div className="flex justify-between">
                   <span>Personalized Video</span>
-                  <span>₹11000</span>
+                  <span className='text-[#4E4E4E]'>₹11000</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="flex gap-2">
+                  <span className="flex gap-2 text-[#008115]">
                   <img src="/images/confirmation__discount.svg" alt="" />
                     Add-ons
                   </span>
-                  <span>+₹2250</span>
+                  <span className='text-[#4E4E4E]'>+₹2250</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="flex gap-2">
+                  <span className="flex gap-2 text-[#008115]">
                   <img src="/images/confirmation__discount.svg" alt="" />
                     Coupon Discount
                   </span>
-                  <span>-₹550</span>
+                  <span className='text-[#4E4E4E]'>-₹550</span>
                 </div>
               </div>
 
               <div className="flex justify-between py-2 border-b-2">
                 <span>Prime Amount</span>
-                <span>₹99</span>
+                <span className='text-[#4E4E4E]'>₹99</span>
               </div>
               <div className="flex justify-between py-2 border-b-2">
                 <span>Prime Discount</span>
