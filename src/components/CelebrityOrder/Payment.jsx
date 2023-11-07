@@ -6,7 +6,7 @@ import TicketDesign from './TicketDesign'
 
 function Payment() {
   return (
-    <div className="mt-24 lg:mx-32">
+    <div className="mt-12 md:mt-24 lg:mx-32">
         <div className="bg-white rounded-t-3xl">
             <div className="px-6 py-2 pt-6">
                 <h3 className='mb-3 text-[#7E7E7E] font-semibold'>Your Cart</h3>
@@ -93,7 +93,7 @@ function Payment() {
             <div className='flex overflow-hidden'>
                 {
                     [1, 2, 3, 4, 5].map((index)=> (
-                        <img src="/images/Vector.svg" alt="" class="bg-black" key={index} />
+                        <img src="/images/Vector.svg" alt="" className="bg-black" key={index} />
                     ))
                 }
             </div>

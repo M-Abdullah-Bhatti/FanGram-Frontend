@@ -15,7 +15,7 @@ function CelebrityOrder() {
       <StepsProgress currentIndex={currentIndex} />
 
       <HorizontalCurl />
-      <div className="px-20">
+      <div className="px-6 md:px-20">
         <OrderHeader />
         {currentIndex === 0 ? (
           <OrderDetails setCurrentIndex={setCurrentIndex} />

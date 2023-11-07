@@ -8,7 +8,7 @@ import 'react-phone-input-2/lib/style.css'
 
 function Confirmation({setCurrentIndex}) {
   return (
-    <div className="mt-24 lg:mx-32">
+    <div className="mt-12 md:mt-24 lg:mx-32">
         <div className="bg-white rounded-t-3xl">
             <div className="px-6 py-2 pt-6">
                 <h3 className='mb-3 text-[#7E7E7E] font-semibold'>YOUR BOOKING DETAILS</h3>
@@ -45,7 +45,7 @@ function Confirmation({setCurrentIndex}) {
             <TicketDesign />
 
             {/* Free Gift */}
-            <div className="px-6 py-3">
+            <div className="px-3 md:px-6 py-3">
               <h2 className="text-[#7E7E7E] font-semibold">You're eligible for a FREE gift!</h2>
               <div className="flex justify-between bg-[#F9F9F9] p-3 my-4 rounded-lg">
                 <div className="flex space-x-3">
@@ -53,14 +53,14 @@ function Confirmation({setCurrentIndex}) {
                     <img src="/images/confirmation__insta.svg" alt="" />
                   </div>
                   <div>
-                    <h2 className="font-semibold">DM On Instagram Get Unlocked</h2>
-                    <span className="space-x-4 font-medium">₹0 <span className='line-through mx-2 text-[#7E7E7E]'>₹1499 </span> Free</span>
+                    <h2 className="font-semibold text-[10px] md:text-base">DM On Instagram Get Unlocked</h2>
+                    <span className="space-x-4 font-medium text-[10px] md:text-base">₹0 <span className='line-through mx-2 text-[#7E7E7E]'>₹1499 </span> Free</span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span>Want to add this to your order?</span>
-                  <div className="flex items-center justify-center w-[35px] h-[35px] bg-[#D42978] rounded-2xl cursor-pointer">
-                    <img src="/images/plus.svg" alt="" />
+                  <span className="text-[10px] md:text-base">Want to add this to your order?</span>
+                  <div className="flex items-center justify-center w-[12px] md:w-[35px] h-[12px] md:h-[35px] bg-[#D42978] rounded-full cursor-pointer">
+                    <img src="/images/plus.svg" alt="" className='w-1/2' />
                   </div>
                 </div>
               </div>

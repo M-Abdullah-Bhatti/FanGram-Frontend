@@ -32,7 +32,7 @@ function StepsProgress({currentIndex}) {
         <div>
           <div className="flex justify-start items-center mb-2">
             <div className="bg-[#D42978] w-[40px] h-[40px] rounded-full" style={firstDivStyles}></div>
-            <div className="w-[300px] h-[2px]" style={firstLineStyles}></div>
+            <div className="w-[100px] md:w-[300px] h-[2px]" style={firstLineStyles}></div>
           </div>
           <span style={{color: currentIndex >= 0 ? '#D42978' : '#FFFFFF', marginLeft: '-8px' }}>Details</span>
         </div>
@@ -40,7 +40,7 @@ function StepsProgress({currentIndex}) {
         <div>
           <div className="flex justify-start items-center mb-2">
             <div className="w-[40px] h-[40px] rounded-full" style={secondDivStyles}></div>
-            <div className="w-[300px] h-[2px]" style={secondLineStyles}></div>
+            <div className="w-[100px] md:w-[300px] h-[2px]" style={secondLineStyles}></div>
           </div>
           <span style={{color: currentIndex >= 1 ? '#D42978' : '#FFFFFF', marginLeft: '-10px' }}>Confirm</span>
         </div>
