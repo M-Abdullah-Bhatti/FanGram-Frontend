@@ -670,3 +670,42 @@ export const surpriseGift = [
     underPriceColor: '#008115'
   }
 ];
+
+export const transactionsData = [
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Failed',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Success',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Failed',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Success',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Failed',
+  },
+  {
+    activity: 'Sunny Leone',
+    dateTime: '19 Oct, 2023,6:23PM',
+    earned: '-₹1,99.00',
+    paymentStatus: 'Success',
+  },
+];
