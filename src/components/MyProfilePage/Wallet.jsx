@@ -3,7 +3,7 @@ import { transactionsData } from '../../Data'
 
 function Wallet() {
   return (
-    <div className="md:mx-28 my-12 space-y-4">
+    <div className="md:mx-28 my-8 space-y-4">
         <div className="flex flex-col md:flex-row justify-between bg-[#202020] rounded-lg px-6 py-3 font-bold">
             <div className="flex justify-center flex-col w-full md:w-1/2 border-b-2 md:border-b-0 border-r-0 md:border-r-2 space-y-2 py-3" style={{borderColor: 'rgb(255, 255, 255, 0.2)'}}>
                 <p className="text-xl"><span className="text-[#D42978]">tcash</span> Earned</p>
