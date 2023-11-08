@@ -1,7 +1,7 @@
 const environment = "dev";
 let apiUrl;
 if (environment === "production") {
-  apiUrl = "";
+  apiUrl = "https://calm-gray-haddock-sock.cyclic.app";
 } else {
   apiUrl = "http://localhost:5000";
 }
