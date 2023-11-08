@@ -11,7 +11,7 @@ import DiscoverMore from "../components/Shared/DiscoverMore";
 const MyProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
   return (
-    <div className="px-6 md:px-16 py-6 bg-black text-white">
+    <div className="px-4 md:px-16 py-6 bg-black text-white">
       <TopLinks activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === 0 ? (
         <MyProfileForm />

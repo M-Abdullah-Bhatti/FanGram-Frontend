@@ -3,19 +3,18 @@ import React from 'react'
 function OrderHeader() {
   return (
     <div className="my-6 md:my-12">
-        <h1 className="text-center md:text-left text-[#999] font-semibold text-xl md:text-2xl my-4">PERSONALIZED VIDEO FROM</h1>
+        <h1 className="text-center md:text-left text-[#999] font-semibold text-lg md:text-2xl my-4">PERSONALIZED VIDEO FROM</h1>
         <div className="flex gap-2 md:gap-4">
             <div className="rounded-xl overflow-hidden border border-[#ccc]">
                 <img src="/images/order__sunny.png" alt="" className='w-[75px] md:min-w-[110px]' />
             </div>
             <div className="flex items-center space-x-4 text-white">
                 <h1 className="text-xl md:text-4xl font-extrabold">Sunny Leone</h1>
-                <img src="/images/verification.svg" alt="verification badge" />
-                <span className="flex space-x-1 md:space-x-2 border border-[#fff] px-2 md:px-4 py-2 rounded-3xl">
+                <img src="/images/verification.svg" alt="verification badge" className='w-[25px] md:w-[50px]' />
+                <span className="flex items-center space-x-1 md:space-x-2 border border-[#fff] px-2 md:px-4 py-1.5 md:py-2 rounded-3xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        className='w-[10px] md:w-[20px]'
                         viewBox="0 0 20 20"
                         fill="none"
                     >
