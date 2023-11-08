@@ -26,7 +26,7 @@ function StepsProgress({ currentIndex }) {
   };
 
   return (
-    <div className="flex justify-start items-center my-4">
+    <div className="flex justify-start items-center my-2 md:my-4 pb-4 md:pb-0">
       {/* First Div */}
       <div>
         <div className="flex justify-start items-center mb-2">
@@ -34,13 +34,14 @@ function StepsProgress({ currentIndex }) {
             className="bg-[#D42978] w-[40px] h-[40px] rounded-full"
             style={firstDivStyles}
           ></div>
-          <div className="w-[300px] h-[2px]" style={firstLineStyles}></div>
+          <div
+            className="w-[100px] md:w-[300px] h-[2px]"
+            style={firstLineStyles}
+          ></div>
         </div>
         <span
-          style={{
-            color: currentIndex >= 0 ? "#D42978" : "#FFFFFF",
-            marginLeft: "-8px",
-          }}
+          className="text-sm md:text-base md:ml-[-8px]"
+          style={{ color: currentIndex >= 0 ? "#D42978" : "#FFFFFF" }}
         >
           Details
         </span>
@@ -52,13 +53,14 @@ function StepsProgress({ currentIndex }) {
             className="w-[40px] h-[40px] rounded-full"
             style={secondDivStyles}
           ></div>
-          <div className="w-[300px] h-[2px]" style={secondLineStyles}></div>
+          <div
+            className="w-[100px] md:w-[300px] h-[2px]"
+            style={secondLineStyles}
+          ></div>
         </div>
         <span
-          style={{
-            color: currentIndex >= 1 ? "#D42978" : "#FFFFFF",
-            marginLeft: "-10px",
-          }}
+          className="text-sm md:text-base ml-[-10px]"
+          style={{ color: currentIndex >= 1 ? "#D42978" : "#FFFFFF" }}
         >
           Confirm
         </span>
@@ -72,10 +74,8 @@ function StepsProgress({ currentIndex }) {
           ></div>
         </div>
         <span
-          style={{
-            color: currentIndex > 1 ? "#D42978" : "#FFFFFF",
-            marginLeft: "-12px",
-          }}
+          className="text-sm md:text-base ml-[-12px]"
+          style={{ color: currentIndex > 1 ? "#D42978" : "#FFFFFF" }}
         >
           Payment
         </span>

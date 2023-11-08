@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-function WishlistCard({celebrity}) {
+function WishlistCard() {
   return (
-    <div className="w-[325px] h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg mb-4"
+    <div className="w-full md:w-[325px] h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg mb-4"
         style={{minWidth: '325px', overflow: 'hidden'}}
     >
-    <Link to="/celebrity">
       <img
         src="/images/shankar.png"
         alt="celebrity"
@@ -23,7 +21,6 @@ function WishlistCard({celebrity}) {
           </button>
         </div>
       </div>
-    </Link>
     </div>
   )
 }
