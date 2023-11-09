@@ -7,7 +7,7 @@ import { useStateContext } from "../../StateContext";
 import { useUserLogin } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import apiUrl from "../../utils/baseURL";
+import apiUrl from "../../utils/baseUrl";
 
 const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
