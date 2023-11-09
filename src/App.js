@@ -11,11 +11,12 @@ import CelebrityOrder from "./pages/CelebrityOrder";
 import MyProfile from "./pages/MyProfile";
 import OrderDelivery from "./pages/OrderDelivery";
 import BookingDetails from "./pages/BookingDetails";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/celebrity" element={<CelebrityPage />} />
@@ -23,8 +24,10 @@ function App() {
         <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/orderdelivery" element={<OrderDelivery />} />
         <Route path="/booking" element={<BookingDetails />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
