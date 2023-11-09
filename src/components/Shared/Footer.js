@@ -37,9 +37,20 @@ const Footer = () => {
   ];
 
   return (
-    <div className="flex flex-col relative bg-black">
+    <div className="flex flex-col relative bg-black overflow-hidden">
       {/* Upper Container */}
-      <div className="text-white flex justify-evenly py-10">
+      <img
+        src="/images/footer__left.png"
+        alt="left background"
+        className="absolute left-0 bottom-0 z-0"
+      />
+      <img
+        src="/images/footer__right.png"
+        alt="right background"
+        className="absolute right-0 bottom-0 z-0"
+      />
+
+      <div className="text-white flex justify-evenly py-10 z-10">
         <div className="w-[400px]">
           <img src="/images/logo.png" className="pb-5 mt-[-20px]" />
           <p>
@@ -49,12 +60,7 @@ const Footer = () => {
             printing and typesetting industry.
           </p>
         </div>
-        {/* <div className="flex flex-col">
-          <h3 className="text-[18px] font-semibold pb-5">About</h3>
-          <Link className="text-[16px] font-normal pb-3">Our Story</Link>
-          <Link className="text-[16px] font-normal pb-3">Our Story</Link>
-          <Link className="text-[16px] font-normal pb-3">Our Story</Link>
-        </div> */}
+
         <div className="flex flex-col">
           <h3 className="text-[18px] font-semibold pb-5">About</h3>
           {about.map((item, key) => (

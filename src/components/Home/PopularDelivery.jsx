@@ -12,13 +12,13 @@ function PopularDelivery() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= 270;
+      scrollContainerRef.current.scrollLeft -= 320;
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += 260;
+      scrollContainerRef.current.scrollLeft += 320;
     }
   };
 
@@ -73,7 +73,7 @@ function PopularDelivery() {
           >
             {featuredCelebrityData.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="flex gap-3">
+                <div className="flex">
                   <PopularDeliveryCard celebrity={slide} />
                 </div>
                 <div className="h-10"></div>

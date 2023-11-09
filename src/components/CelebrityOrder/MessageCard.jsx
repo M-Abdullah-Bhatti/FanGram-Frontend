@@ -6,18 +6,18 @@ function MessageCard({message, onEdit}) {
     const [editedMessage, setEditedMessage] = useState(message);
 
     const handleEdit = () => {
-        setIsEditing(true);
+      setIsEditing(true);
     };
 
     const handleSave = () => {
-        onEdit(editedMessage);
-        setIsEditing(false);
+      onEdit(editedMessage);
+      setIsEditing(false);
     };
 
   return (
-    <div className="min-w-[275px] py-2 relative">
-        <div className="absolute flex items-center justify-center bg-[#D42978] top-[-5px] right-[-5px] w-[30px] h-[30px] rounded-3xl cursor-pointer">
-            <img src="/images/times.svg" alt="" />
+    <div className="w-[95%] md:min-w-[275px] py-2 relative">
+        <div className="absolute flex items-center justify-center bg-[#D42978] top-0 md:top-[-5px] right-[-5px] w-[20px] md:w-[30px] h-[20px] md:h-[30px] rounded-3xl cursor-pointer">
+            <img src="/images/times.svg" alt="" className="max-w-[60%]" />
         </div>
       <div className="bg-[#292929] border border-[#D42978] text-white rounded-lg shadow-lg p-4">
         {isEditing ? (
@@ -28,7 +28,7 @@ function MessageCard({message, onEdit}) {
             style={{minHeight: '220px'}}
           />
         ) : (
-          <p className="text-lg overflow-y-scroll no-scrollbar" style={{height: '220px'}}>{message}</p>
+          <p className="text-white text-lg overflow-y-scroll no-scrollbar" style={{height: '220px'}}>{message}</p>
         )}
       </div>
 

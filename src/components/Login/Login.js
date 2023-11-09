@@ -4,50 +4,54 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import { useStateContext } from "../../StateContext";
-// import { useUserLogin } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import apiUrl from "../../utils/baseUrl";
+import apiUrl from "../../utils/url";
+import { useUserLogin } from "../../hooks/auth-hooks";
 
 const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
 
   const [userData, setUserData] = useState({});
+  console.log(userData);
 
   const handleGoogleLogin = async () => {
     window.open(`${apiUrl}/auth/google`, "_self");
   };
 
-  // const {
-  //   mutate: addMutate,
-  //   isLoading,
-  // } = useUserLogin(JSON.stringify(userData));
+  const { mutate: addMutate, isLoading } = useUserLogin(
+    JSON.stringify(userData)
+  );
 
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setUserData({
-  //     ...userData,
-  //     [name]: value,
-  //   });
-  // };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    addMutate(
+      {},
+      {
+        onSuccess: (response) => {
+          if (response?.data?.status === false) {
+            toast.error(response?.data?.message);
+          }
+          if (response?.data?.status === true) {
+            toast.success(response?.data?.message);
+          }
+        },
+      }
+    );
+  };
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
-
-  //   addMutate(
-  //     {},
-  //     {
-  //       onSuccess: (response) => {
-  //         if (response?.data?.status === false) {
-  //           toast.error(response?.data?.message);
-  //         }
-  //         if (response?.data?.status === true) {
-  //           toast.success(response?.data?.message);
-
-  //         }
-  //       },
-  //     }
-  //   );
+  //   console.log("hello", userData);
   // };
 
   return (
@@ -166,6 +170,9 @@ const Login = () => {
               />
               <input
                 type="email"
+                name="email"
+                required
+                onChange={handleInputChange}
                 placeholder="Enter Your Email Address"
                 className="text-[10px] lg:text-lg py-3 px-2 w-full rounded-lg mt-3 bg-[#EAEAEA]"
               />

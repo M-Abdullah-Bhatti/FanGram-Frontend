@@ -86,7 +86,7 @@ function Payment() {
 
                     <div className='flex flex-col lg:flex-row items-center justify-between my-4 space-y-2'>
                         <p className='font-semibold lg:w-1/2 text-sm md:text-base text-center md:text-left'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
-                        <button className='w-full lg:w-[25%] bg-[#D84388] text-white text-base md:text-xl rounded-3xl px-4 py-3 mb-1'>Continue</button>
+                        <button className='w-full md:w-[50%] lg:w-[25%] bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0'>Continue</button>
                     </div>
                 </div>
             </div>

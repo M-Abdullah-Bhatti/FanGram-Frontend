@@ -8,8 +8,7 @@ const languages = ['English', 'हिंदी'];
 
 function OrderDetails({setCurrentIndex}) {
 
-    const scrollContainerRef = useRef(null);
-    
+    const scrollContainerRef = useRef(null); 
     const [messages, setMessages] = useState(initialMessages);
     
     const handleEditMessage = (index, editedMessage) => {
@@ -47,7 +46,7 @@ function OrderDetails({setCurrentIndex}) {
                 </span>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
                 <div className="flex flex-col rounded w-full">
                     <label className='mb-2'>To <span>(First Name)</span></label>
                     <input className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded" type="text" placeholder="Name Of the Receiver" />

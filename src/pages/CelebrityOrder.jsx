@@ -5,6 +5,7 @@ import OrderDetails from "../components/CelebrityOrder/OrderDetails";
 import Payment from "../components/CelebrityOrder/Payment";
 import Confirmation from "../components/CelebrityOrder/Confirmation";
 import StepsProgress from "../components/CelebrityOrder/StepsProgress";
+import Order from "../components/CelebrityOrder/Order";
 
 function CelebrityOrder() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,10 +16,10 @@ function CelebrityOrder() {
       <StepsProgress currentIndex={currentIndex} />
 
       <HorizontalCurl />
-      <div className="px-8 md:px-24">
+      <div className="w-full px-6 md:px-12 lg:px-24">
         <OrderHeader />
         {currentIndex === 0 ? (
-          <OrderDetails setCurrentIndex={setCurrentIndex} />
+          <Order setCurrentIndex={setCurrentIndex} />
         ) : currentIndex === 1 ? (
           <Confirmation setCurrentIndex={setCurrentIndex} />
         ) : (

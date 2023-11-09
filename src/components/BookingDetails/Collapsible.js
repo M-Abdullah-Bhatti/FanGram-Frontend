@@ -15,15 +15,14 @@ const Collapsible = () => {
   return (
     <div className="w-full">
       {collapsibledata.map((item, index) => (
-        <div className="w-full bg-black p-4 border border-solid border-white rounded-lg my-[20px]">
+        <div className="w-full bg-black p-2 lg:p-4 border border-solid border-white rounded-lg my-[10px] lg:my-[20px]">
           <div className="flex items-center">
             <button
-              className="bg-black text-black py-2 px-4 rounded-r focus:outline-none "
+              className="bg-black text-black lg:py-2 lg:px-4 rounded-r focus:outline-none "
               onClick={() => toggleCollapsible(index)}
             >
               <svg
-                width="26"
-                height="26"
+                className="w-[12px] h-[12px] lg:w-[26px] lg:h-[26px]"
                 viewBox="0 0 26 26"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -41,12 +40,14 @@ const Collapsible = () => {
                 </defs>
               </svg>
             </button>
-            <p className="px-[20px]">{item.heading}</p>
+            <p className="px-[20px] text-[12px] lg:text-lg">{item.heading}</p>
           </div>
 
           {isExpandedArray[index] && (
             <div className="mt-4 text-gray-400">
-              <p className="pl-[76px]">{item.content}</p>
+              <p className="pl-[65px] lg:pl-[76px] text-[12px] lg:text-lg">
+                {item.content}
+              </p>
             </div>
           )}
         </div>

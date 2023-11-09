@@ -35,7 +35,7 @@ function StepsProgress({ currentIndex }) {
             style={firstDivStyles}
           ></div>
           <div
-            className="w-[100px] md:w-[300px] h-[2px]"
+            className="w-[100px] md:w-[250px] lg:w-[300] h-[2px]"
             style={firstLineStyles}
           ></div>
         </div>
@@ -54,7 +54,7 @@ function StepsProgress({ currentIndex }) {
             style={secondDivStyles}
           ></div>
           <div
-            className="w-[100px] md:w-[300px] h-[2px]"
+            className="w-[100px] md:w-[250px] lg:w-[300px] h-[2px]"
             style={secondLineStyles}
           ></div>
         </div>

@@ -161,6 +161,14 @@ const SignUp = () => {
                 </defs>
               </svg>
             </div>
+
+            {/* <div>
+              <img
+                src="/images/signup_right_facebook.jpeg"
+                alt=""
+                className="rounded-full p-2"
+              />
+            </div> */}
           </div>
           <div className="flex mt-3 sm:mt-1 text-[10px] sm:text-[12px] lg:text-lg">
             <p>Or Continue With Email</p>
