@@ -19,10 +19,9 @@ const Login = () => {
     window.open(`${apiUrl}/auth/google`, "_self");
   };
 
-  // const {
-  //   mutate: addMutate,
-  //   isLoading,
-  // } = useUserLogin(JSON.stringify(userData));
+  const { mutate: addMutate, isLoading } = useUserLogin(
+    JSON.stringify(userData)
+  );
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -32,29 +31,28 @@ const Login = () => {
     });
   };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   addMutate(
-  //     {},
-  //     {
-  //       onSuccess: (response) => {
-  //         if (response?.data?.status === false) {
-  //           toast.error(response?.data?.message);
-  //         }
-  //         if (response?.data?.status === true) {
-  //           toast.success(response?.data?.message);
-
-  //         }
-  //       },
-  //     }
-  //   );
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("hello", userData);
+
+    addMutate(
+      {},
+      {
+        onSuccess: (response) => {
+          if (response?.data?.status === false) {
+            toast.error(response?.data?.message);
+          }
+          if (response?.data?.status === true) {
+            toast.success(response?.data?.message);
+          }
+        },
+      }
+    );
   };
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log("hello", userData);
+  // };
 
   return (
     <div className="w-full  flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
