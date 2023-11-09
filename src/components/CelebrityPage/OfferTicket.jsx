@@ -9,13 +9,13 @@ function OfferTicket({ticket}) {
             <div className="flex flex-col justify-center gap-3 bg-white text-black">
                 <div className="flex gap-2 justify-start items-center">
                     {ticket.icon}
-                    <h1 className="text-xl font-medium">{ticket.title}</h1>
-                    <div className="bg-[#D42978] text-white px-4 py-1 rounded-2xl">
+                    <h1 className="text-sm md:text-xl font-medium">{ticket.title}</h1>
+                    <div className="text-xs md:text-base bg-[#D42978] text-white px-2 md:px-4 py-1 rounded-2xl">
                         <p>{ticket.offer}</p>
                     </div>
                 </div>
                 <div>
-                    <p className="text-[#9A9A9A] text-base font-medium">{ticket.content}</p>
+                    <p className="text-[#9A9A9A] text-xs md:text-base font-medium">{ticket.content}</p>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="58" height="111" viewBox="0 0 58 111" fill="none">

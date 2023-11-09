@@ -17,31 +17,28 @@ const tags = [
 
 function CelebrityHeader() {
   return (
-    <div className="flex bg-[#161616] relative rounded-xl overflow-hidden px-8 py-6 text-white">
+    <div className="flex bg-[#161616] relative rounded-xl overflow-hidden px-4 md:px-8 py-6 text-white">
       <div
-        className="max-h-[275px] rounded-2xl overflow-hidden border border-[#ccc]"
+        className="min-w-[80px] h-[100px] lg:max-h-[300px] lg:min-h-[225px] lg:min-w-[225px] rounded-2xl overflow-hidden border border-[#ccc]"
         style={{
           background: "lightgray 50%",
-          minWidth: "225px",
-          maxWidth: "225px",
         }}
       >
         <img
           src="/images/sunny.png"
           alt="celebrity"
-          className="w-full h-[275px] object-fill"
+          className="w-full h-full object-fill"
         />
       </div>
-      <div className="ml-6 w-full">
+      <div className="ml-2 lg:ml-6 w-full">
         <div className="flex justify-between">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-4xl font-extrabold">Sunny Leone</h1>
-            <img src="/images/verification.svg" alt="verification badge" />
-            <span className="flex space-x-2 border border-[#fff] px-4 py-2 rounded-3xl">
+          <div className="flex items-center space-x-2 lg:space-x-4">
+            <h1 className="text-lg md:text-4xl font-extrabold">Sunny Leone</h1>
+            <img src="/images/verification.svg" alt="verification badge" className='w-[25px] md:w-[50px]' />
+            <span className="flex space-x-1 lg:space-x-2 border border-[#fff] px-2 lg:px-4 py-1 lg:py-2 rounded-3xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
+                className='w-[10px] md:w-[20px]'
                 viewBox="0 0 20 20"
                 fill="none"
               >
@@ -50,7 +47,7 @@ function CelebrityHeader() {
                   fill="#FFC107"
                 />
               </svg>
-              <span>4.7 (12)</span>
+              <span className="text-xs md:text-base">4.7 (12)</span>
             </span>
           </div>
           <div className="flex items-center space-x-2">
@@ -61,12 +58,12 @@ function CelebrityHeader() {
             </div>
           </div>
         </div>
-        <p className="py-4 text-xl font-medium">
+        <p className="py-1 lg:py-4 text-base md:text-xl font-medium">
           Responds in <b className="text-[#D42978] font-bold">5 Days</b>
         </p>
         <div className="flex flex-wrap mr-[150px]">
           {tags.map((tag) => (
-            <span className="text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 mr-4">
+            <span className="text-xs md:text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 mr-4">
               {tag}
             </span>
           ))}

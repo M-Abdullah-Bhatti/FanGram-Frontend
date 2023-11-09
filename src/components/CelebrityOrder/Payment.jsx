@@ -76,6 +76,7 @@ function Payment() {
                                 autoFocus: true
                             }}
                             country={'pk'}
+                            inputStyle={{width: '100%'}}
                         />
                     </div>
                     <div className='flex items-center gap-2 my-2'>
