@@ -1,4 +1,5 @@
-const environment = "dev";
+// const environment = "dev";
+const environment = "production";
 
 let apiUrl;
 if (environment === "production") {
@@ -7,4 +8,4 @@ if (environment === "production") {
   apiUrl = "http://localhost:5000";
 }
 
-export default apiUrl
+export default apiUrl;

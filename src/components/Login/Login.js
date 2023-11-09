@@ -11,19 +11,18 @@ import { useUserLogin } from "../../hooks/auth-hooks";
 
 const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
-  
-   const [userData, setUserData] = useState({ });
-   console.log(userData)
+
+  const [userData, setUserData] = useState({});
+  console.log(userData);
 
   const handleGoogleLogin = async () => {
     window.open(`${apiUrl}/auth/google`, "_self");
   };
 
-
-  const {
-    mutate: addMutate,
-    isLoading,
-  } = useUserLogin(JSON.stringify(userData));
+  // const {
+  //   mutate: addMutate,
+  //   isLoading,
+  // } = useUserLogin(JSON.stringify(userData));
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -33,26 +32,29 @@ const Login = () => {
     });
   };
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   addMutate(
+  //     {},
+  //     {
+  //       onSuccess: (response) => {
+  //         if (response?.data?.status === false) {
+  //           toast.error(response?.data?.message);
+  //         }
+  //         if (response?.data?.status === true) {
+  //           toast.success(response?.data?.message);
+
+  //         }
+  //       },
+  //     }
+  //   );
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    addMutate(
-      {},
-      {
-        onSuccess: (response) => {
-          if (response?.data?.status === false) {
-            toast.error(response?.data?.message);
-          }
-          if (response?.data?.status === true) {
-            toast.success(response?.data?.message);
-           
-          }
-        },
-      }
-    );
+    console.log("hello", userData);
   };
-
-
 
   return (
     <div className="w-full  flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
@@ -70,44 +72,36 @@ const Login = () => {
           </div>
           <div className="px-10">
             <h2 className="font-extrabold text-3xl my-6">Login with FanGram</h2>
-            <div className="flex  mt-6">
-              <div className="bg-[#EAEAEA] p-2 rounded-full">
-                <FaFacebook className=" text-[#3b5998] text-3xl" />
-              </div>
+            <div className="flex mt-6 mx-[-15px] mb-5">
               <div
                 className="bg-[#EAEAEA] p-2 rounded-full ml-3 cursor-pointer"
                 onClick={handleGoogleLogin}
               >
-                <FaGoogle className="text-[#3b5998] text-3xl " />
+                {/* <FaGoogle className="text-[#3b5998] text-3xl " /> */}
+                <img src="/images/GoogleAuth.svg" />
               </div>
-              <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">
-                <FaApple className="text-black text-3xl" />
-              </div>
-
-             
             </div>
             <div className="flex mt-2 mb-4">
               <p>Or Continue With Email</p>
             </div>
-            <div  className="mt-4">
-               <input
+            <div className="mt-4">
+              <input
                 type="email"
                 name="email"
                 required
-                 onChange={handleInputChange}
+                onChange={handleInputChange}
                 placeholder="Enter Your Email Address"
-                className="py-3 px-2 w-full rounded-lg mb-3 bg-[#EAEAEA]"
+                className="py-3 px-5 w-full rounded-lg mb-3 bg-[#EAEAEA]"
               />
 
               <input
                 type="text"
                 placeholder="Password"
                 required
-                 name="password"
-                 onChange={handleInputChange}
-                className="py-3 px-2 w-full rounded-lg bg-[#EAEAEA]"
+                name="password"
+                onChange={handleInputChange}
+                className="py-3 px-5 w-full rounded-lg bg-[#EAEAEA]"
               />
-             
             </div>
             <div className="grid place-items-center mt-6">
               <button

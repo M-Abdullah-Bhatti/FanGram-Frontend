@@ -22,12 +22,9 @@ import apiUrl from "../../utils/url";
 const SignUp = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
 
-   const handleGoogleLogin = async()=>{
-
-      window.open(`${apiUrl}/auth/google`, "_self")
-    
-     
-    }
+  const handleGoogleLogin = async () => {
+    window.open(`${apiUrl}/auth/google`, "_self");
+  };
 
   return (
     <div className="w-full flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
@@ -77,24 +74,14 @@ const SignUp = () => {
           </div>
           <p className="text-[#D42978] font-satisfy text-2xl my-4">Welcome</p>
           <h2 className="font-extrabold text-3xl">Sign up with FanGram</h2>
-          <div className="flex  mt-6">
-            <div className="bg-[#EAEAEA] p-2 rounded-full">
-              <FaFacebook className=" text-[#3b5998] text-3xl" />
+          <div className="flex mt-6 mx-[-15px] mb-5">
+            <div
+              className="bg-[#EAEAEA] p-2 rounded-full ml-3 cursor-pointer"
+              onClick={handleGoogleLogin}
+            >
+              {/* <FaGoogle className="text-[#3b5998] text-3xl " /> */}
+              <img src="/images/GoogleAuth.svg" />
             </div>
-            <div className="bg-[#EAEAEA] p-2 rounded-full ml-3" onClick={handleGoogleLogin}>
-              <FaGoogle className="text-[#3b5998] text-3xl" />
-            </div>
-            <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">
-              <FaApple className="text-black text-3xl" />
-            </div>
-
-            {/* <div>
-              <img
-                src="/images/signup_right_facebook.jpeg"
-                alt=""
-                className="rounded-full p-2"
-              />
-            </div> */}
           </div>
           <div className="flex mt-2">
             <p>Or Continue With Email</p>
