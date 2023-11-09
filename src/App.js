@@ -16,7 +16,7 @@ import SignUp from "./components/SignUp/SignUp";
 function App() {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/celebrity" element={<CelebrityPage />} />
@@ -25,7 +25,7 @@ function App() {
         <Route path="/orderdelivery" element={<OrderDelivery />} />
         <Route path="/booking" element={<BookingDetails />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
