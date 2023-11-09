@@ -17,7 +17,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
 import { signupSliderImages } from "../../Data";
-import apiUrl from "../../utils/baseUrl";
+import apiUrl from "../../utils/baseURL";
 
 const SignUp = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();

@@ -4,10 +4,10 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import { useStateContext } from "../../StateContext";
-import apiUrl from "../../utils/baseURL";
 import { useUserLogin } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import apiUrl from "../../utils/baseURL";
 
 const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
