@@ -18,12 +18,8 @@ function BookingStepsProgress({currentIndex}) {
         borderColor: currentIndex < 2 ? '#FFFFFF' : '',
     }
     
-    const firstLineStyles = {
-        backgroundColor: currentIndex > 0 ? "#D42978" : '#FFFFFF',
-    }
-    
-    const secondLineStyles = {
-        backgroundColor: currentIndex > 1 ? "#D42978" : '#FFFFFF',
+    const lineStyles = {
+      border: "1px dashed #4B4B4B",
     }
 
   return (
@@ -32,7 +28,7 @@ function BookingStepsProgress({currentIndex}) {
         <div>
           <div className="flex justify-start items-center mb-2">
             <div className="bg-[#D42978] w-[30px] md:w-[40px] h-[30px] md:h-[40px] rounded-full" style={firstDivStyles}></div>
-            <div className="w-[60px] lg:w-[250px] h-[2px]" style={firstLineStyles}></div>
+            <div className="w-[60px] lg:w-[250px] h-[2px]" style={lineStyles}></div>
           </div>
           <span className="text-xs lg:text-base ml-[-14px]" style={{color: currentIndex >= 0 ? '#D42978' : '#FFFFFF'}}>Note Placed</span>
         </div>
@@ -40,7 +36,7 @@ function BookingStepsProgress({currentIndex}) {
         <div>
           <div className="flex justify-start items-center mb-2">
             <div className="w-[30px] md:w-[40px] h-[30px] md:h-[40px] rounded-full" style={secondDivStyles}></div>
-            <div className="w-[60px] lg:w-[250px] h-[2px]" style={secondLineStyles}></div>
+            <div className="w-[60px] lg:w-[250px] h-[2px]" style={lineStyles}></div>
           </div>
           <span className="text-xs lg:text-base ml-[-14px] md:ml-[-24px]" style={{color: currentIndex >= 1 ? '#D42978' : '#FFFFFF'}}>Sent to celeb</span>
         </div>
@@ -48,7 +44,7 @@ function BookingStepsProgress({currentIndex}) {
         <div>
           <div className="flex justify-start items-center mb-2">
             <div className="w-[30px] md:w-[40px] h-[30px] md:h-[40px] rounded-full" style={thirdDivStyles}></div>
-            <div className="w-[60px] lg:w-[250px] h-[2px]" style={secondLineStyles}></div>
+            <div className="w-[60px] lg:w-[250px] h-[2px]" style={lineStyles}></div>
           </div>
           <span className="text-xs lg:text-base ml-[-12px]" style={{color: currentIndex > 1 ? '#D42978' : '#FFFFFF'}}>Payment</span>
         </div>
