@@ -15,7 +15,7 @@ function OfferTicket({ticket}) {
                     </div>
                 </div>
                 <div>
-                    <p className="text-[#9A9A9A] text-lg font-medium">{ticket.content}</p>
+                    <p className="text-[#9A9A9A] text-base font-medium">{ticket.content}</p>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="58" height="111" viewBox="0 0 58 111" fill="none">
