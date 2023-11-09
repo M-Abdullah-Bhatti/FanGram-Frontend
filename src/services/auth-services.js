@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiUrl from "../utils/baseUrl";
+import apiUrl from "../utils/url";
 
 class AuthService {
   /**
@@ -23,7 +23,7 @@ class AuthService {
    */
 
   async LoginUser(userData) {
-    const res = await axios.post(`${apiUrl}/api/auth/login`, userData, {
+    const res = await axios.post(`${apiUrl}/api/user/login`, userData, {
       headers: {
         "Content-Type": "application/json",
       },
