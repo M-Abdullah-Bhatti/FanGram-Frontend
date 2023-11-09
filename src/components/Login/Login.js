@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import { useStateContext } from "../../StateContext";
-import { useUserLogin } from "../../hooks/auth-hooks";
+// import { useUserLogin } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import apiUrl from "../../utils/baseUrl";
@@ -19,37 +19,37 @@ const Login = () => {
   };
 
 
-  const {
-    mutate: addMutate,
-    isLoading,
-  } = useUserLogin(JSON.stringify(userData));
+  // const {
+  //   mutate: addMutate,
+  //   isLoading,
+  // } = useUserLogin(JSON.stringify(userData));
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  };
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setUserData({
+  //     ...userData,
+  //     [name]: value,
+  //   });
+  // };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-    addMutate(
-      {},
-      {
-        onSuccess: (response) => {
-          if (response?.data?.status === false) {
-            toast.error(response?.data?.message);
-          }
-          if (response?.data?.status === true) {
-            toast.success(response?.data?.message);
+  //   addMutate(
+  //     {},
+  //     {
+  //       onSuccess: (response) => {
+  //         if (response?.data?.status === false) {
+  //           toast.error(response?.data?.message);
+  //         }
+  //         if (response?.data?.status === true) {
+  //           toast.success(response?.data?.message);
            
-          }
-        },
-      }
-    );
-  };
+  //         }
+  //       },
+  //     }
+  //   );
+  // };
 
 
 
@@ -102,7 +102,7 @@ const Login = () => {
             </div>
             <div className="grid place-items-center mt-6">
               <button
-                onClick={handleSubmit}
+                // onClick={handleSubmit}
                 className="bg-[#CA2981] text-white rounded-full py-2 px-24"
               >
                 Login
