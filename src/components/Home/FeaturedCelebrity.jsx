@@ -31,7 +31,7 @@ function FeaturedCelebrity() {
     <div className="w-full bg-black text-white py-10">
       <div className="py-4 px-8 md:px-16">
         <div className="flex items-center justify-between mb-2 md:mb-0">
-          <h2 className="text-2xl md:text-4xl font-semibold">Featured Celebrity</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold">Featured Celebrity</h2>
           <div className="flex items-center space-x-4">
             <button onClick={scrollLeft}
               className="hidden md:flex items-center justify-center w-[50px] h-[50px] border border-[#D42978] rounded-full transition duration-300"
@@ -45,7 +45,7 @@ function FeaturedCelebrity() {
             </button>
           </div>
         </div>
-        <p className="text-xs md:text-lg pr-12 md:pr-0">
+        <p className="text-sm md:text-lg pr-8 md:pr-0">
           Get personalised video messages from your favourite celebrity! What's
           more? The price you see is the price you pay!
         </p>

@@ -26,7 +26,7 @@ function PopularDelivery() {
     <div className="w-full bg-black text-white mb-12">
       <div className="flex items-center justify-between py-4">
       <div className="flex items-center space-x-8">
-        <h2 className="text-2xl md:text-4xl font-semibold">Next Day Delivery</h2>
+        <h2 className="text-3xl md:text-4xl font-semibold">Next Day Delivery</h2>
         <div className="hidden md:flex border border-[#D42978] text-[#D42978] rounded-3xl py-1 px-4">
           <span className="font-semibold text-lg cursor-pointer">See All</span>
         </div>

@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 function FeaturedCelebrityCard({celebrity}) {
   return (
-    <div className="w-full md:h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg overflow-hidden"
+    <div className="w-full h-[410px] md:h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg overflow-hidden"
       style={{minWidth: '325px', overflow: 'hidden'}}
     >
     <Link to="/celebrity">
       <img
         src={celebrity.featuredImage}
         alt="celebrity"
-        className="object-cover w-full h-full"
+        className="object-fit w-full h-full"
       />
       <div className="absolute top-4 right-4 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
         <img 
