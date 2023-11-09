@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function PopularDeliveryCard({celebrity}) {
   return (
     <Link to="/celebrity">
-    <div className="md:min-w-[250px] min-h-[300px] md:h-[350px] bg-[#292929] relative flex flex-col items-center justify-center rounded-lg shadow-lg px-4 py-3 md:px-8 space-y-2">
+    <div className="w-full md:w-[50%] lg:w-[30%] min-h-[300px] md:min-w-[310px] md:min-h-[400px] bg-[#292929] relative flex flex-col items-center justify-center rounded-lg shadow-lg px-4 py-3 md:px-8 space-y-2 mb-4 md:mb-0">
       <div className="absolute top-2 md:top-3 right-3 bg-[#FCAE4B] w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full">
         <img 
           src='/images/heart.png'

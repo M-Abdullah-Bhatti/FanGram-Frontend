@@ -13,24 +13,22 @@ function FeaturedCelebrity() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      console.log("Scroll Left Triggered")
-      scrollContainerRef.current.scrollLeft -= 360;
+      scrollContainerRef.current.scrollLeft -= 350;
       secondaryScrollContainerRef.current.scrollLeft -= 360;
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      console.log("Scroll Right Triggered")
-      scrollContainerRef.current.scrollLeft += 360;
-      secondaryScrollContainerRef.current.scrollLeft += 360;
+      scrollContainerRef.current.scrollLeft += 350;
+      secondaryScrollContainerRef.current.scrollLeft += 350;
     }
   };
 
   return (
     <div className="w-full bg-black text-white py-10">
       <div className="py-4 px-8 md:px-16">
-        <div className="flex items-center justify-between mb-2 md:mb-0">
+        <div className="flex items-center justify-between mb-2">
           <h2 className="text-3xl md:text-4xl font-semibold">Featured Celebrity</h2>
           <div className="flex items-center space-x-4">
             <button onClick={scrollLeft}
