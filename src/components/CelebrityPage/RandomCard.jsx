@@ -2,7 +2,7 @@ import React from 'react'
 
 function RandomCard() {
   return (
-    <div className="min-w-[275px] relative z-50 bg-[#D42978] rounded-xl">
+    <div className="w-full md:min-w-[275px] min-h-[475px] lg:min-h-[300px] relative bg-[#D42978] rounded-xl">
       <div className="flex flex-col items-center mt-12">
         <p className=" text-[28px] font-extrabold">Want to</p>
         <p className="text-[#FCAE4B] text-[28px] font-extrabold">Stand out</p>

@@ -7,7 +7,7 @@ function VideoCard({celebrity}) {
   const handleClose = () => setOpenVideoModal(false);
 
   return (
-    <div className="min-w-[275px] relative">
+    <div className="w-full lg:min-w-[300px] relative">
       {openVideoModal && (
         <VideoPlayerModal
           url="https://www.youtube.com/watch?v=krOjUoK7ZD0"

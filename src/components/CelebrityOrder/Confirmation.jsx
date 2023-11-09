@@ -84,7 +84,7 @@ function Confirmation({setCurrentIndex}) {
             {/* Design */}
             <TicketDesign />
 
-            {/* Offers - Responsiveness Done */}
+            {/* Offers */}
             <div className="px-6 py-3">
               <h2 className="text-[#7E7E7E] font-semibold text-sm md:text-base">OFFERS</h2>
               <div className="flex justify-between px-2 py-1 md:p-3 my-4 rounded-lg">
@@ -119,6 +119,8 @@ function Confirmation({setCurrentIndex}) {
                           autoFocus: true
                         }}
                         country={'pk'}
+                        containerStyle={{height: 35}}
+                        inputStyle={{width: '100%'}}
                     />
                 </div>
                 <div className="mt-6 w-full space-y-1 md:space-y-2">

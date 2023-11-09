@@ -2,6 +2,11 @@ import React, {useRef} from 'react'
 import VideoCard from './VideoCard'
 import RandomCard from './RandomCard'
 import { celebrityDemoData } from '../../Data';
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import 'swiper/css';
 
 function DemoVideos() {
 
@@ -20,17 +25,16 @@ function DemoVideos() {
   };
 
   return (
-    <div className="flex w-full py-10 space-x-6">
+    <div className="flex w-full py-10 lg:space-x-6">
       <div className="flex items-center">
         <button onClick={scrollLeft}
-          className="w-[50px] h-[50px] border border-[#D42978] flex items-center justify-center rounded-full transition duration-300"
+          className="w-[50px] h-[50px] border border-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
         >
           <img src="/images/back.svg" alt="back" />
         </button>
       </div>
 
-      <div
-        className="overflow-x-scroll no-scrollbar w-full"
+      <div className="hidden md:flex overflow-x-scroll no-scrollbar w-full"
         ref={scrollContainerRef}
         style={{ scrollBehavior: "smooth" }}
       >
@@ -44,9 +48,32 @@ function DemoVideos() {
         </div>
       </div>
 
+      {/* Mobile Swiper */}
+      <div className="md:hidden py-2 w-full flex justify-center items-center hero__caurosel  ">
+          <Swiper
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            slidesPerView={1}
+            spaceBetween={1}
+            slidesPerGroup={1}
+            autoplay={true}
+            pagination={true}
+            slideActiveClass="activeSlide"
+            className="swiper-container"
+          >
+            {celebrityDemoData.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex gap-5 justify-center">
+                  {(index + 1) % 2 === 0 ? <RandomCard /> : <VideoCard celebrity={slide} />}
+                </div>
+                <div className="h-10"></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+      </div>
+
       <div className="flex items-center">
         <button onClick={scrollRight}
-          className="w-[50px] h-[50px] bg-[#D42978] flex items-center justify-center rounded-full transition duration-300"
+          className="w-[50px] h-[50px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
         >
           <img src="/images/forward.svg" alt="forward" />
         </button>
