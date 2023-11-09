@@ -1,6 +1,11 @@
 import React, { useRef } from "react";
 import { featuredCelebrityData } from "../../Data";
 import PopularDeliveryCard from "./PopularDeliveryCard";
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import 'swiper/css';
 
 function TringDhamaka() {
   const scrollContainerRef = useRef(null);
@@ -21,27 +26,27 @@ function TringDhamaka() {
     <div className="w-full bg-black text-white">
       <div className="flex items-center justify-between py-4">
         <div className="flex items-center space-x-8">
-            <h2 className="text-4xl font-semibold">Tring Dhamaka</h2>
-            <div className="border border-[#D42978] text-[#D42978] rounded-3xl py-1 px-4">
-            <span className="font-semibold text-lg cursor-pointer">See All</span>
+            <h2 className="text-2xl md:text-4xl font-semibold">Tring Dhamaka</h2>
+            <div className="hidden md:flex border border-[#D42978] text-[#D42978] rounded-3xl py-1 px-4">
+              <span className="font-semibold text-lg cursor-pointer">See All</span>
             </div>
         </div>
         <div className="flex items-center space-x-4">
             <button
                 onClick={scrollLeft}
-                className="w-[50px] h-[50px] border border-[#D42978] text-[#D42978] flex items-center justify-center rounded-full transition duration-300"
+                className="hidden md:flex w-[50px] h-[50px] border border-[#D42978] text-[#D42978] items-center justify-center rounded-full transition duration-300"
             >
                 <img src="/images/back.svg" alt="back" />
             </button>
             <button onClick={scrollRight}
-                className="w-[50px] h-[50px] bg-[#D42978] flex items-center justify-center rounded-full transition duration-300"
+                className="w-[50px] h-[50px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
             >
                 <img src="/images/forward.svg" alt="forward" />
             </button>
         </div>
       </div>
       <div
-        className="overflow-x-scroll no-scrollbar"
+        className="hidden md:flex overflow-x-scroll no-scrollbar"
         ref={scrollContainerRef}
         style={{ scrollBehavior: "smooth" }}
       >
@@ -51,6 +56,30 @@ function TringDhamaka() {
           ))}
         </div>
       </div>
+
+      {/* Mobile Swiper */}
+      <div className="md:hidden w-full flex justify-center items-center hero__caurosel  ">
+          <Swiper
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            slidesPerView={2}
+            spaceBetween={10}
+            slidesPerGroup={1}
+            autoplay={true}
+            pagination={true}
+            slideActiveClass="activeSlide"
+            className="swiper-container"
+          >
+            {featuredCelebrityData.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex gap-3">
+                  <PopularDeliveryCard celebrity={slide} />
+                </div>
+                <div className="h-10"></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+      </div>
+      <p className="flex py-[8px] mx-[25%] md:hidden border border-[#D42978] text-[#D42978] rounded-3xl justify-center font-semibold cursor-pointer">See All</p>
     </div>
   );
 }

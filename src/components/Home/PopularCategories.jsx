@@ -18,17 +18,17 @@ function PopularCategories() {
   };
 
   return (
-    <div className='bg-black text-white px-16 py-12'>
-      <h2 className='font-semibold text-2xl mb-2'>Popular Categories to explore</h2>
-      <div className='py-4'>
+    <div className='bg-black text-white px-8 md:px-16 py-4 md:py-12'>
+      <h2 className='font-semibold text-xl md:text-2xl mb-2'>Popular Categories to explore</h2>
+      <div className='flex md:flex-wrap overflow-x-scroll no-scrollbar md:overflow-hidden py-2 md:py-4'>
         {
           categories.map((category, index) => (
-            <span key={index} className="mr-4 cursor-pointer px-4 py-2 rounded-3xl" 
+            <div key={index} className="mr-2 md:mr-4 my-2 cursor-pointer px-4 py-2 rounded-3xl" 
               style={{backgroundColor: index === selected ? '#D42978' : '#292929'}}
               onClick={()=> setSelected(index)}
             >
               {category}
-            </span>
+            </div>
           ))
         }
       </div>

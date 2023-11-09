@@ -4,7 +4,7 @@ import BookingStepsProgress from './BookingStepsProgress'
 function BookingListingCard({booking}) {
   return (
     <div className="flex flex-col md:flex-row gap-6 bg-[#202020] rounded-xl md:rounded-lg px-6 py-3">
-        <div className="w-[150px] md:w-[275px] rounded-2xl overflow-hidden border border-[#ccc]"
+        <div className="w-[150px] lg:w-[275px] rounded-2xl overflow-hidden border border-[#ccc]"
           style={{
             background: "lightgray 50%",
             margin: '0 auto'

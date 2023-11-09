@@ -175,7 +175,7 @@ function Confirmation({setCurrentIndex}) {
 
             <div className='flex flex-col lg:flex-row items-center justify-between my-4 gap-2 px-6'>
               <p className='font-semibold lg:w-1/2 text-sm md:text-base text-center md:text-left'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
-              <button className='w-full lg:w-[25%] bg-[#D84388] text-white text-sm md:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0' onClick={()=> setCurrentIndex(2)}>Proceed To Pay</button>
+              <button className='w-full md:w-[33%] lg:w-[25%] bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0' onClick={()=> setCurrentIndex(2)}>Proceed To Pay</button>
             </div>
             
             <div className='flex overflow-hidden'>

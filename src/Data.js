@@ -152,13 +152,13 @@ export const featuredCelebrityData = [
 export const categories = [
   "Popular",
   "Trending",
-  "Movie Star",
-  "TV Star",
+  // "Movie Star",
+  // "TV Star",
   "Model",
   "Charity",
   "Sportsmen",
   "Singer",
-  "Prime Time",
+  // "Prime Time",
   "More",
 ];
 
