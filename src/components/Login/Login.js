@@ -1,21 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import { useStateContext } from "../../StateContext";
-import apiUrl from "../../utils/baseUrl";
+import apiUrl from "../../utils/baseURL";
+import { useUserLogin } from "../../hooks/auth-hooks";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
+  
+   const [userData, setUserData] = useState({ });
 
-    const {  setOpenSignupModal, setOpenLoginModal} = useStateContext()
+  const handleGoogleLogin = async () => {
+    window.open(`${apiUrl}/auth/google`, "_self");
+  };
 
-    const handleGoogleLogin = async()=>{
 
-      window.open(`${apiUrl}/auth/google`, "_self")
-    
-     
-    }
+  const {
+    mutate: addMutate,
+    isLoading,
+  } = useUserLogin(JSON.stringify(userData));
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    addMutate(
+      {},
+      {
+        onSuccess: (response) => {
+          if (response?.data?.status === false) {
+            toast.error(response?.data?.message);
+          }
+          if (response?.data?.status === true) {
+            toast.success(response?.data?.message);
+           
+          }
+        },
+      }
+    );
+  };
+
+
 
   return (
     <div className="w-full  flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
@@ -24,8 +60,8 @@ const Login = () => {
           <div className="text-end ">
             <button
               className="bg-[#CA2981] text-white p-1 rounded-full mt-2 mr-2"
-              onClick={()=>{
-                setOpenLoginModal(false)
+              onClick={() => {
+                setOpenLoginModal(false);
               }}
             >
               <FaTimes />
@@ -37,25 +73,22 @@ const Login = () => {
               <div className="bg-[#EAEAEA] p-2 rounded-full">
                 <FaFacebook className=" text-[#3b5998] text-3xl" />
               </div>
-              <div className="bg-[#EAEAEA] p-2 rounded-full ml-3 cursor-pointer" onClick={handleGoogleLogin}>
+              <div
+                className="bg-[#EAEAEA] p-2 rounded-full ml-3 cursor-pointer"
+                onClick={handleGoogleLogin}
+              >
                 <FaGoogle className="text-[#3b5998] text-3xl " />
               </div>
               <div className="bg-[#EAEAEA] p-2 rounded-full ml-3">
                 <FaApple className="text-black text-3xl" />
               </div>
 
-              {/* <div>
-              <img
-                src="/images/signup_right_facebook.jpeg"
-                alt=""
-                className="rounded-full p-2"
-              />
-            </div> */}
+             
             </div>
             <div className="flex mt-2 mb-4">
               <p>Or Continue With Email</p>
             </div>
-            <div className="mt-4">
+            <div  className="mt-4">
               <input
                 type="text"
                 placeholder="Enter Your name"
@@ -68,21 +101,25 @@ const Login = () => {
               />
             </div>
             <div className="grid place-items-center mt-6">
-              <a
-                href="#"
+              <button
+                onClick={handleSubmit}
                 className="bg-[#CA2981] text-white rounded-full py-2 px-24"
               >
                 Login
-              </a>
+              </button>
             </div>
             <p className="text-center my-10">
               Not on FanGram?
-              <a href="#" className="text-[#CA2981]" onClick={()=>{
-               setOpenLoginModal(false)
-               setOpenSignupModal(true)
-              }}>
+              <Link
+                to="#"
+                className="text-[#CA2981]"
+                onClick={() => {
+                  setOpenLoginModal(false);
+                  setOpenSignupModal(true);
+                }}
+              >
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
