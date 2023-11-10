@@ -48,8 +48,8 @@ const FAQS = () => {
   };
   return (
     <div className=" relative    w-full text-[#fff]   bg-black pb-10 ">
-      <div className="flex flex-col space-y-2 lg:space-y-4 font-BalsamiqSans items-center w-[70%] mx-auto h-auto">
-        <h3 className="text-center text-3xl sm:text-4xl md:text-[45px] font-[600] mb-5">
+      <div className="flex flex-col space-y-2 lg:space-y-4 font-BalsamiqSans items-center w-[90%] sm:w-[80%] md:w-[70%] mx-auto h-auto">
+        <h3 className="text-center text-lg sm:text-4xl md:text-[45px] font-[600] mb-2 md:mb-5">
           Frequently Asked Questions
         </h3>
 
@@ -58,20 +58,13 @@ const FAQS = () => {
             <div key={index} className="relative  w-full ">
               <div
                 className={clsx(
-                  "rounded-xl pt-16  p-6",
+                  "rounded-xl pt-2 sm:pt-7 md:pt-16  p-6",
                   `${item.isOpen ? "block bg-[#FFF] " : "hidden"}`
                 )}
               >
-                <p className="text-[#171717] pl-10">{item.answer}</p>
-
-                <ul>
-                  {item.listArray &&
-                    item.listArray.map((_item, index) => (
-                      <li className="list-disc ml-7  mb-2" key={index}>
-                        {_item?.list}
-                      </li>
-                    ))}
-                </ul>
+                <p className="text-[#171717] text-[10px] md:text-base pl-2 sm:pl-5 md:pl-7 lg:pl-10">
+                  {item.answer}
+                </p>
               </div>
               <div
                 className={clsx(
@@ -81,7 +74,7 @@ const FAQS = () => {
               >
                 <div
                   className={clsx(
-                    "px-6 py-2.5 flex   w-full rounded-xl  items-center justify-between border-[1px] border-[#fff]",
+                    "px-2 md:px-6 py-2.5 flex   w-full rounded-xl  items-center justify-between border-[1px] border-[#fff]",
                     `${
                       item.isOpen
                         ? "bg-[#fff] text-black"
@@ -89,20 +82,22 @@ const FAQS = () => {
                     }`
                   )}
                 >
-                  <div className="flex justify-start items-start gap-5">
+                  <div className="flex justify-center items-start gap-2 sm:gap-5">
                     <p
                       className={
                         (clsx(" "),
                         `${
                           item.isOpen
-                            ? "bg-[#D42978] text-[#fff] w-[25px] h-[25px] rounded-full  grid place-items-center"
-                            : "bg-[#fff] text-[#000] w-[25px] h-[25px] rounded-full  grid place-items-center"
+                            ? "bg-[#D42978] text-[#fff] sm:w-[25px] sm:h-[25px] w-[17px] h-[17px] rounded-full sm:text-base text-[10px]  grid place-items-center"
+                            : "bg-[#fff] text-[#000] sm:w-[25px] sm:h-[25px] w-[17px] h-[17px] rounded-full sm:text-base text-[10px]  grid place-items-center"
                         }`)
                       }
                     >
                       {index + 1}
                     </p>
-                    <p className="font-semibold text-[20px]">{item.question}</p>
+                    <p className="font-semibold text-[12px] md:text-[20px]">
+                      {item.question}
+                    </p>
                   </div>
 
                   <button
@@ -115,13 +110,13 @@ const FAQS = () => {
                     {item.isOpen ? (
                       <img
                         src="/images/faqs_uparrow.png"
-                        className="w-fit h-fit "
+                        className="sm:w-fit sm:h-fit  w-[10px] h-[10px]"
                         alt="logo"
                       />
                     ) : (
                       <img
                         src="/images/faqs_downarrow.png"
-                        className="w-fit h-fit "
+                        className="sm:w-fit sm:h-fit  w-[10px] h-[10px] "
                         alt="logo"
                       />
                     )}

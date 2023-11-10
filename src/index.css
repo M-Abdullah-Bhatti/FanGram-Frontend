@@ -38,11 +38,10 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: Satisfy, "cursive";
-  font-size: 30px;
+
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: fit-content;
 }
 
 .hero__caurosel
@@ -61,8 +60,7 @@ body {
 }
 
 /* My Profile Page */
-.form__elements
-{
+.form__elements {
   width: 100%;
   padding: 13px 15px;
   outline: none;
@@ -75,25 +73,18 @@ body {
   width: calc(100% - 20px);
 }
 
-.buttonClass
-{
+.buttonClass {
   background-color: #292929;
 }
 
 /* booking page */
-.bookingcommon{
+.bookingcommon {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-right: 1px solid rgba(255, 255, 255, 0.20);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
-.bookingcommonmob{
+.bookingcommonmob {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border:none
-  
+  border: none;
 }
-
-
-
-
-
