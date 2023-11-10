@@ -6,6 +6,7 @@ import MayAlsoLike from '../components/CelebrityPage/MayAlsoLike';
 import FAQS from '../components/Shared/FAQs';
 import DemoVideos from '../components/CelebrityPage/DemoVideos';
 import DiscoverMore from '../components/Shared/DiscoverMore';
+import Header from '../components/CelebrityPage/Header';
 
 function CelebrityPage() {
   return (
@@ -17,6 +18,7 @@ function CelebrityPage() {
             </svg>
           Sunny Leone
         </h1>
+        <Header />
         <CelebrityHeader />
       </div>
       <div className="px-6 lg:px-1">

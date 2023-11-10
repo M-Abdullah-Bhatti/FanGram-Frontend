@@ -4,7 +4,7 @@ import { ticketData } from '../../Data'
 
 function Offers() {
   return (
-    <div className='py-12'>
+    <div className='pb-6'>
         <h1 className="text-2xl md:text-5xl font-semibold mb-4">Available Offers</h1>
         <div className="flex flex-wrap gap-2">
             {

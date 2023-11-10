@@ -169,8 +169,7 @@ export const ticketData = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="21"
+        className="w-[15px] md:w-[20px] h-[15px] md:h-[21px]"
         viewBox="0 0 20 21"
         fill="none"
       >
@@ -191,8 +190,7 @@ export const ticketData = [
         <defs>
           <clipPath id="clip0_29_3921">
             <rect
-              width="20"
-              height="20"
+              className="w-[20px] h-[21px]"
               fill="white"
               transform="translate(0 0.154907)"
             />

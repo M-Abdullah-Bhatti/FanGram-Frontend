@@ -14,18 +14,18 @@ function DemoVideos() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= 300;
+      scrollContainerRef.current.scrollLeft -= 320;
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += 300;
+      scrollContainerRef.current.scrollLeft += 320;
     }
   };
 
   return (
-    <div className="flex w-full py-10 lg:space-x-6">
+    <div className="flex w-full py-6 lg:space-x-6">
       <div className="flex items-center">
         <button onClick={scrollLeft}
           className="w-[50px] h-[50px] border border-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
