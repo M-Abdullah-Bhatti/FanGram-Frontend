@@ -50,10 +50,11 @@ const Footer = () => {
         className="absolute right-0 bottom-0 z-0"
       />
 
-      <div className="text-white flex justify-evenly py-10 z-10">
-        <div className="w-[400px]">
-          <img src="/images/logo.png" className="pb-5 mt-[-20px]" />
-          <p>
+      <div className="flex lg:flex-row flex-col py-10 lg:px-unset px-10 z-10 justify-evenly">
+
+          <div className="lg:w-[400px] text-[#fff] w-full text-center">
+          <img src="/images/logo.png" className="pb-5 lg:mt-[-20px] mx-auto" alt="logo" />
+          <p className="text-[12px] md:text-base">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s,Lorem Ipsum is simply dummy text of the
@@ -61,11 +62,14 @@ const Footer = () => {
           </p>
         </div>
 
+           <div className="text-white flex justify-between lg:justify-evenly flex-wrap mt-7 lg:mt-unset gap-5">
+      
+
         <div className="flex flex-col">
-          <h3 className="text-[18px] font-semibold pb-5">About</h3>
+          <h3 className="text-[12px] md:text-[18px] font-semibold pb-5">About</h3>
           {about.map((item, key) => (
             <Link
-              className="text-[16px] font-normal pb-3"
+              className="text-[12px] md:text-[16px] font-normal pb-3"
               key={key}
               to={item.link}
             >
@@ -75,10 +79,10 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col">
-          <h3 className="text-[18px] font-semibold pb-5">Resources</h3>
+          <h3 className="text-[12px] md:text-[18px] font-semibold pb-5">Resources</h3>
           {resources.map((item, key) => (
             <Link
-              className="text-[16px] font-normal pb-3"
+              className="text-[12px] md:text-[16px] font-normal pb-3"
               key={key}
               to={item.link}
             >
@@ -88,10 +92,10 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col">
-          <h3 className="text-[18px] font-semibold pb-5">Help</h3>
+          <h3 className="text-[12px] md:text-[18px] font-semibold pb-5">Help</h3>
           {help.map((item, key) => (
             <Link
-              className="text-[16px] font-normal pb-3"
+              className="text-[12px] md:text-[16px] font-normal pb-3"
               key={key}
               to={item.link}
             >
@@ -101,10 +105,10 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col">
-          <h3 className="text-[18px] font-semibold pb-5">Explore</h3>
+          <h3 className="text-[12px] md:text-[18px] font-semibold pb-5">Explore</h3>
           {explore.map((item, key) => (
             <Link
-              className="text-[16px] font-normal pb-3"
+              className="text-[12px] md:text-[16px] font-normal pb-3"
               key={key}
               to={item.link}
             >
@@ -114,11 +118,11 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col bg-yellow">
-          <h3 className="text-[18px] font-semibold pb-5">Follow Us</h3>
+          <h3 className="text-[12px] md:text-[18px] font-semibold pb-5">Follow Us</h3>
           <div className="flex mt-5 gap-5">
             {followUs.map((item, key) => (
               <Link
-                className="text-[16px] flex justify-center items-center font-normal  w-8 h-8 rounded-lg border-[1px]"
+                className="text-[12px] md:text-[16px] flex justify-center items-center font-normal  w-8 h-8 rounded-lg border-[1px]"
                 key={key}
                 to={item.link}
               >
@@ -126,6 +130,7 @@ const Footer = () => {
                   // src="/images/footer__youtube.svg"
                   src={item.image}
                   className=""
+                  alt="logo"
                 />
               </Link>
               // </div>
@@ -133,6 +138,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+
+
+      </div>
+
+   
 
       {/* Below Container */}
       <div className="flex flex-col">
