@@ -168,7 +168,7 @@ function Feedback() {
           slidesPerView={1}
           spaceBetween={1}
           slidesPerGroup={1}
-          // autoplay={true}
+          autoplay={true}
           pagination={true}
           slideActiveClass="activeSlide"
           className="swiper-container"
