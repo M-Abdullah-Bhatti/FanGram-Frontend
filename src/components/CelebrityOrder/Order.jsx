@@ -59,7 +59,7 @@ function Order({setCurrentIndex}) {
                     <input className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded" type="text" placeholder="Name Of the Receiver" />
                     <div className="flex flex-wrap">
                         {Options.map((tag, index) => (
-                            <span key={index} className="text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer">
+                            <span key={index} className="text-sm md:text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer">
                             {tag}
                             </span>
                         ))}
@@ -70,7 +70,7 @@ function Order({setCurrentIndex}) {
                     <input className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded" type="text" placeholder="John Doe" />
                     <div className="flex flex-wrap">
                         {Options.map((tag, index) => (
-                            <span key={index} className="text-base font-normal px-4 py-2 bg-[#D42978] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer">
+                            <span key={index} className="text-sm md:text-base font-normal px-4 py-2 bg-[#D42978] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer">
                             {tag}
                             </span>
                         ))}
@@ -196,7 +196,7 @@ function Order({setCurrentIndex}) {
                 </div>
                 <div className='flex items-center gap-2 my-2'>
                     <input type="checkbox" className="w-[14px] h-[14px] bg-[#202020] border border-[#999999]" style={{accentColor: '#D42978'}} />
-                    <p className="text-sm md:text-base text-[#999999]">Don’t make this video public on Tring</p>
+                    <p className="text-xs md:text-base text-[#999999]">Don’t make this video public on Tring</p>
                 </div>
             </div>
         </div>
@@ -214,12 +214,12 @@ function Order({setCurrentIndex}) {
             </div>
             <div className='flex flex-col my-4'>
                 <label className="mb-2 text-sm md:text-xl">Do you want to deliver this surprise to the recipient?</label>
-                <div className="flex gap-4">
-                    <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[10px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
+                <div className="flex gap-2 md:gap-4">
+                    <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[8px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
                         <input type="radio" className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]" style={{accentColor: 'white'}} />
                         Yes, go head ₹1500
                     </span>
-                    <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[10px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
+                    <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[8px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
                         <input type="radio" className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]" style={{accentColor: 'white'}} />
                         No, Skip for now
                     </span>

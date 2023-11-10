@@ -9,7 +9,7 @@ function OrderHeader() {
                 <img src="/images/order__sunny.png" alt="" className='w-[75px] md:min-w-[110px]' />
             </div>
             <div className="flex items-center space-x-4 text-white">
-                <h1 className="text-xl md:text-4xl font-extrabold">Sunny Leone</h1>
+                <h1 className="text-lg md:text-2xl lg::text-4xl font-extrabold">Sunny Leone</h1>
                 <img src="/images/verification.svg" alt="verification badge" className='w-[25px] md:w-[50px]' />
                 <span className="flex items-center space-x-1 md:space-x-2 border border-[#fff] px-2 md:px-4 py-1.5 md:py-2 rounded-3xl">
                     <svg

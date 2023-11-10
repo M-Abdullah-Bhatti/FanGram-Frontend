@@ -52,7 +52,7 @@ function OrderDetails({setCurrentIndex}) {
                     <input className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded" type="text" placeholder="Name Of the Receiver" />
                     <div className="flex flex-wrap">
                         {Options.map((tag, index) => (
-                            <span key={index} className="text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer">
+                            <span key={index} className="text-[6px] md:text-base font-normal px-2 md:px-4 py-1 md:py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-1 md:mr-3 cursor-pointer">
                             {tag}
                             </span>
                         ))}
