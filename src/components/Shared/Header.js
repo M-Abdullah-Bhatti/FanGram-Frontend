@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useStateContext } from "../../StateContext";
 import Login from "../Login/Login";
@@ -30,6 +30,11 @@ const Header = () => {
   const location = useLocation();
 
   const { openLoginModal, setOpenLoginModal, openSignupModal} = useStateContext()
+  const [openNavbar, setOpenNavbar]  = useState(false)
+
+  const handleNavbar = () =>{
+    setOpenNavbar(!openNavbar)
+  }
 
 
   return (
@@ -83,13 +88,54 @@ const Header = () => {
           >
             Login/Signup
           </button>
-           <img src="/images/toggle__open.png" alt="logo" className="lg:hidden block cursor-pointer" />
+           <img src="/images/toggle__open.png" alt="logo" className="lg:hidden block cursor-pointer" onClick={handleNavbar} />
           {openLoginModal && <Login  />}
           {openSignupModal && <SignUp  />}
         </div>
       </div>
     </div>
     </div>
+
+    {/* Mobile Dawer */}
+        {openNavbar && (
+          <div
+            className="block  basis-full overflow-hidden  lg:hidden w-[90%] mx-auto"
+            style={{ height: "auto" }}
+          >
+            <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 ">
+              {headerLinks.map((item) => (
+                <li
+                  key={item.linkTo}
+                  onClick={           
+                    handleNavbar
+                  }
+                  className={`text-[#fff] block antialiased font-sans text-sm leading-normal  p-1  lg:transition-transform lg:hover:scale-105`}
+                >
+                  <Link
+                    className="flex items-center"
+                    to={item.linkTo}
+                  >
+                    {item.linkText}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+          
+
+           
+
+            <Link
+            to={"/promotion"}
+            onClick={handleNavbar}
+              className="text-center text-sm py-2 px-4  text-white bg-[#D42978] hover:shadow-lg block w-full mb-2 rounded-[16px] capitalize shadow-none"
+            >
+              <span>Promote My Business</span>
+            </Link>
+          </div>
+        )}
+
+
     </div>
   );
 };
