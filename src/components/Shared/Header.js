@@ -36,9 +36,16 @@ const Header = () => {
     <div className=" bg-[#000] py-3 border-b-[1px] border-[#4b4b4b]">
       <div className="w-[90%] md:w-[85%] mx-auto flex justify-between items-center">
         <div className="flex justify-between items-center gap-16">
+<<<<<<< HEAD
           <img src="/images/header__logo.png" alt="logo" className="lg:block hidden" />
           <img src="/images/header__logo__small.png" alt="logo" className="lg:hidden block" />
           <div className="hidden lg:flex justify-start items-center gap-10">
+=======
+          <Link to="/">
+            <img src="/images/header__logo.png" alt="logo" />
+          </Link>
+          <div className="flex justify-start items-center gap-10">
+>>>>>>> 319b87678865f2e1de6d61dd0a998dcd5c783770
             {headerLinks.map((item, index) => (
               <div className="flex justify-start items-start flex-col">
                 <Link
@@ -61,9 +68,17 @@ const Header = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="flex justify-between items-center gap-3 md:gap-5">
           <button className="hidden lg:block outline-none border-[1px] py-2 px-4 rounded-[40px] border-[#fff] text-[#fff]">
             Promote My Business
+=======
+        <div className="flex justify-between items-center gap-5">
+          <button className="outline-none border-[1px] py-2 px-4 rounded-[40px] border-[#fff] text-[#fff]">
+            <Link to="/promotion">
+              Promote My Business
+            </Link>
+>>>>>>> 319b87678865f2e1de6d61dd0a998dcd5c783770
           </button>
           <button
             className="outline-none lg:text-base text-[14px] py-[5px] sm:py-2 px-3 sm:px-4  rounded-[40px] bg-[#D42978] text-[#fff]"

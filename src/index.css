@@ -88,3 +88,19 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   border: none;
 }
+
+.workCardWidth {
+  width: calc(33% - 8px);
+}
+
+@media only screen and (max-width: 678px) {
+  .workCardWidth {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 679px) and (max-width: 1024px) {
+  .workCardWidth {
+    width: calc(33% - 16px);
+  }
+}

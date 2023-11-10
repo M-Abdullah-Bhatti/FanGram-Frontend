@@ -34,7 +34,7 @@ function CelebrityHeader() {
         <div className="flex justify-between">
           <div className="flex items-center space-x-2 lg:space-x-4">
             <h1 className="text-lg md:text-4xl font-extrabold">Sunny Leone</h1>
-            <img src="/images/verification.svg" alt="verification badge" className='w-[25px] md:w-[50px]' />
+            <img src="/images/verification.svg" alt="verification badge" className='w-[25px] lg:w-[50px]' />
             <span className="flex space-x-1 lg:space-x-2 border border-[#fff] px-2 lg:px-4 py-1 lg:py-2 rounded-3xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,15 +61,15 @@ function CelebrityHeader() {
         <p className="py-1 lg:py-4 text-base md:text-xl font-medium">
           Responds in <b className="text-[#D42978] font-bold">5 Days</b>
         </p>
-        <div className="flex flex-wrap mr-[150px]">
+        <div className="flex flex-wrap lg:mr-[150px]">
           {tags.map((tag) => (
-            <span className="text-xs md:text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 mr-4">
+            <span className="text-[8px] lg:text-base font-normal px-2 lg:px-4 py-2 bg-[#292929] rounded-3xl my-1 lg:my-2 mr-1 md:mr-2 lg:mr-4">
               {tag}
             </span>
           ))}
         </div>
-        <div className="flex flex-wrap space-x-4 mr-[150px]">
-            <span className="flex items-center bg-[#D42978] font-medium text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
+        <div className="w-full flex flex-wrap space-x-2 lg:space-x-4 mr-[150px]">
+            <span className="flex items-center bg-[#D42978] font-medium text-xs lg:text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
               <Link to="/order">
                 Book Video @ <b>&#8377; 9999</b>{" "}
                 <span className="line-through ml-2 text-sm">10,999</span>
