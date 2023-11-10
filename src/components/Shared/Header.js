@@ -36,7 +36,9 @@ const Header = () => {
     <div className=" bg-[#000] py-3 border-b-[1px] border-[#4b4b4b]">
       <div className="w-[85%] mx-auto flex justify-between items-center">
         <div className="flex justify-between items-center gap-16">
-          <img src="/images/header__logo.png" alt="logo" />
+          <Link to="/">
+            <img src="/images/header__logo.png" alt="logo" />
+          </Link>
           <div className="flex justify-start items-center gap-10">
             {headerLinks.map((item, index) => (
               <div className="flex justify-start items-start flex-col">
@@ -62,7 +64,9 @@ const Header = () => {
 
         <div className="flex justify-between items-center gap-5">
           <button className="outline-none border-[1px] py-2 px-4 rounded-[40px] border-[#fff] text-[#fff]">
-            Promote My Business
+            <Link to="/promotion">
+              Promote My Business
+            </Link>
           </button>
           <button
             className="outline-none  py-2 px-4  rounded-[40px] bg-[#D42978] text-[#fff]"

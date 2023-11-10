@@ -162,6 +162,8 @@ export const categories = [
   "More",
 ];
 
+export const budgets = ['₹25L+', '₹5L - 25L', '₹1L - 5L', '₹25K - 1L', 'Under ₹25K'];
+
 export const ticketData = [
   {
     icon: (
