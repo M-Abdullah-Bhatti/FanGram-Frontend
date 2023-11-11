@@ -52,7 +52,7 @@ function OrderDetails({setCurrentIndex}) {
                     <input className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded" type="text" placeholder="Name Of the Receiver" />
                     <div className="flex flex-wrap">
                         {Options.map((tag, index) => (
-                            <span key={index} className="text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer">
+                            <span key={index} className="text-[6px] md:text-base font-normal px-2 md:px-4 py-1 md:py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-1 md:mr-3 cursor-pointer">
                             {tag}
                             </span>
                         ))}
@@ -198,7 +198,7 @@ function OrderDetails({setCurrentIndex}) {
         </div>
 
         {/* Payment Info Section */}
-        <div className='flex items-center justify-between pt-24'>
+        <div className='flex items-center justify-between pt-0'>
             <p className='text-xl font-semibold w-1/2'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
             <div className='flex flex-col items-center w-[30%]'>
                 <button className='bg-[#535353] rounded-3xl px-4 py-3 mb-1 w-full' onClick={()=> setCurrentIndex(1)}>Continue</button>

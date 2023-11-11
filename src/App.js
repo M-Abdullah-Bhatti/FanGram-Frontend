@@ -14,22 +14,24 @@ import {
   MyProfile,
   OrderDelivery,
 } from "./pages";
+import SearchCelebrity from "./pages/SearchCelebrity";
 
 function App() {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/celebrity" element={<CelebrityPage />} />
         <Route path="/order" element={<CelebrityOrder />} />
         <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/orderdelivery" element={<OrderDelivery />} />
-        <Route path="/booking" element={<BookingDetails />} />
+        {/* <Route path="/booking" element={<BookingDetails />} /> */}
         <Route path="/promotion" element={<BusinessPromotion />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/search" element={<SearchCelebrity />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

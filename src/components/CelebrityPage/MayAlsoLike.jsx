@@ -24,7 +24,7 @@ function MayAlsoLike() {
     };
 
   return (
-    <div className="w-full bg-black text-white py-10 mb-6">
+    <div className="w-full bg-black text-white py-4 mb-3">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-3xl md:text-4xl font-semibold">You May Also Like</h2>
           <div className="flex items-center space-x-4">

@@ -175,8 +175,7 @@ export const ticketData = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="21"
+        className="w-[12px] md:w-[20px] h-[12px] md:h-[21px]"
         viewBox="0 0 20 21"
         fill="none"
       >
@@ -197,8 +196,7 @@ export const ticketData = [
         <defs>
           <clipPath id="clip0_29_3921">
             <rect
-              width="20"
-              height="20"
+              className="w-[20px] h-[21px]"
               fill="white"
               transform="translate(0 0.154907)"
             />
@@ -214,8 +212,7 @@ export const ticketData = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="21"
+        className="w-[12px] md:w-[20px] h-[12px] md:h-[21px]"
         viewBox="0 0 20 21"
         fill="none"
       >
@@ -253,8 +250,7 @@ export const ticketData = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
+        className="w-[12px] md:w-[18px] h-[12px] md:h-[18px]"
         viewBox="0 0 18 18"
         fill="none"
       >
@@ -794,14 +790,114 @@ export const collapsibledata = [
   },
 ];
 
-// signup modal
-export const slidertext = [
+export const businessWork = [
   {
-    text: "Nora Fatehi",
+    icon: "/images/talent.svg",
+    title: "Talent Selection",
+    content:
+      "Fanrang for business helps you choose from over 12000+ celebrities and curate the best set of industry leading celebrities based on your budget, preferred reach, industry, etc.",
   },
-
-  { text: "Vidya Balan" },
   {
-    text: "Nora Fatehi",
+    icon: "/images/preproduction.svg",
+    title: "Pre-Production",
+    content:
+      "Tring for business helps you choose from over 12000+ celebrities and curate the best set of industry leading celebrities based on your budget, preferred reach, industry, etc.",
+  },
+  {
+    icon: "/images/production.svg",
+    title: "Production",
+    content:
+      "Tring for business helps you choose from over 12000+ celebrities and curate the best set of industry leading celebrities based on your budget, preferred reach, industry, etc.",
+  },
+  {
+    icon: "/images/postproduction.svg",
+    title: "Post-Production",
+    content:
+      "Fanrang for business helps you choose from over 12000+ celebrities and curate the best set of industry leading celebrities based on your budget, preferred reach, industry, etc.",
+  },
+  {
+    icon: "/images/delivery.svg",
+    title: "Delivery",
+    content:
+      "Tring for business helps you choose from over 12000+ celebrities and curate the best set of industry leading celebrities based on your budget, preferred reach, industry, etc.",
+  },
+];
+
+export const additionalBenefits = [
+  {
+    title: "Dedicated Brand Rep",
+    content:
+      "A dedicated brand representative is assigned to guide you through the entire process, right from ideation to the delivery of your video",
+  },
+  {
+    title: "Talent Recommendations",
+    content:
+      "Our dedicated brand representative will help you choose from over 12000+ celebrities and will help you curate a personalised list that suits your needs",
+  },
+  {
+    title: "Script Writing",
+    content:
+      "Based on the ideation session with you our script writers will churn out ideal script options",
+  },
+  {
+    title: "Video Editing",
+    content:
+      "The raw content given by the celebrity is colour corrected and is made noise free to drastically improve the video quality",
+  },
+  {
+    title: "Brand Logo Watermark",
+    content:
+      "We will help you add your company’s logo on the final video to help you increase your recall amongst customers",
+  },
+  {
+    title: "Cross Platform Usage",
+    content:
+      "Covers brand’s rights from the standpoint of where the content can be used (website, social media, video sharing applications, TV, print, etc.)",
+  },
+  {
+    title: "Free Legal Coverage",
+    content:
+      "We ensure documentation in the form of agreement creation to ensure celebrities and the brand are aware of their coverage right",
+  },
+  {
+    title: "Renewal Plans",
+    content:
+      "We offer renewal plans to extend your usage rights for the content created using Tring’s services",
+  },
+];
+
+export const offers = [
+  "Home Shot Recorded Video",
+  "Brand Ambassador",
+  "E-Invites/Corporate Shoutout",
+  "Events/Gigs",
+];
+
+export const services = [
+  "Talent selection",
+  "Production set-up",
+  "Concept building",
+  "Production management",
+  "End-to-end service",
+];
+
+export const searchCelebrity = [
+  {
+    image: "/images/priya.png",
+    heading: "Priya",
+    paragraph:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci iste voluptatem nam tempore eius eum nostrum porro facilis expedita hic iure pariatur quae reprehenderit autem placeat tenetur, fugiat odit veritatis soluta quam inventore saepe magnam maxime. Beatae nobis sequi ipsam.",
+  },
+  {
+    image: "/images/priya.png",
+    heading: "Priya",
+    paragraph:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci iste voluptatem nam tempore eius eum nostrum porro facilis expedita hic iure pariatur quae reprehenderit autem placeat tenetur, fugiat odit veritatis soluta quam inventore saepe magnam maxime. Beatae nobis sequi ipsam.",
+  },
+  {
+    image: "/images/priya.png",
+    heading: "Priya",
+    paragraph:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci iste voluptatem nam tempore eius eum nostrum porro facilis expedita hic iure pariatur quae reprehenderit autem placeat tenetur, fugiat odit veritatis soluta quam inventore saepe magnam maxime. Beatae nobis sequi ipsam.",
   },
 ];

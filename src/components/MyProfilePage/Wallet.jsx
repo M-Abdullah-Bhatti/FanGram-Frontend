@@ -22,7 +22,7 @@ function Wallet() {
                     <tr className="font-semibold text-xs md:text-base text-[#7E7E7E]">
                         <th className="text-left px-2 py-2 w-1/4">Activity</th>
                         <th className="text-left px-2 py-2 w-1/4">Date & Time</th>
-                        <th className="text-left px-2 py-2 w-1/4">Earned & Redeem</th>
+                        <th className="text-left px-2 py-2 w-1/4">Amount</th>
                         <th className="text-left px-2 py-2 w-1/4">Payment Status</th>
                     </tr>
                     </thead>

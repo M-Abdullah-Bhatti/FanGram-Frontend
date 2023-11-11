@@ -49,10 +49,10 @@ function Payment() {
                 </div>
 
                 {/* Total */}
-                <div className="flex items-center justify-between my-3 md:my-4 text-base md:text-2xl">
+                {/* <div className="flex items-center justify-between my-3 md:my-4 text-base md:text-2xl">
                     <span className="font-semibold">Total</span>
                     <span className="font-bold">₹11149</span>
-                </div>
+                </div> */}
 
             </div>
 
@@ -61,7 +61,7 @@ function Payment() {
 
             <div className="px-6 py-3">
                 {/* Your Detail */}
-                <div className="gap-1">
+                {/* <div className="gap-1">
                     <h1 className="my-4 text-[#7E7E7E] font-semibold text-sm md:text-base">YOUR DETAILS</h1>
                     <h3 className="my-2 text-sm md:text-base">Billing Email</h3>
                     <p className='text-sm md:text-base'>Email is required ro continue to payment</p>
@@ -88,6 +88,49 @@ function Payment() {
                         <p className='font-semibold lg:w-1/2 text-sm md:text-base text-center md:text-left'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
                         <button className='w-full md:w-[50%] lg:w-[25%] bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0'>Continue</button>
                     </div>
+                </div> */}
+
+                {/* Billing Summary */}
+                <div className="px-6 py-3">
+                    <h2 className="text-[#7E7E7E] font-semibold text-sm md:text-base">BILLING SUMMARY</h2>
+                    <div className="mt-6 w-full space-y-4 border-b-2 pb-4">
+                        <div className="flex justify-between text-sm md:text-base">
+                        <span>Personalized Video</span>
+                        <span className='text-[#4E4E4E]'>₹11000</span>
+                        </div>
+                        <div className="flex justify-between text-sm md:text-base">
+                        <span className="flex gap-2 text-[#008115]">
+                        <img src="/images/confirmation__discount.svg" alt="" />
+                            Add-ons
+                        </span>
+                        <span className='text-[#4E4E4E]'>+₹2250</span>
+                        </div>
+                        <div className="flex justify-between text-sm md:text-base">
+                        <span className="flex gap-2 text-[#008115]">
+                        <img src="/images/confirmation__discount.svg" alt="" />
+                            Coupon Discount
+                        </span>
+                        <span className='text-[#4E4E4E]'>-₹550</span>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-between py-2 border-b-2 text-sm md:text-base">
+                        <span>Prime Amount</span>
+                        <span className='text-[#4E4E4E]'>₹99</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b-2 text-sm md:text-base">
+                        <span>Prime Discount</span>
+                        <span>-₹1650</span>
+                    </div>
+                    <div className="flex justify-between py-2 font-semibold md:text-lg text-base">
+                        <span>Total</span>
+                        <span>₹11149</span>
+                    </div>
+                </div>
+
+                <div className='flex flex-col lg:flex-row items-center justify-between my-4 space-y-2'>
+                    <p className='font-semibold lg:w-1/2 text-sm md:text-base text-center md:text-left'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
+                    <button className='w-full md:w-[50%] lg:w-[25%] bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0'>Continue</button>
                 </div>
             </div>
             

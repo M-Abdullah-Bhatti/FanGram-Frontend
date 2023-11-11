@@ -24,7 +24,7 @@ function RecentViewed() {
     };
 
   return (
-    <div className="w-full bg-black text-white py-10">
+    <div className="w-full bg-black text-white pb-10">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-3xl md:text-4xl font-semibold">Recent Viewed</h2>
           <div className="flex items-center space-x-4">

@@ -135,10 +135,10 @@ function Confirmation({setCurrentIndex}) {
             </div>
 
             {/* Design */}
-            <TicketDesign />
+            {/* <TicketDesign /> */}
 
             {/* Billing Summary */}
-            <div className="px-6 py-3">
+            {/* <div className="px-6 py-3">
               <h2 className="text-[#7E7E7E] font-semibold text-sm md:text-base">BILLING SUMMARY</h2>
               <div className="mt-6 w-full space-y-4 border-b-2 pb-4">
                 <div className="flex justify-between text-sm md:text-base">
@@ -173,7 +173,7 @@ function Confirmation({setCurrentIndex}) {
                 <span>Total</span>
                 <span>₹11149</span>
               </div>
-            </div>
+            </div> */}
 
             <div className='flex flex-col lg:flex-row items-center justify-between my-4 gap-2 px-6'>
               <p className='font-semibold lg:w-1/2 text-sm md:text-base text-center md:text-left'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
