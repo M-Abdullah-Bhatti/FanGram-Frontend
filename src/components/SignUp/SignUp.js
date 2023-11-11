@@ -27,17 +27,18 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-screen flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50 p-4 lg:p-0 ">
-      <div className="w-[311px] h-[668px] sm:w-[70%] lg:w-[1062px] lg:h-[620px] bg-[#CA2981] flex rounded-[30px] flex-col lg:flex-row ">
-        <div className="lg:w-1/2 h-full flex items-center justify-center w-full relative">
-          <div className="text-end absolute top-5 right-2 lg:hidden">
+    <div className=" flex items-center justify-center fixed top-0 left-0 right-0 w-full px-4 overflow-x-hidden overflow-y-auto  h-full z-10 bg-black bg-opacity-50 my-4 lg:p-0 ">
+      <div className="w-[90%] mx-auto sm:w-[70%] lg:w-[1062px]  bg-[#CA2981] flex rounded-[15px] sm:rounded-[20px] flex-col lg:flex-row ">
+        <div className="text-end mx-2 sm:mx-5 mt-3 sm:mt-7  block lg:hidden"  onClick={() => setOpenSignupModal(false)}>
             <button
               className="bg-white text-[#CA2981] transparent p-1 rounded-full"
-              onClick={() => setOpenSignupModal(false)}
+             
             >
               <FaTimes />
             </button>
           </div>
+        <div className="lg:w-1/2 sm:p-unset  flex items-center justify-center rounded-[15px] sm:rounded-[20px] w-full mx-auto relative ">
+          
           <Swiper
             modules={[Navigation, Pagination, A11y, Autoplay]}
             slidesPerView={1}
@@ -46,37 +47,41 @@ const SignUp = () => {
             autoplay={true}
             pagination={true}
             slideActiveClass="activeSlide"
-            className="sm:w-[397px]"
+            className="hero__caurosel w-[70%]  sm:w-[80%] mx-auto lg:w-[70%]"
           >
             {signupSliderImages.map((slide, index) => (
-              <SwiperSlide key={index} className="absolute ">
-                <div className="w-[191px] h-[276px] sm:w-[250px]  lg:w-[397px] lg:h-[513px] ml-[60px] mt-[20px] sm:ml-[73px] sm:mt-[30px] lg:ml-0 lg:mt-0">
-                  <img src={slide.image} alt="" className="w-full h-full" />
-                </div>
-                <p className="sm:px-4 sm:py-2 py-1 px-2 bg-[#806D67] rounded-full w-fit text-white  font-bold relative lg:bottom-[90px] lg:left-[140px] left-[120px] bottom-[38px] sm:left-[160px]  z-20 text-[9px] md:text-[12px] lg:text-[20px]">
+              <SwiperSlide key={index} className="z-10" >
+                <div className="h-[200px] rounded-2xl mx-auto w-full lg:h-[450px] relative">
+                  <img src={slide.image} alt="" className="w-full h-full rounded-2xl" />
+                  <p className="sm:px-4 sm:py-2 py-1 px-2 bg-[#806D67] rounded-full text-white  absolute bottom-5 left-1/3  z-20 text-[9px] md:text-[12px] lg:text-[18px]">
                   Nora Fatehi
                 </p>
+                
+                </div>
+              <div className="h-7 sm:h-10"></div>  
               </SwiperSlide>
+              
             ))}
           </Swiper>
         </div>
-        <div className="lg:w-1/2 border-solid border-2 bg-white px-6 rounded-[30px] w-full">
-          <div className="text-end hidden lg:block">
+
+        <div className="lg:w-1/2 border-solid  bg-white px-6 rounded-[15px] sm:rounded-[20px] pt-1 pb-5 w-full">
+          <div className="text-end hidden lg:block" onClick={() => setOpenSignupModal(false)}>
             <button
               className="bg-[#CA2981] text-white p-1 rounded-full mt-2"
-              onClick={() => setOpenSignupModal(false)}
+              
             >
               <FaTimes />
             </button>
           </div>
-          <p className="text-[#D42978] font-satisfy text-[12px] sm:text-[16px] lg:text-2xl my-1 sm:my-0 lg:my-4">
+          <p className="text-[#D42978] font-satisfy text-[12px] sm:text-[16px] lg:text-2xl mt-1 sm:my-0 lg:mb-3">
             Welcome
           </p>
           <h2 className="font-extrabold text-[20px]  lg:text-3xl">
             Sign up with FanGram
           </h2>
-          <div className="flex mt-3 sm:mt-1 lg:mt-6">
-            <div className="bg-[#EAEAEA] p-2 rounded-full w-[30px] h-[30px] lg:w-[60px] lg:h-[60px] flex items-center justify-center">
+          <div className="flex mt-1 sm:mt-1 lg:mt-6">
+            <div className="bg-[#EAEAEA] p-2 rounded-full w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center">
               <svg
                 width="24"
                 height="24"
@@ -98,7 +103,7 @@ const SignUp = () => {
               </svg>
             </div>
             <div
-              className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[60px] lg:h-[60px] flex items-center justify-center "
+              className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center "
               onClick={handleGoogleLogin}
             >
               <svg
@@ -141,7 +146,7 @@ const SignUp = () => {
                 </defs>
               </svg>
             </div>
-            <div className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[60px] lg:h-[60px] flex items-center justify-center">
+            <div className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center">
               <svg
                 className="w-[12px] h-[12px] sm:w-[24px] sm:h-[24px]"
                 viewBox="0 0 10 10"
@@ -162,59 +167,53 @@ const SignUp = () => {
               </svg>
             </div>
 
-            {/* <div>
-              <img
-                src="/images/signup_right_facebook.jpeg"
-                alt=""
-                className="rounded-full p-2"
-              />
-            </div> */}
+            
           </div>
-          <div className="flex mt-3 sm:mt-1 text-[10px] sm:text-[12px] lg:text-lg">
-            <p>Or Continue With Email</p>
+          <div className="flex mt-3 sm:mt-2 gap-2 sm:gap-5 justify-start items-center">
+            <p className= "text-[10px] sm:text-sm">Or Continue With Email</p>
+            <div className="h-[1px] bg-[#C9C6C6] w-1/2 sm:w-[60%]"></div>
           </div>
           <div className="mt-1 lg:mt-4">
             <input
               type="text"
               placeholder="Enter Your name"
-              className="text-[10px] py-3 lg:text-lg px-2 w-full rounded-lg bg-[#EAEAEA]"
+              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none  rounded-lg bg-[#EAEAEA]"
             />
             <input
               type="email"
               placeholder="Enter Your Email Address"
-              className="text-[10px] py-3 lg:text-lg px-2 w-full rounded-lg mt-3 bg-[#EAEAEA]"
+              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
             />
             <input
               type="password"
               placeholder="Enter Your Password"
-              className="text-[10px] py-3 lg:text-lg px-2 w-full rounded-lg mt-3 bg-[#EAEAEA]"
+              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
             />
             <input
               type="text"
               placeholder="Enter Your invite Code (Optional)"
-              className="text-[10px] py-3 lg:text-lg px-2 w-full rounded-lg mt-3 bg-[#EAEAEA]"
+              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
             />
           </div>
           <div className="grid place-items-center mt-4">
-            <a
-              href="#"
+            <button
               className="bg-[#CA2981] text-white rounded-full py-2 px-24 text-[10px] lg:text-lg"
             >
               Sign up
-            </a>
+            </button>
           </div>
-          <p className="text-center my-2   text-[10px] lg:text-lg">
+          <p className="text-center my-2 font-semibold  text-[10px] lg:text-sm">
             Already on FanGram?
-            <a
+            <span
               href="#"
-              className="text-[#CA2981]"
+              className="text-[#CA2981] ml-1 underline cursor-pointer"
               onClick={() => {
                 setOpenSignupModal(false);
                 setOpenLoginModal(true);
               }}
             >
               Login
-            </a>
+            </span>
           </p>
         </div>
       </div>
