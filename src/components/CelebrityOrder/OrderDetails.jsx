@@ -198,7 +198,7 @@ function OrderDetails({setCurrentIndex}) {
         </div>
 
         {/* Payment Info Section */}
-        <div className='flex items-center justify-between pt-24'>
+        <div className='flex items-center justify-between pt-0'>
             <p className='text-xl font-semibold w-1/2'>Secure and fast payments via Card, UPI, Netbanking and more By continuing, you agree to our terms</p>
             <div className='flex flex-col items-center w-[30%]'>
                 <button className='bg-[#535353] rounded-3xl px-4 py-3 mb-1 w-full' onClick={()=> setCurrentIndex(1)}>Continue</button>

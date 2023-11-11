@@ -13,7 +13,7 @@ function CelebrityOrder() {
   return (
     <div className="bg-[#000] py-12 flex flex-col items-center overflow-hidden">
       {/* Steps Progress */}
-      <StepsProgress currentIndex={currentIndex} />
+      <StepsProgress currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
 
       <HorizontalCurl />
       <div className="w-full px-6 md:px-12 lg:px-24">

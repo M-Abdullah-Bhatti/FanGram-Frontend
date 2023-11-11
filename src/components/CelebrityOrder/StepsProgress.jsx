@@ -1,6 +1,6 @@
 import React from "react";
 
-function StepsProgress({ currentIndex }) {
+function StepsProgress({ currentIndex, setCurrentIndex }) {
   const firstDivStyles = {
     backgroundColor: currentIndex >= 0 ? "#D42978" : "",
   };
@@ -29,9 +29,9 @@ function StepsProgress({ currentIndex }) {
     <div className="flex justify-start items-center my-2 md:my-4 pb-4 md:pb-0">
       {/* First Div */}
       <div>
-        <div className="flex justify-start items-center mb-2">
+        <div className="flex justify-start items-center mb-2" onClick={() => setCurrentIndex(0)}>
           <div
-            className="bg-[#D42978] w-[40px] h-[40px] rounded-full"
+            className="bg-[#D42978] w-[40px] h-[40px] rounded-full cursor-pointer"
             style={firstDivStyles}
           ></div>
           <div
@@ -48,9 +48,9 @@ function StepsProgress({ currentIndex }) {
       </div>
       {/* Second Div */}
       <div>
-        <div className="flex justify-start items-center mb-2">
+        <div className="flex justify-start items-center mb-2" onClick={() => setCurrentIndex(1)}>
           <div
-            className="w-[40px] h-[40px] rounded-full"
+            className="w-[40px] h-[40px] rounded-full cursor-pointer"
             style={secondDivStyles}
           ></div>
           <div
@@ -67,9 +67,9 @@ function StepsProgress({ currentIndex }) {
       </div>
       {/* Third Div */}
       <div>
-        <div className="flex justify-start items-center mb-2">
+        <div className="flex justify-start items-center mb-2" onClick={() => setCurrentIndex(2)}>
           <div
-            className="w-[40px] h-[40px] rounded-full"
+            className="w-[40px] h-[40px] rounded-full cursor-pointer"
             style={thirdDivStyles}
           ></div>
         </div>

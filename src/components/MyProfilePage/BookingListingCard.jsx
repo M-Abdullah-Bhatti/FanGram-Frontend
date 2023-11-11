@@ -49,7 +49,7 @@ function BookingListingCard({booking}) {
                 <p className="lg:hidden text-[#D42978] underline mt-6 text-center">Need help?</p>
             </div>
             <div className='w-full flex items-center justify-center'>
-              <BookingStepsProgress currentIndex={2} />
+              <BookingStepsProgress currentIndex={0} />
             </div>
         </div>
     </div>
