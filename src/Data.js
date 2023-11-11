@@ -162,7 +162,13 @@ export const categories = [
   "More",
 ];
 
-export const budgets = ['₹25L+', '₹5L - 25L', '₹1L - 5L', '₹25K - 1L', 'Under ₹25K'];
+export const budgets = [
+  "₹25L+",
+  "₹5L - 25L",
+  "₹1L - 5L",
+  "₹25K - 1L",
+  "Under ₹25K",
+];
 
 export const ticketData = [
   {
@@ -785,5 +791,17 @@ export const collapsibledata = [
     heading: "Lorem ipsum is placeholder text commonly",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
+  },
+];
+
+// signup modal
+export const slidertext = [
+  {
+    text: "Nora Fatehi",
+  },
+
+  { text: "Vidya Balan" },
+  {
+    text: "Nora Fatehi",
   },
 ];

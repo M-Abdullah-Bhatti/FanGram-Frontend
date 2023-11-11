@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
-import { signupSliderImages } from "../../Data";
+import { signupSliderImages, slidertext } from "../../Data";
 import apiUrl from "../../utils/url";
 
 const SignUp = () => {
@@ -51,11 +51,20 @@ const SignUp = () => {
             {signupSliderImages.map((slide, index) => (
               <SwiperSlide key={index} className="absolute ">
                 <div className="w-[191px] h-[276px] sm:w-[250px]  lg:w-[397px] lg:h-[513px] ml-[60px] mt-[20px] sm:ml-[73px] sm:mt-[30px] lg:ml-0 lg:mt-0">
-                  <img src={slide.image} alt="" className="w-full h-full" />
+                  <img
+                    src={slide.image}
+                    alt=""
+                    className="w-full h-full rounded-xl"
+                  />
                 </div>
-                <p className="sm:px-4 sm:py-2 py-1 px-2 bg-[#806D67] rounded-full w-fit text-white  font-bold relative lg:bottom-[90px] lg:left-[140px] left-[120px] bottom-[38px] sm:left-[160px]  z-20 text-[9px] md:text-[12px] lg:text-[20px]">
-                  Nora Fatehi
-                </p>
+                {slidertext.map((item, index) => (
+                  <p
+                    className="sm:px-4 sm:py-2 py-1 px-2 bg-[#806D67] rounded-full w-fit text-white  font-bold relative lg:bottom-[90px] lg:left-[140px] left-[120px] bottom-[38px] sm:left-[160px]  z-20 text-[9px] md:text-[12px] lg:text-[20px]"
+                    key={index}
+                  >
+                    {item.text}
+                  </p>
+                ))}
               </SwiperSlide>
             ))}
           </Swiper>

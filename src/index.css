@@ -73,9 +73,7 @@ body {
   width: calc(100% - 20px);
 }
 
-.buttonClass {
-  background-color: #292929;
-}
+
 
 /* booking page */
 .bookingcommon {
@@ -91,6 +89,14 @@ body {
 
 .workCardWidth {
   width: calc(33% - 8px);
+}
+
+/* myProfile page */
+.countryButton
+{
+  background: #292929;
+padding: 0.7vmax;
+margin: 0.2vmax,
 }
 
 @media only screen and (max-width: 678px) {

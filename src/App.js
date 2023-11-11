@@ -5,12 +5,20 @@ import Header from "./components/Shared/Header";
 // import CelebrityPage from "./pages/CelebrityPage";
 import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
-import { BookingDetails, BusinessPromotion, CelebrityOrder, CelebrityPage, Home, MyProfile, OrderDelivery } from "./pages";
+import {
+  BookingDetails,
+  BusinessPromotion,
+  CelebrityOrder,
+  CelebrityPage,
+  Home,
+  MyProfile,
+  OrderDelivery,
+} from "./pages";
 
 function App() {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/celebrity" element={<CelebrityPage />} />
@@ -19,8 +27,9 @@ function App() {
         <Route path="/orderdelivery" element={<OrderDelivery />} />
         <Route path="/booking" element={<BookingDetails />} />
         <Route path="/promotion" element={<BusinessPromotion />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

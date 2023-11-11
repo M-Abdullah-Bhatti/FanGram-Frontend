@@ -103,9 +103,9 @@ const svgthree = {
 };
 const DeliveryComp = () => {
   return (
-    <div className="bg-black grid place-items-center h-screen">
-      <div className="w-[70vmax] h-[40vmax] flex items-center justify-center bg-white rounded-xl">
-        <div className="w-[45%] bg-[#D42978] h-full rounded-r-full flex items-center justify-center ">
+    <div className="bg-black grid place-items-center w-screen ">
+      <div className="w-[90%] sm:w-[70%] lg:w-[70vmax] lg:h-[40vmax] flex items-center justify-center flex-col lg:flex-row bg-white rounded-xl my-[50px] lg:my-0">
+        <div className="w-full lg:w-[45%] bg-[#D42978] h-full rounded-r-full flex items-center justify-center ">
           <div className="bg-[#D9D9D9] h-[25vmax] w-[18vmax] rounded-lg flex items-center justify-center relative">
             <div className="bg-[#989898] rounded-full w-fit p-4 ">
               {svg.icon}
@@ -113,7 +113,7 @@ const DeliveryComp = () => {
             <div className="absolute top-2 right-2">{svgtwo.icon}</div>
           </div>
         </div>
-        <div className="w-[55%] text-black h-full text-center pt-[12vmax] px-[3vmax]  box-border bg-white rounded-xl">
+        <div className="w-full px-3 pt-3  lg:w-[55%] text-black h-full text-start lg:text-center lg:pt-[12vmax] lg:px-[3vmax]  box-border bg-white rounded-xl">
           <h1 className="font-bold text-2xl">Sunny Leone</h1>
           <p className="text-sm my-2">Script</p>
           <p className="mb-4 text-sm font-semibold">
