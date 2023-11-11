@@ -73,7 +73,7 @@ const Login = () => {
               Login with FanGram
             </h2>
             <div className="flex mt-3 sm:mt-1 lg:mt-6">
-              <div className="bg-[#EAEAEA] p-2 rounded-full w-[30px] h-[30px] lg:w-[60px] lg:h-[60px] flex items-center justify-center">
+              <div className="bg-[#EAEAEA] p-2 rounded-full w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center">
                 <svg
                   width="24"
                   height="24"
@@ -95,7 +95,7 @@ const Login = () => {
                 </svg>
               </div>
               <div
-                className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[60px] lg:h-[60px] flex items-center justify-center "
+                className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center "
                 onClick={handleGoogleLogin}
               >
                 <svg
@@ -138,7 +138,7 @@ const Login = () => {
                   </defs>
                 </svg>
               </div>
-              <div className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[60px] lg:h-[60px] flex items-center justify-center">
+              <div className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center">
                 <svg
                   className="w-[12px] h-[12px] sm:w-[24px] sm:h-[24px]"
                   viewBox="0 0 10 10"
@@ -159,14 +159,15 @@ const Login = () => {
                 </svg>
               </div>
             </div>
-            <div className="flex mt-2 mb-4 text-[10px] lg:text-lg">
-              <p>Or Continue With Email</p>
-            </div>
+           <div className="flex mt-3 sm:mt-2 gap-2 sm:gap-5 justify-start items-center">
+            <p className= "text-[10px] sm:text-sm">Or Continue With Email</p>
+            <div className="h-[1px] bg-[#C9C6C6] w-1/2 sm:w-[60%]"></div>
+          </div>
             <div className="mt-4">
               <input
                 type="text"
                 placeholder="Enter Your name"
-                className="text-[10px] lg:text-lg py-3 px-2 w-full rounded-lg bg-[#EAEAEA]"
+                className="text-[10px] lg:text-base px-2 md:px-4 w-full py-3 rounded-lg outline-none bg-[#EAEAEA]"
               />
               <input
                 type="email"
@@ -174,7 +175,7 @@ const Login = () => {
                 required
                 onChange={handleInputChange}
                 placeholder="Enter Your Email Address"
-                className="text-[10px] lg:text-lg py-3 px-2 w-full rounded-lg mt-3 bg-[#EAEAEA]"
+                className="text-[10px]  py-3 lg:text-base px-2 md:px-4 w-full rounded-lg outline-none mt-3 bg-[#EAEAEA]"
               />
             </div>
             <div className="grid place-items-center mt-6">
@@ -185,11 +186,11 @@ const Login = () => {
                 Login
               </button>
             </div>
-            <p className="text-[10px] lg:text-lg text-center my-4 lg:my-10">
+            <p className="text-center my-4 sm:mt-7 font-semibold  text-[10px] lg:text-sm">
               Not on FanGram?
               <Link
                 to="#"
-                className="text-[#CA2981]"
+                className="text-[#CA2981] ml-1 underline cursor-pointer"
                 onClick={() => {
                   setOpenLoginModal(false);
                   setOpenSignupModal(true);
@@ -198,6 +199,11 @@ const Login = () => {
                 Sign up
               </Link>
             </p>
+
+           
+
+
+
           </div>
         </div>
       </div>
