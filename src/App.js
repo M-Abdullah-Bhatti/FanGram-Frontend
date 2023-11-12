@@ -28,7 +28,7 @@ function App() {
         <Route path="/orderdelivery" element={<OrderDelivery />} />
         {/* <Route path="/booking" element={<BookingDetails />} /> */}
         <Route path="/promotion" element={<BusinessPromotion />} />
-        <Route path="/signup" element={<SignUp />} />
+        {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/search" element={<SearchCelebrity />} />
       </Routes>
       <Footer />

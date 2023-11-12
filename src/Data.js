@@ -163,11 +163,11 @@ export const categories = [
 ];
 
 export const budgets = [
-  "₹25L+",
-  "₹5L - 25L",
-  "₹1L - 5L",
-  "₹25K - 1L",
-  "Under ₹25K",
+  "Rs 25L+",
+  "Rs 5L - 25L",
+  "Rs 1L - 5L",
+  "Rs 25K - 1L",
+  "Under Rs 25K",
 ];
 
 export const ticketData = [
