@@ -18,12 +18,50 @@ import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
 import { signupSliderImages } from "../../Data";
 import apiUrl from "../../utils/url";
+import { toast } from "react-toastify";
+import { useUserSignup } from "../../hooks/auth-hooks";
+import RequestLoader from "../Shared/RequestLoader";
 
 const SignUp = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
 
+  const [userData, setUserData] = useState({});
+
   const handleGoogleLogin = async () => {
     window.open(`${apiUrl}/auth/google`, "_self");
+  };
+
+  
+  const { mutate: addMutate, isLoading } = useUserSignup(
+    JSON.stringify(userData)
+  );
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    addMutate(
+      {},
+      {
+        onSuccess: (response) => {
+          if (response?.data?.status === true) {
+            toast.success(response?.data?.message);
+            setOpenSignupModal(false)
+
+          }
+          if (response?.data?.status === false) {
+            toast.error(response?.data?.message);
+          }
+        },
+      }
+    );
   };
 
   return (
@@ -172,33 +210,56 @@ const SignUp = () => {
             <p className="text-[10px] sm:text-sm">Or Continue With Email</p>
             <div className="h-[1px] bg-[#C9C6C6] w-1/2 sm:w-[60%]"></div>
           </div>
-          <div className="mt-1 lg:mt-4">
+
+          <form onSubmit={handleSubmit}>
+
+            
+
+                  <div className="mt-1 lg:mt-4">
             <input
               type="text"
               placeholder="Enter Your name"
+                name="username"
+                required
+                onChange={handleInputChange}
               className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none  rounded-lg bg-[#EAEAEA]"
             />
             <input
               type="email"
               placeholder="Enter Your Email Address"
+                name="email"
+                required
+                onChange={handleInputChange}
               className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
             />
             <input
               type="password"
               placeholder="Enter Your Password"
+               name="password"
+                required
+                onChange={handleInputChange}
               className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
             />
             <input
               type="text"
               placeholder="Enter Your invite Code (Optional)"
+               name="inviteCode"
+                required
+                onChange={handleInputChange}
               className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
             />
           </div>
           <div className="grid place-items-center mt-4">
-            <button className="bg-[#CA2981] text-white rounded-full py-2 px-24 text-[10px] lg:text-lg">
-              Sign up
+            <button type="submit" className="bg-[#CA2981] text-white rounded-full py-2 px-24 text-[10px] lg:text-lg">
+              {
+                isLoading ? <RequestLoader />  : "Sign up"
+              }
             </button>
           </div>
+
+          </form>
+        
+
           <p className="text-center my-2 font-semibold  text-[10px] lg:text-sm">
             Already on FanGram?
             <span

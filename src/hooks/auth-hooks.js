@@ -9,7 +9,7 @@ const useUserSignup = (userData) => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries("signup");
+        queryClient.invalidateQueries("register");
       },
     }
   );

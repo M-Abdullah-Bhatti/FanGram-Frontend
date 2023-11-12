@@ -9,7 +9,7 @@ class AuthService {
 
   async signUpUser(userData) {
     console.log("Hello");
-    const res = await axios.post(`${apiUrl}/api/auth/signup`, userData, {
+    const res = await axios.post(`${apiUrl}/api/user/register`, userData, {
       headers: {
         "Content-Type": "application/json",
       },
