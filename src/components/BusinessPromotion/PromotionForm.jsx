@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { budgets } from "../../Data";
 import { useSubmitPromotionForm } from "../../hooks/business-hook";
 import { toast } from "react-toastify";
-import { RotatingLines } from "react-loader-spinner";
+import RequestLoader from "../Shared/RequestLoader";
 
 function PromotionForm() {
   const [selectedBudget, setSelectedBudget] = useState("");
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
 
   const { mutate: addMutate, isLoading } = useSubmitPromotionForm(
     JSON.stringify(data)
@@ -23,9 +22,6 @@ function PromotionForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
-
-    console.log("data::: ", data);
 
     addMutate(
       {},
@@ -37,11 +33,9 @@ function PromotionForm() {
             setData({});
             // Reset selected budget if necessary
             setSelectedBudget("");
-            setLoading(false);
           }
           if (response?.data?.status === false) {
             toast.error(response?.data?.message);
-            setLoading(false);
           }
         },
       }
@@ -217,19 +211,7 @@ function PromotionForm() {
 
         <div className="flex items-center justify-center w-full">
           <button className="bg-[#D84388] text-white rounded-3xl text-center px-4 py-3 mb-1 w-full md:w-[300px]">
-            {loading ? (
-              <div className="flex items-center justify-center">
-                <RotatingLines
-                  strokeColor="white"
-                  strokeWidth="5"
-                  animationDuration="0.75"
-                  width="25"
-                  visible={true}
-                />
-              </div>
-            ) : (
-              "Submit"
-            )}
+            {isLoading ? <RequestLoader /> : "Submit"}
           </button>
         </div>
       </form>
