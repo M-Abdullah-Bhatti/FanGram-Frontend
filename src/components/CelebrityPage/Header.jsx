@@ -7,20 +7,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
 
-const tags = [
-  "Celebrity Of the Week",
-  "Model",
-  "Valentine's Days Gifts",
-  "Baby Doll",
-  "TV Star",
-];
-
-function Header() {
+function Header({ data, loading }) {
   return (
     <div className="flex flex-col lg:hidden justify-center bg-[#161616] rounded-xl gap-4 overflow-hidden px-2 py-4">
       <div className="flex items-center justify-center gap-2 md:gap-4">
         <img src="/images/flag.svg" alt="flag" />
-        <p className="text-xs md:text-base">India’s largest celebrity engagement platform</p>
+        <p className="text-xs md:text-base">
+          India’s largest celebrity engagement platform
+        </p>
         <div className="bg-[#FCAE4B] w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full">
           <img src="/images/heart.png" alt="heart" className="max-w-[60%]" />
         </div>
@@ -35,30 +29,47 @@ function Header() {
           }}
         >
           <img
-            src="/images/sunny.png"
+            src={data?.celebrityImage?.url}
             alt="celebrity"
             className="w-full h-full object-fill"
           />
         </div>
-        
+
         <div className="flex flex-col gap-2">
           {/* Name */}
           <div className="flex items-center gap-1 md:gap-2">
-            <h1 className="text-sm md:text-2xl font-extrabold">Sunny Leone</h1>
-            <img src="/images/verification.svg" alt="verification badge" className='w-[20px] md:w-[30px]' />
+            <h1 className="text-sm md:text-2xl font-extrabold">
+              {loading ? "Loading..." : data?.name}
+            </h1>
+            <img
+              src="/images/verification.svg"
+              alt="verification badge"
+              className="w-[20px] md:w-[30px]"
+            />
             <span className="flex items-center gap-0.5 md:gap-2 border border-[#fff] px-2 py-1 rounded-3xl">
-              <img src="/images/feedback__star.png" alt="star" className="w-[10px] h-[10px] md:w-[25px] md:h-[25px]" />
-              <span className="text-[10px] md:text-base">4.7 (12)</span>
+              <img
+                src="/images/feedback__star.png"
+                alt="star"
+                className="w-[10px] h-[10px] md:w-[25px] md:h-[25px]"
+              />
+              <span className="text-[10px] md:text-base">
+                {" "}
+                {loading ? "Loading..." : data?.ratings} (12)
+              </span>
             </span>
           </div>
 
           <p className="py-1 text-xs md:text-xl font-medium">
-            Responds in <b className="text-[#D42978] font-bold">5 Days</b>
+            Responds in{" "}
+            <b className="text-[#D42978] font-bold">
+              {" "}
+              {loading ? "Loading..." : data?.responseInDays}
+            </b>
           </p>
-          
+
           {/* Awards */}
           <div className="flex flex-wrap">
-            {tags.map((tag) => (
+            {data?.tags.map((tag) => (
               <span className="text-[10px] md:text-xs font-normal px-2 md:px-4 py-1 md:py-2 bg-[#292929] rounded-3xl my-1 lg:my-2 mr-1 md:mr-2 lg:mr-4">
                 {tag}
               </span>
@@ -70,12 +81,12 @@ function Header() {
       <div>
         {/* Buttons */}
         <div className="w-full flex items-center justify-center flex-wrap gap-2 md:gap-4">
-            <span className="flex items-center bg-[#D42978] font-medium text-xs md:text-base rounded-3xl px-4 py-2 cursor-pointer">
-              <Link to="/order">
-                Book Video @ <b>₹9999</b>
-                <span className="line-through ml-2 text-xs">10,999</span>
-              </Link>
-            </span>
+          <span className="flex items-center bg-[#D42978] font-medium text-xs md:text-base rounded-3xl px-4 py-2 cursor-pointer">
+            <Link to="/order">
+              Book Video @ <b> {loading ? "Loading..." : data?.videoPrice} </b>
+              <span className="line-through ml-2 text-xs">10,999</span>
+            </Link>
+          </span>
           <div
             class="flex w-fit text-xs md:text-base items-center border border-[#D42978] cursor-pointer"
             style={{
@@ -91,7 +102,7 @@ function Header() {
               }}
             >
               <p>Starts from</p>
-              <p>&#8377; 39,980</p>
+              <p>&#8377; {loading ? "Loading..." : data?.meetAndGreetPrice} </p>
             </span>
           </div>
           <span className="flex items-center border border-[#D42978] font-medium text-xs md:text-base rounded-3xl px-4 py-2 cursor-pointer my-4">
@@ -103,11 +114,19 @@ function Header() {
         <div className="flex items-center justify-center gap-2 md:gap-4 text-[#999999]">
           <span className="flex items-center text-[10px] md:text-sm">
             Secured & safe payments
-            <img src="/images/secure.svg" alt="" className="ml-1 md:ml-2 w-[12px] md:w-[16px]" />
+            <img
+              src="/images/secure.svg"
+              alt=""
+              className="ml-1 md:ml-2 w-[12px] md:w-[16px]"
+            />
           </span>
           <span className="flex items-center text-[10px] md:text-sm">
             Need help? Text Us
-            <img src="/images/help.svg" alt="" className="ml-1 md:ml-2 w-[13px] md:w-[18px]" />
+            <img
+              src="/images/help.svg"
+              alt=""
+              className="ml-1 md:ml-2 w-[13px] md:w-[18px]"
+            />
           </span>
         </div>
 
@@ -141,7 +160,7 @@ function Header() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

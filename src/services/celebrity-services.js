@@ -23,6 +23,27 @@ class CelebrityService {
   }
 
 
+   /**
+   * getAllFeaturedCelebrities
+   * @returns
+   */
+  async getCelebrityDetails(id) {
+    const {data} = await axios.get(`${apiUrl}/api/celebrity/details/${id}`);
+    return data?.data
+  }
+
+
+
+   /**
+   * getCelebrityVideo
+   * @returns
+   */
+  async getCelebrityVideos(id) {
+    const {data} = await axios.get(`${apiUrl}/api/video/celebrity/${id}`);
+    return data?.data
+  }
+
+
 
   
   

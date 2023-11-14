@@ -31,9 +31,6 @@ function FeaturedCelebrity() {
     isLoading: featuredCelebritiesLoading,
   } = useGetAllFeaturedCelebrities();
 
-  console.log("featuredCelebritiesData");
-  console.log(featuredCelebritiesData);
-
   return (
     <div className="w-full bg-black text-white py-10">
       <div className="py-4 px-8 md:px-16">
