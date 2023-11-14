@@ -38,23 +38,22 @@ function FeaturedCelebrity() {
           <h2 className="text-3xl md:text-4xl font-semibold">
             Featured Celebrity
           </h2>
-         { 
-          featuredCelebritiesData.length > 4 &&
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={scrollLeft}
-              className="hidden md:flex items-center justify-center w-[50px] h-[50px] border border-[#D42978] rounded-full transition duration-300"
-            >
-              <img src="/images/back.svg" alt="back" />
-            </button>
-            <button
-              onClick={scrollRight}
-              className="w-[50px] h-[50px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
-            >
-              <img src="/images/forward.svg" alt="forward" />
-            </button>
-          </div>
-          }
+          {featuredCelebritiesData && featuredCelebritiesData.length > 4 && (
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={scrollLeft}
+                className="hidden md:flex items-center justify-center w-[50px] h-[50px] border border-[#D42978] rounded-full transition duration-300"
+              >
+                <img src="/images/back.svg" alt="back" />
+              </button>
+              <button
+                onClick={scrollRight}
+                className="w-[50px] h-[50px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
+              >
+                <img src="/images/forward.svg" alt="forward" />
+              </button>
+            </div>
+          )}
         </div>
         <p className="text-sm md:text-lg pr-8 md:pr-0">
           Get personalised video messages from your favourite celebrity! What's
@@ -93,7 +92,9 @@ function FeaturedCelebrity() {
             <SwiperSlide key={index}>
               <div className="flex gap-5 justify-center">
                 {featuredCelebritiesLoading ? (
-                  <p className="text-xl text-[#fff] font-semibold">Loading ...</p>
+                  <p className="text-xl text-[#fff] font-semibold">
+                    Loading ...
+                  </p>
                 ) : (
                   <FeaturedCelebrityCard celebrity={slide} />
                 )}
