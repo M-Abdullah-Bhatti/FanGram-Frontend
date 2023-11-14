@@ -16,8 +16,7 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
   const [editedMessage, setEditedMessage] = useState("Hi");
 
   const { orderData, setOrderData } = useStateContext();
-  const [bookingTo, setBookingTo] = useState({ name: "", gender: "" });
-  const [bookingBy, setBookingBy] = useState({ name: "", gender: "" });
+  //   const [charLimit, setCharLimit] = useState(132);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -49,6 +48,17 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
     console.log("orderData: ", orderData);
     setCurrentIndex(1);
   };
+
+  useEffect(() => {
+    console.log("customMessage.length: ", orderData?.customMessage.length);
+    setSelectedOcassion(orderData?.ocassion);
+    setLanguage(orderData?.language);
+  }, []);
+
+  //   useEffect(() => {
+  //     const currentLength = orderData?.customMessage?.length || 0;
+  //     setCharLimit(charLimit - currentLength);
+  //   }, [orderData?.customMessage]);
 
   return (
     <div className="text-white pb-12">
@@ -207,7 +217,13 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
                   backgroundColor:
                     selectedOcassion === ocassion ? "#D42978" : "#292929",
                 }}
-                onClick={() => setSelectedOcassion(ocassion)}
+                onClick={() => {
+                  setOrderData({
+                    ...orderData,
+                    ocassion: ocassion,
+                  });
+                  setSelectedOcassion(ocassion);
+                }}
               >
                 {ocassion}
               </span>
@@ -232,7 +248,13 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
                   backgroundColor:
                     Language === language ? "#D42978" : "#292929",
                 }}
-                onClick={() => setLanguage(Language)}
+                onClick={() => {
+                  setOrderData({
+                    ...orderData,
+                    language: Language,
+                  });
+                  setLanguage(Language);
+                }}
               >
                 {Language}
               </span>
@@ -249,8 +271,14 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
             {isEditing ? (
               <textarea
                 className="w-full border text-black rounded p-2"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                value={orderData?.customMessage || ""}
+                // onChange={(e) => {
+                //   console.log("-", e.target.value.length);
+                //   setOrderData({
+                //     ...orderData,
+                //     customMessage: e.target.value,
+                //   });
+                // }}
                 style={{ minHeight: "220px" }}
               />
             ) : (
@@ -258,7 +286,9 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
                 className="text-white text-lg overflow-y-scroll no-scrollbar"
                 style={{ height: "220px" }}
               >
-                {message}
+                {orderData?.customMessage
+                  ? orderData?.customMessage
+                  : "Type message here..."}
               </p>
             )}
           </div>

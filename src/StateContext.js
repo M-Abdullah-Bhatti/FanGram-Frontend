@@ -10,6 +10,9 @@ export function StateProvider({ children }) {
   const [orderData, setOrderData] = useState({
     bookingTo: { name: "", gender: "" },
     bookingBy: { name: "", gender: "" },
+    occasion: "",
+    language: "",
+    customMessage: "",
   });
 
   return (
