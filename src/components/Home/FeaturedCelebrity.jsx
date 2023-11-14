@@ -41,6 +41,8 @@ function FeaturedCelebrity() {
           <h2 className="text-3xl md:text-4xl font-semibold">
             Featured Celebrity
           </h2>
+         { 
+          featuredCelebritiesData.length > 4 &&
           <div className="flex items-center space-x-4">
             <button
               onClick={scrollLeft}
@@ -55,6 +57,7 @@ function FeaturedCelebrity() {
               <img src="/images/forward.svg" alt="forward" />
             </button>
           </div>
+          }
         </div>
         <p className="text-sm md:text-lg pr-8 md:pr-0">
           Get personalised video messages from your favourite celebrity! What's
@@ -104,7 +107,7 @@ function FeaturedCelebrity() {
         </Swiper>
       </div>
 
-      <div
+      {/* <div
         className="hidden md:flex overflow-x-auto mt-12 no-scrollbar"
         ref={secondaryScrollContainerRef}
         style={{ scrollBehavior: "smooth" }}
@@ -114,7 +117,7 @@ function FeaturedCelebrity() {
             <FeaturedCelebrityCard celebrity={card} key={index} />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
