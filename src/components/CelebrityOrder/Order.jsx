@@ -1,12 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Extras from "./Extras";
 import { extras, ocassions, initialMessages } from "../../Data";
-// import MessageCard from './MessageCard';
-// import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
-// import { Swiper, SwiperSlide } from "swiper/react";
+import { useStateContext } from "../../StateContext";
 
-// // Import Swiper styles
-// import 'swiper/css';
 const Options = ["He/Him", "She/Her", "Other"];
 const languages = ["English", "اردو"];
 
@@ -19,7 +15,9 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedMessage, setEditedMessage] = useState("Hi");
 
-  console.log("celebrityDetailsData: ", celebrityDetailsData);
+  const { orderData, setOrderData } = useStateContext();
+  const [bookingTo, setBookingTo] = useState({ name: "", gender: "" });
+  const [bookingBy, setBookingBy] = useState({ name: "", gender: "" });
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -27,6 +25,29 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
 
   const handleSave = () => {
     setIsEditing(false);
+  };
+
+  const handleRecipientChange = (event) => {
+    setOrderData({ ...orderData, recipient: event.target.value });
+  };
+
+  //   bookingTo, bookingBy -> person
+  const handleSelect = (gender, personType) => {
+    if (personType === "bookingTo") {
+      setOrderData({
+        ...orderData,
+        bookingTo: { ...orderData.bookingTo, gender },
+      });
+    } else if (personType === "bookingBy") {
+      setOrderData({
+        ...orderData,
+        bookingBy: { ...orderData.bookingBy, gender },
+      });
+    }
+  };
+  const continueToConfirmation = () => {
+    console.log("orderData: ", orderData);
+    setCurrentIndex(1);
   };
 
   return (
@@ -43,6 +64,9 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           <span className="flex items-center gap-2 bg-[#D42978] w-fit px-4 py-2 rounded-3xl">
             <input
               type="radio"
+              value="Someone Else"
+              checked={orderData.recipient === "Someone Else"}
+              onChange={handleRecipientChange}
               className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]"
               style={{ accentColor: "white" }}
             />
@@ -51,6 +75,9 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           <span className="flex items-center gap-2 bg-[#D42978] w-fit px-4 py-2 rounded-3xl">
             <input
               type="radio"
+              value="My Self"
+              checked={orderData.recipient === "My Self"}
+              onChange={handleRecipientChange}
               className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]"
               style={{ accentColor: "white" }}
             />
@@ -58,48 +85,108 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           </span>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4">
+        {orderData?.recipient == "Someone Else" ||
+        orderData?.recipient === undefined ? (
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="flex flex-col rounded w-full">
+              <label className="mb-2">
+                To <span>(First Name)</span>
+              </label>
+              <input
+                className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded"
+                type="text"
+                placeholder="Name Of the Receiver"
+                value={orderData?.bookingTo?.name}
+                onChange={(e) => {
+                  setOrderData({
+                    ...orderData,
+                    bookingTo: { ...orderData.bookingTo, name: e.target.value },
+                  });
+                }}
+              />
+              <div className="flex flex-wrap">
+                {Options.map((item, index) => (
+                  <span
+                    key={index}
+                    className={`text-sm md:text-base font-normal px-4 py-2 rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer ${
+                      orderData.bookingTo.gender === item
+                        ? "bg-[#D42978]"
+                        : "bg-[#292929]"
+                    }`}
+                    onClick={() => handleSelect(item, "bookingTo")}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col rounded w-full">
+              <label className="mb-2">
+                From <span>(First Name)</span>
+              </label>
+              <input
+                className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded"
+                type="text"
+                placeholder="John Doe"
+                value={orderData?.bookingBy?.name}
+                onChange={(e) => {
+                  setOrderData({
+                    ...orderData,
+                    bookingBy: { ...orderData.bookingBy, name: e.target.value },
+                  });
+                }}
+              />
+              <div className="flex flex-wrap">
+                {Options.map((item, index) => (
+                  <span
+                    key={index}
+                    className={`text-sm md:text-base font-normal px-4 py-2 rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer ${
+                      orderData.bookingBy.gender === item
+                        ? "bg-[#D42978]"
+                        : "bg-[#292929]"
+                    }`}
+                    onClick={() => handleSelect(item, "bookingBy")}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
           <div className="flex flex-col rounded w-full">
             <label className="mb-2">
-              To <span>(First Name)</span>
+              <span>(First Name)</span>
             </label>
             <input
               className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded"
               type="text"
               placeholder="Name Of the Receiver"
+              value={orderData?.bookingBy?.name}
+              onChange={(e) => {
+                setOrderData({
+                  ...orderData,
+                  bookingBy: { ...orderData.bookingBy, name: e.target.value },
+                });
+              }}
             />
             <div className="flex flex-wrap">
-              {Options.map((tag, index) => (
+              {Options.map((item, index) => (
                 <span
                   key={index}
-                  className="text-sm md:text-base font-normal px-4 py-2 bg-[#292929] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer"
+                  className={`text-sm md:text-base font-normal px-4 py-2 rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer ${
+                    orderData.bookingBy.gender === item
+                      ? "bg-[#D42978]"
+                      : "bg-[#292929]"
+                  }`}
+                  onClick={() => handleSelect(item, "bookingBy")}
                 >
-                  {tag}
+                  {item}
                 </span>
               ))}
             </div>
           </div>
-          <div className="flex flex-col rounded w-full">
-            <label className="mb-2">
-              From <span>(First Name)</span>
-            </label>
-            <input
-              className="border border-[#6D6D6D] bg-[#292929] px-4 py-2 rounded"
-              type="text"
-              placeholder="John Doe"
-            />
-            <div className="flex flex-wrap">
-              {Options.map((tag, index) => (
-                <span
-                  key={index}
-                  className="text-sm md:text-base font-normal px-4 py-2 bg-[#D42978] rounded-3xl my-2 lg:my-4 mr-3 cursor-pointer"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* Ocassion */}
@@ -207,57 +294,6 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
             )}
           </div>
         </div>
-        {/* <div className="flex w-full py-3 md:space-x-6 overflow-hidden">
-                <div className="flex items-center">
-                    <button
-                        onClick={scrollLeft}
-                        className="hidden md:flex w-[40px] h-[40px] border border-[#D42978] items-center justify-center rounded-full transition duration-300"
-                    >
-                        <img src="/images/back.svg" alt="back" />
-                    </button>
-                </div>
-
-                <div className="hidden md:flex w-full overflow-x-scroll no-scrollbar" ref={scrollContainerRef} style={{ scrollBehavior: "smooth" }}>
-                    <div className="flex space-x-4 py-4 lg:w-[310px]">
-                        {messages.map((message, index) => (
-                            <MessageCard
-                                message='Hello kesy ho yaar'
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="md:hidden py-2 w-full flex justify-center items-center hero__caurosel  ">
-                    <Swiper
-                        modules={[Navigation, Pagination, A11y, Autoplay]}
-                        slidesPerView={1}
-                        spaceBetween={1}
-                        slidesPerGroup={1}
-                        autoplay={true}
-                        pagination={true}
-                        slideActiveClass="activeSlide"
-                        className="swiper-container"
-                    >
-                        {messages.map((message, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="flex gap-5 justify-center">
-                                <MessageCard message={message} onEdit={(editedMessage) => handleEditMessage(index, editedMessage)} />
-                            </div>
-                            <div className="h-10"></div>
-                        </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-
-                <div className="flex items-center">
-                    <button
-                    onClick={scrollRight}
-                    className="w-[40px] h-[40px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
-                    >
-                    <img src="/images/forward.svg" alt="forward" />
-                    </button>
-                </div>
-            </div> */}
 
         <div className="md:px-14">
           <p className="text-xs md:text-base mt-1 text-[#D42978]">
@@ -356,7 +392,7 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
         <div className="flex flex-col items-center w-full md:w-[30%]">
           <button
             className="bg-[#535353] rounded-3xl px-4 py-3 mb-2 w-full"
-            onClick={() => setCurrentIndex(1)}
+            onClick={continueToConfirmation}
           >
             Continue
           </button>
