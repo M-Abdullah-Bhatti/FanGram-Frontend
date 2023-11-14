@@ -70,7 +70,7 @@ function FeaturedCelebrity() {
           <p className="text-xl text-[#fff] font-semibold">Loading ...</p>
         ) : (
           <div className="flex space-x-4 px-8 py-4">
-            {featuredCelebritiesData.map((card, index) => (
+            {featuredCelebritiesData?.map((card, index) => (
               <FeaturedCelebrityCard celebrity={card} key={index} />
             ))}
           </div>
@@ -89,10 +89,14 @@ function FeaturedCelebrity() {
           slideActiveClass="activeSlide"
           className="swiper-container"
         >
-          {featuredCelebrityData.map((slide, index) => (
+          {featuredCelebritiesData?.map((slide, index) => (
             <SwiperSlide key={index}>
               <div className="flex gap-5 justify-center">
-                <FeaturedCelebrityCard celebrity={slide} />
+                {featuredCelebritiesLoading ? (
+                  <p className="text-xl text-[#fff] font-semibold">Loading ...</p>
+                ) : (
+                  <FeaturedCelebrityCard celebrity={slide} />
+                )}
               </div>
               <div className="h-10"></div>
             </SwiperSlide>
@@ -106,7 +110,7 @@ function FeaturedCelebrity() {
         style={{ scrollBehavior: "smooth" }}
       >
         <div className="flex space-x-4 px-8 py-4">
-          {featuredCelebrityData.map((card, index) => (
+          {featuredCelebritiesData?.map((card, index) => (
             <FeaturedCelebrityCard celebrity={card} key={index} />
           ))}
         </div>
