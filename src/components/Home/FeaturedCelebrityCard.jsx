@@ -8,7 +8,7 @@ function FeaturedCelebrityCard({ celebrity }) {
         <img
           src={celebrity?.celebrityImage?.url}
           alt="celebrity"
-          className="object-fit w-full h-full"
+          className="object-fill w-full h-full"
         />
         <div className="absolute top-4 right-4 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
           <img src="/images/heart.png" alt="heart" />
@@ -24,11 +24,10 @@ function FeaturedCelebrityCard({ celebrity }) {
             {celebrity?.name}
           </h3>
           <div className="flex flex-wrap mb-2">
-            {celebrity?.tags.map((tag) => (
+            {celebrity?.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="text-gray-700 py-1 px-1 md:px-2 rounded-full text-sm md:text-xl mr-1 md:mr-2 mb-1 text-white"
-                style={{ fontFamily: "Satisfy" }}
+                className="font-satisfy text-gray-700 py-1 px-1 md:px-2 rounded-full text-sm md:text-lg mr-1 md:mr-2 mb-1 text-white"
               >
                 #{tag}
               </span>

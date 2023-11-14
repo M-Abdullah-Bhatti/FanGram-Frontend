@@ -1,24 +1,43 @@
-import React from "react";
+import React, {useState} from "react";
 import { myProfilePageIcons } from "../../Data";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useUpdateUser } from "../../hooks/profile-hooks";
 
 const MyProfileForm = () => {
-  const CustomDropdown = () => (
-    <svg
-      width="900"
-      height="913"
-      viewBox="0 0 900 913"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="900" height="913" rx="30" fill="#202020" />
-    </svg>
-  );
+
+  const updateUserMutation = useUpdateUser();
+
+  const [userData, setUserData] = useState({
+    name: "",
+    gender: "male",
+    dob: "",
+    phone: "",
+    email: "",
+  });
+
+  const handleInputChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlePhoneChange = (value, data, event) => {
+    setUserData({
+      ...userData,
+      phone: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUserMutation.mutate(userData);
+  };
 
   return (
     <div className="mt-[30px] lg:m-[50px] grid place-items-center">
-      <form action="" className="w-[100%] lg:w-[80%]  bg-[#292929] rounded-2xl">
+      <form onSubmit={handleSubmit} className="w-[100%] lg:w-[80%]  bg-[#292929] rounded-2xl">
         <div className="mt-[100px] lg:mt-[184px] grid place-items-center">
           <div className="w-fit bg-[#D42978] p-2 rounded-full">
             {myProfilePageIcons.icon}
@@ -32,6 +51,8 @@ const MyProfileForm = () => {
             id="name"
             name="name"
             required
+            value={userData.name}
+            onChange={handleInputChange}
             className="form__elements"
             placeholder="Enter Your Name"
           />
@@ -43,6 +64,8 @@ const MyProfileForm = () => {
             id="gender"
             name="gender"
             required
+            value={userData.gender}
+            onChange={handleInputChange}
             className="text-[#FFFFFFA9] form__elements"
           >
             <option value="male">Male</option>
@@ -58,6 +81,8 @@ const MyProfileForm = () => {
             id="dob"
             name="dob"
             required
+            value={userData.dob}
+            onChange={handleInputChange}
             className="text-[#FFFFFFA9] form__elements"
           />
           <br></br>
@@ -85,6 +110,8 @@ const MyProfileForm = () => {
               background: "white",
             }}
             prefix="+"
+            value={userData.phone}
+            onChange={handlePhoneChange}
           />
           <br></br>
           <br></br>
@@ -96,6 +123,8 @@ const MyProfileForm = () => {
             id="email"
             name="email"
             required
+            value={userData.email}
+            onChange={handleInputChange}
             className="form__elements"
             placeholder="Enter Your Email id"
           />

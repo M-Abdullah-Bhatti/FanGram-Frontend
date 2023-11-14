@@ -30,7 +30,7 @@ function BookingStepsProgress({currentIndex}) {
             <div className="bg-[#D42978] w-[30px] md:w-[40px] h-[30px] md:h-[40px] rounded-full" style={firstDivStyles}></div>
             <div className="w-[60px] lg:w-[250px] h-[2px]" style={lineStyles}></div>
           </div>
-          <span className="text-xs lg:text-base ml-[-30px]" style={{color: currentIndex >= 0 ? '#008115' : '#FFFFFF'}}>Order Placed</span>
+          <span className="text-xs lg:text-base ml-[-24px]" style={{color: currentIndex >= 0 ? '#008115' : '#FFFFFF'}}>Order Placed</span>
         </div>
         {/* Second Div */}
         <div>
