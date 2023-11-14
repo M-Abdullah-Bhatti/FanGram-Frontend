@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CelebrityHeader from "../components/CelebrityPage/CelebrityHeader";
 import Offers from "../components/CelebrityPage/Offers";
 import RecentViewed from "../components/CelebrityPage/RecentViewed";
@@ -7,13 +7,30 @@ import FAQS from "../components/Shared/FAQs";
 import DemoVideos from "../components/CelebrityPage/DemoVideos";
 import DiscoverMore from "../components/Shared/DiscoverMore";
 import Header from "../components/CelebrityPage/Header";
+import {
+  useGetCelebrityDetails,
+  useGetCelebrityVideos,
+} from "../hooks/celebrity-hooks";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CelebrityPage() {
+  const params = useParams();
+  const navigate = useNavigate();
+
+  const { data: celebrityDetailsData, isLoading: celebrityDetailsLoading } =
+    useGetCelebrityDetails(params?.id);
+
+  const { data: celebrityVideos, isLoading: celebrityVideosLoading } =
+    useGetCelebrityVideos(params?.id);
+
   return (
     <div className="py-6 bg-black text-white">
       <div className="px-6 md:px-16">
         <h1 className="flex items-center pb-6 font-semibold text-base md:text-2xl">
-          Home
+          <span className="cursor-pointer" onClick={() => navigate("/")}>
+            {" "}
+            Home
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
@@ -27,16 +44,24 @@ function CelebrityPage() {
               fill="white"
             />
           </svg>
-          Sunny Leone
+          {celebrityDetailsLoading ? "Loading ..." : celebrityDetailsData?.name}
         </h1>
-        <Header />
-        <CelebrityHeader />
+        <Header data={celebrityDetailsData} loading={celebrityDetailsLoading} />
+        <CelebrityHeader
+          data={celebrityDetailsData}
+          loading={celebrityDetailsLoading}
+        />
       </div>
-      <div className="px-6 lg:px-1">
-        <DemoVideos />
-      </div>
+      {celebrityVideosLoading ? (
+        "Loading..."
+      ) : (
+        <div className="px-6 lg:px-1">
+          <DemoVideos data={celebrityVideos} />
+        </div>
+      )}
+
       <div className="px-6 lg:px-16">
-        <Offers />
+        <Offers data={celebrityDetailsData} loading={celebrityDetailsLoading} />
         <RecentViewed />
         <MayAlsoLike />
       </div>

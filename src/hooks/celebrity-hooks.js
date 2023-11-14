@@ -15,9 +15,25 @@ const useGetAllFeaturedCelebrities = () => {
 };
 
 
+const useGetCelebrityDetails = (id) => {
+
+    return useQuery({  queryKey: ['details'],  queryFn: () => CelebrityService.getCelebrityDetails(id)
+  })
+};
+
+const useGetCelebrityVideos = (id) => {
+
+    return useQuery({  queryKey: ['video/celebrity'],  queryFn: () => CelebrityService.getCelebrityVideos(id)
+  })
+};
+
+
+
 
 export {
   useGetAllCelebrities,
-  useGetAllFeaturedCelebrities
+  useGetAllFeaturedCelebrities,
+  useGetCelebrityDetails,
+  useGetCelebrityVideos
  
 };

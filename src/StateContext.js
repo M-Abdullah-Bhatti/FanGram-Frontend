@@ -9,6 +9,8 @@ export function StateProvider({ children }) {
     const [openLoginModal, setOpenLoginModal] = useState(false)
     const [openSignupModal, setOpenSignupModal] = useState(false)
 
+  
+
   return (
     <StateContext.Provider
       value={{
@@ -16,7 +18,9 @@ export function StateProvider({ children }) {
         openLoginModal,
         setOpenLoginModal,
         openSignupModal,
-        setOpenSignupModal
+        setOpenSignupModal,
+       
+
 
 
 
