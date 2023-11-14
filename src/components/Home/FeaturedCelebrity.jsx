@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import FeaturedCelebrityCard from "./FeaturedCelebrityCard";
-import { featuredCelebrityData } from "../../Data";
+// import { featuredCelebrityData } from "../../Data";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
