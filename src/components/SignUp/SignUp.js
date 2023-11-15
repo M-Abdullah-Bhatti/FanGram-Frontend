@@ -31,7 +31,6 @@ const SignUp = () => {
     window.open(`${apiUrl}/auth/google`, "_self");
   };
 
-  
   const { mutate: addMutate, isLoading } = useUserSignup(
     JSON.stringify(userData)
   );
@@ -53,8 +52,8 @@ const SignUp = () => {
         onSuccess: (response) => {
           if (response?.data?.status === true) {
             toast.success(response?.data?.message);
-            setOpenSignupModal(false)
-
+            setOpenSignupModal(false);
+            setOpenLoginModal(true);
           }
           if (response?.data?.status === false) {
             toast.error(response?.data?.message);
@@ -212,53 +211,48 @@ const SignUp = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-
-            
-
-                  <div className="mt-1 lg:mt-4">
-            <input
-              type="text"
-              placeholder="Enter Your name"
+            <div className="mt-1 lg:mt-4">
+              <input
+                type="text"
+                placeholder="Enter Your name"
                 name="username"
                 required
                 onChange={handleInputChange}
-              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none  rounded-lg bg-[#EAEAEA]"
-            />
-            <input
-              type="email"
-              placeholder="Enter Your Email Address"
+                className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none  rounded-lg bg-[#EAEAEA]"
+              />
+              <input
+                type="email"
+                placeholder="Enter Your Email Address"
                 name="email"
                 required
                 onChange={handleInputChange}
-              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
-            />
-            <input
-              type="password"
-              placeholder="Enter Your Password"
-               name="password"
+                className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
+              />
+              <input
+                type="password"
+                placeholder="Enter Your Password"
+                name="password"
                 required
                 onChange={handleInputChange}
-              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
-            />
-            <input
-              type="text"
-              placeholder="Enter Your invite Code (Optional)"
-               name="inviteCode"
-                required
+                className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
+              />
+              <input
+                type="text"
+                placeholder="Enter Your invite Code (Optional)"
+                name="inviteCode"
                 onChange={handleInputChange}
-              className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
-            />
-          </div>
-          <div className="grid place-items-center mt-4">
-            <button type="submit" className="bg-[#CA2981] text-white rounded-full py-2 px-24 text-[10px] lg:text-lg">
-              {
-                isLoading ? <RequestLoader />  : "Sign up"
-              }
-            </button>
-          </div>
-
+                className="text-[10px] py-3 lg:text-base px-2 md:px-4 w-full outline-none rounded-lg mt-3 bg-[#EAEAEA]"
+              />
+            </div>
+            <div className="grid place-items-center mt-4">
+              <button
+                type="submit"
+                className="bg-[#CA2981] text-white rounded-full py-2 px-24 text-[10px] lg:text-lg"
+              >
+                {isLoading ? <RequestLoader /> : "Sign up"}
+              </button>
+            </div>
           </form>
-        
 
           <p className="text-center my-2 font-semibold  text-[10px] lg:text-sm">
             Already on FanGram?

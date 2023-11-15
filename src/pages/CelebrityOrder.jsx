@@ -41,7 +41,10 @@ function CelebrityOrder() {
         ) : currentIndex === 1 ? (
           <Confirmation setCurrentIndex={setCurrentIndex} />
         ) : (
-          <Payment />
+          <Payment
+            celebrityDetailsData={celebrityDetailsData}
+            isLoading={celebrityDetailsLoading}
+          />
         )}
       </div>
     </div>

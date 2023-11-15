@@ -8,11 +8,18 @@ export function StateProvider({ children }) {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [orderData, setOrderData] = useState({
-    bookingTo: { name: "", gender: "" },
-    bookingBy: { name: "", gender: "" },
+    bookingTo: { name: "", gender: "He/Him" },
+    bookingBy: { name: "", gender: "He/Him" },
     occasion: "",
     language: "",
     customMessage: "",
+    price: "",
+    publicVideo: true,
+    fastDelivery: false,
+    extras: [],
+    billingNumber: "",
+    bookingEmail: "",
+    addOnnPrice: 0,
   });
 
   return (

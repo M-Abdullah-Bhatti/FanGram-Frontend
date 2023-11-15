@@ -32,11 +32,9 @@ function Confirmation({ setCurrentIndex }) {
                 Summary
               </span>
               <p className="text-[#7E7E7E] text-xs md:text-base">
-                Hi, nayan what's up? Hope you are doing great in this festive
-                season of Diwali. It's me Sunny Leone wishing you a very happy &
-                prosperous Diwali from monika. May, the occasion of Diwali light
-                up new hopes and opportunities in your life and fulfill all your
-                dreams & desires. Have a good day bye-bye.
+                {orderData?.customMessage
+                  ? orderData?.customMessage
+                  : "Don't have any custom message"}
               </p>
             </div>
           </div>
@@ -46,9 +44,9 @@ function Confirmation({ setCurrentIndex }) {
             <div className="flex justify-between bg-[#F9F9F9] p-2 my-4 rounded-lg">
               <span className="font-semibold">Diwali</span>
               <div className="space-x-2 text-sm md:text-base">
-                <span className="font-semibold">₹10450</span>
+                <span className="font-semibold">Rs {orderData?.price}</span>
                 <span className="text-[#4E4E4E] text-xs line-through">
-                  ₹11000
+                  Rs{orderData?.price + 550}
                 </span>
               </div>
             </div>
@@ -67,11 +65,12 @@ function Confirmation({ setCurrentIndex }) {
           </div>
         </div>
 
+        {/* Applied in the end where you are offering gift to specific user from admin dashboard */}
         {/* Design */}
-        <TicketDesign />
+        {/* <TicketDesign /> */}
 
         {/* Free Gift */}
-        <div className="px-3 md:px-6 py-3">
+        {/* <div className="px-3 md:px-6 py-3">
           <h2 className="text-[#7E7E7E] font-semibold text-sm md:text-base">
             You're eligible for a FREE gift!
           </h2>
@@ -106,13 +105,13 @@ function Confirmation({ setCurrentIndex }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Design */}
-        <TicketDesign />
+        {/* <TicketDesign /> */}
 
         {/* Surprise Gift */}
-        <div className="px-6 py-3">
+        {/* <div className="px-6 py-3">
           <h2 className="text-[#7E7E7E] font-semibold text-sm md:text-base">
             Level Up Your Surprise
           </h2>
@@ -121,7 +120,7 @@ function Confirmation({ setCurrentIndex }) {
               <SurpriseCard surprise={surprise} key={index} />
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Design */}
         <TicketDesign />
@@ -142,7 +141,7 @@ function Confirmation({ setCurrentIndex }) {
               </div>
             </div>
             <div className="flex flex-col items-center font-bold text-xs md:text-base text-center">
-              <span className="text-[#D42978] mb-1 cursor-pointer">Remove</span>
+              {/* <span className="text-[#D42978] mb-1 cursor-pointer">Remove</span> */}
               <span className="underline cursor-pointer">View All Offers</span>
             </div>
           </div>
@@ -166,6 +165,10 @@ function Confirmation({ setCurrentIndex }) {
                 required: true,
                 autoFocus: true,
               }}
+              value={orderData?.billingNumber}
+              onChange={(text) =>
+                setOrderData({ ...orderData, billingNumber: text })
+              }
               country={"pk"}
               containerStyle={{ height: 35 }}
               inputStyle={{ width: "100%" }}
@@ -178,6 +181,10 @@ function Confirmation({ setCurrentIndex }) {
             <input
               type="email"
               placeholder="Enter Your Email Address"
+              value={orderData?.bookingEmail}
+              onChange={(e) =>
+                setOrderData({ ...orderData, bookingEmail: e.target.value })
+              }
               className="w-full border border-[#ccc] rounded md:rounded-lg h-[35px] md:h-[50px] px-2 md:px-4 py-2"
             />
           </div>

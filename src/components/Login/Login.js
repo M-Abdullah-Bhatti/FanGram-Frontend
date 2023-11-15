@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import RequestLoader from "../Shared/RequestLoader"
+import RequestLoader from "../Shared/RequestLoader";
 import { useStateContext } from "../../StateContext";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -11,7 +11,6 @@ const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
 
   const [userData, setUserData] = useState({});
-  
 
   const handleGoogleLogin = async () => {
     window.open(`${apiUrl}/auth/google`, "_self");
@@ -38,8 +37,15 @@ const Login = () => {
         onSuccess: (response) => {
           if (response?.data?.status === true) {
             toast.success(response?.data?.message);
-            setOpenLoginModal(false)
-
+            console.log(response?.data);
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify({
+                userId: response?.data?.userId,
+                token: response?.data?.token,
+              })
+            );
+            setOpenLoginModal(false);
           }
           if (response?.data?.status === false) {
             toast.error(response?.data?.message);
@@ -49,7 +55,6 @@ const Login = () => {
     );
   };
 
- 
   return (
     <div className="w-full  flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-10 bg-black bg-opacity-50">
       <div className="w-[85%] md:w-[70%] lg:w-fit  bg-white rounded-xl  ">
@@ -155,40 +160,37 @@ const Login = () => {
                 </svg>
               </div>
             </div>
-           <div className="flex mt-3 sm:mt-2 gap-2 sm:gap-5 justify-start items-center">
-            <p className= "text-[10px] sm:text-sm">Or Continue With Email</p>
-            <div className="h-[1px] bg-[#C9C6C6] w-1/2 sm:w-[60%]"></div>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className="mt-4">
-              <input
-                type="email"
-                name="email"
-                required
-                onChange={handleInputChange}
-                placeholder="Enter Your Email Address"
-                className="text-[10px] lg:text-base px-2 md:px-4 w-full py-3 rounded-lg outline-none bg-[#EAEAEA]"
-              />
-              <input
-                type="text"
-                name="password"
-                required
-                onChange={handleInputChange}
-                placeholder="Password"
-                className="text-[10px]  py-3 lg:text-base px-2 md:px-4 w-full rounded-lg outline-none mt-3 bg-[#EAEAEA]"
-              />
+            <div className="flex mt-3 sm:mt-2 gap-2 sm:gap-5 justify-start items-center">
+              <p className="text-[10px] sm:text-sm">Or Continue With Email</p>
+              <div className="h-[1px] bg-[#C9C6C6] w-1/2 sm:w-[60%]"></div>
             </div>
-            <div className="grid place-items-center mt-6">
-              <button
-              type="submit"
-               
-                className="bg-[#CA2981] text-[10px] lg:text-lg text-white rounded-full py-3 lg:py-2 px-24"
-              >
-               {
-                isLoading ? <RequestLoader /> : "Login"
-               }
-              </button>
-            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="mt-4">
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  onChange={handleInputChange}
+                  placeholder="Enter Your Email Address"
+                  className="text-[10px] lg:text-base px-2 md:px-4 w-full py-3 rounded-lg outline-none bg-[#EAEAEA]"
+                />
+                <input
+                  type="text"
+                  name="password"
+                  required
+                  onChange={handleInputChange}
+                  placeholder="Password"
+                  className="text-[10px]  py-3 lg:text-base px-2 md:px-4 w-full rounded-lg outline-none mt-3 bg-[#EAEAEA]"
+                />
+              </div>
+              <div className="grid place-items-center mt-6">
+                <button
+                  type="submit"
+                  className="bg-[#CA2981] text-[10px] lg:text-lg text-white rounded-full py-3 lg:py-2 px-24"
+                >
+                  {isLoading ? <RequestLoader /> : "Login"}
+                </button>
+              </div>
             </form>
             <p className="text-center my-4 sm:mt-7 font-semibold  text-[10px] lg:text-sm">
               Not on FanGram?
@@ -203,11 +205,6 @@ const Login = () => {
                 Sign up
               </Link>
             </p>
-
-           
-
-
-
           </div>
         </div>
       </div>

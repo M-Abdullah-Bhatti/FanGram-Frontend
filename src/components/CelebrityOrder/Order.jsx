@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Extras from "./Extras";
 import { extras, ocassions, initialMessages } from "../../Data";
 import { useStateContext } from "../../StateContext";
+import { useParams } from "react-router-dom";
 
 const Options = ["He/Him", "She/Her", "Other"];
 const languages = ["English", "اردو"];
@@ -11,14 +12,26 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
   const [selectedOcassion, setSelectedOcassion] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const { orderData, setOrderData } = useStateContext();
-  const [charLimit, setCharLimit] = useState(300);
-  const [isCharacterLimitIncreased, setIsCharacterLimitIncreased] = useState(false);
+  const [charLimit, setCharLimit] = useState(132);
+  const params = useParams();
+  // console.log("ppp", params.id);
+  const [isCharacterLimitIncreased, setIsCharacterLimitIncreased] =
+    useState(false);
 
   const onLimitChange = () => {
-    console.log("Function Triggered")
-    setIsCharacterLimitIncreased(!isCharacterLimitIncreased);
-    setCharLimit(charLimit === 300 ? 500 : 300);
-  }
+    console.log("Function Triggered");
+    // setIsCharacterLimitIncreased(!isCharacterLimitIncreased);
+    // setCharLimit(charLimit === 300 ? 500 : 300);
+    if (isCharacterLimitIncreased == false) {
+      console.log("make it true");
+      setIsCharacterLimitIncreased(true);
+      setOrderData({ ...orderData, addOnnPrice: orderData.price + 600 });
+    } else {
+      console.log("make it false");
+      setIsCharacterLimitIncreased(false);
+      setOrderData({ ...orderData, addOnnPrice: orderData.price - 600 });
+    }
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -51,11 +64,34 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
     setCurrentIndex(1);
   };
 
+  // const handleExtraSelection = () => {
+  //   console.log("Hello");
+  // };
+  const handleExtraSelection = (extra, isSelected) => {
+    setOrderData((currentOrderData) => {
+      const newExtras = isSelected
+        ? [...currentOrderData.extras, extra]
+        : currentOrderData.extras.filter((e) => e.id !== extra.id);
+
+      return { ...currentOrderData, extras: newExtras };
+    });
+  };
+
   useEffect(() => {
-    console.log("customMessage.length: ", orderData?.customMessage.length);
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setSelectedOcassion(orderData?.ocassion);
     setLanguage(orderData?.language);
-  }, []);
+
+    // Ensure celebrityDetailsData is loaded before setting the price
+    if (celebrityDetailsData) {
+      setOrderData({
+        ...orderData,
+        userID: userInfo?.userId,
+        celebrityID: params?.id,
+        price: celebrityDetailsData.meetAndGreetPrice,
+      });
+    }
+  }, [celebrityDetailsData]); // Add celebrityDetailsData as a dependency
 
   //   useEffect(() => {
   //     const currentLength = orderData?.customMessage?.length || 0;
@@ -266,9 +302,6 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
 
         {/* Messages Section */}
         <div className="px-0 md:px-14 py-2 relative">
-          {/* <div className="absolute flex items-center justify-center bg-[#D42978] top-0 md:top-[-5px] right-[-5px] w-[20px] md:w-[30px] h-[20px] md:h-[30px] rounded-3xl cursor-pointer">
-                    <img src="/images/times.svg" alt="" className="max-w-[60%]" />
-                </div> */}
           <div className="bg-[#292929] border border-[#D42978] text-white rounded-lg shadow-lg p-4">
             {isEditing ? (
               <textarea
@@ -297,7 +330,10 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           </div>
 
           <div className="flex items-center justify-between mt-3">
-            <p className="text-sm">{charLimit} characters remaining</p>
+            <p className="text-sm">
+              {charLimit - orderData?.customMessage?.length} characters
+              remaining
+            </p>
             {isEditing ? (
               <span
                 className="bg-white text-black px-4 py-1 rounded-3xl cursor-pointer"
@@ -350,11 +386,16 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
                 <h2 className="text-sm md:text-xl font-semibold">
                   Write longer message
                 </h2>
-                <span className="text-[#737373] text-base">₹600</span>
+                <span className="text-[#737373] text-base">Rs 600</span>
               </div>
             </div>
-            <div className="flex items-center justify-center w-[20px] md:w-[35px] h-[20px] md:h-[35px] rounded-2xl cursor-pointer"
-              style={{backgroundColor: isCharacterLimitIncreased ? 'green' : '#D42978'}}
+            <div
+              className="flex items-center justify-center w-[20px] md:w-[35px] h-[20px] md:h-[35px] rounded-2xl cursor-pointer"
+              style={{
+                backgroundColor: isCharacterLimitIncreased
+                  ? "green"
+                  : "#D42978",
+              }}
               onClick={onLimitChange}
             >
               <img src="/images/plus.svg" alt="" className="max-w-[60%]" />
@@ -365,6 +406,14 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
               type="checkbox"
               className="w-[14px] h-[14px] bg-[#202020] border border-[#999999]"
               style={{ accentColor: "#D42978" }}
+              onChange={(e) => {
+                if (e.target.checked == true) {
+                  setOrderData({
+                    ...orderData,
+                    publicVideo: false,
+                  });
+                }
+              }}
             />
             <p className="text-xs md:text-base text-[#999999]">
               Don’t make this video public on Tring
@@ -386,25 +435,23 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[10px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
             <input
               type="radio"
+              // checked={orderData.fastDelivery === true}
+              onChange={(e) => {
+                console.log("cc", e.target.value);
+                if (e.target.value == "on") {
+                  setOrderData({ ...orderData, fastDelivery: true });
+                } else {
+                  setOrderData({ ...orderData, fastDelivery: false });
+                }
+              }}
+              // onChange={handleRecipientChange}
+              //
               className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]"
               style={{ accentColor: "white" }}
             />
             Within 4 days Free
           </span>
         </div>
-        {/* <div className='flex flex-col my-4'>
-                <label className="mb-2 text-sm md:text-xl">Do you want to deliver this surprise to the recipient?</label>
-                <div className="flex gap-2 md:gap-4">
-                    <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[8px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
-                        <input type="radio" className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]" style={{accentColor: 'white'}} />
-                        Yes, go head ₹1500
-                    </span>
-                    <span className="flex items-center gap-2 bg-[#D42978] w-fit px-[8px] md:px-4 py-2 rounded-3xl text-xs lg:text-base">
-                        <input type="radio" className="w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]" style={{accentColor: 'white'}} />
-                        No, Skip for now
-                    </span>
-                </div>
-            </div> */}
       </div>
 
       {/* Extras */}
@@ -414,7 +461,11 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
         </h1>
         <div className="space-y-3 md:space-y-4">
           {extras.map((extra, index) => (
-            <Extras extra={extra} key={index} />
+            <Extras
+              extra={extra}
+              key={index}
+              onSelectionChange={handleExtraSelection}
+            />
           ))}
         </div>
       </div>
