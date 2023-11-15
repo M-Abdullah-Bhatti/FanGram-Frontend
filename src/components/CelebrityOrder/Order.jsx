@@ -7,16 +7,17 @@ const Options = ["He/Him", "She/Her", "Other"];
 const languages = ["English", "اردو"];
 
 function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
-  const scrollContainerRef = useRef(null);
-  const [message, setMessage] = useState("This is a message");
   const [language, setLanguage] = useState("");
   const [selectedOcassion, setSelectedOcassion] = useState("");
-
   const [isEditing, setIsEditing] = useState(false);
-  const [editedMessage, setEditedMessage] = useState("Hi");
-
   const { orderData, setOrderData } = useStateContext();
-  //   const [charLimit, setCharLimit] = useState(132);
+  const [charLimit, setCharLimit] = useState(300);
+  const [isCharacterLimitIncreased, setIsCharacterLimitIncreased] = useState(false);
+
+  const handleCharacterLimitIncrease = (e) => {
+    setIsCharacterLimitIncreased(e.target.checked);
+    setCharLimit(e.target.checked ? 500 : 300);
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -272,14 +273,15 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
               <textarea
                 className="w-full border text-black rounded p-2"
                 value={orderData?.customMessage || ""}
-                // onChange={(e) => {
-                //   console.log("-", e.target.value.length);
-                //   setOrderData({
-                //     ...orderData,
-                //     customMessage: e.target.value,
-                //   });
-                // }}
+                onChange={(e) => {
+                  console.log("-", e.target.value.length);
+                  setOrderData({
+                    ...orderData,
+                    customMessage: e.target.value,
+                  });
+                }}
                 style={{ minHeight: "220px" }}
+                maxLength={charLimit}
               />
             ) : (
               <p
@@ -294,7 +296,7 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           </div>
 
           <div className="flex items-center justify-between mt-3">
-            <p className="text-sm">132 characters remaining</p>
+            <p className="text-sm">{charLimit} characters remaining</p>
             {isEditing ? (
               <span
                 className="bg-white text-black px-4 py-1 rounded-3xl cursor-pointer"
@@ -359,6 +361,7 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
               type="checkbox"
               className="w-[14px] h-[14px] bg-[#202020] border border-[#999999]"
               style={{ accentColor: "#D42978" }}
+              onChange={handleCharacterLimitIncrease}
             />
             <p className="text-xs md:text-base text-[#999999]">
               Don’t make this video public on Tring
