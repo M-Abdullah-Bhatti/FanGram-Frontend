@@ -14,10 +14,11 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
   const [charLimit, setCharLimit] = useState(300);
   const [isCharacterLimitIncreased, setIsCharacterLimitIncreased] = useState(false);
 
-  const handleCharacterLimitIncrease = (e) => {
-    setIsCharacterLimitIncreased(e.target.checked);
-    setCharLimit(e.target.checked ? 500 : 300);
-  };
+  const onLimitChange = () => {
+    console.log("Function Triggered")
+    setIsCharacterLimitIncreased(!isCharacterLimitIncreased);
+    setCharLimit(charLimit === 300 ? 500 : 300);
+  }
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -345,14 +346,17 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
                   alt=""
                 />
               </div>
-              <div className="text-white">
+              <div className="text-white" onClick={onLimitChange}>
                 <h2 className="text-sm md:text-xl font-semibold">
                   Write longer message
                 </h2>
                 <span className="text-[#737373] text-base">₹600</span>
               </div>
             </div>
-            <div className="flex items-center justify-center w-[20px] md:w-[35px] h-[20px] md:h-[35px] bg-[#D42978] rounded-2xl cursor-pointer">
+            <div className="flex items-center justify-center w-[20px] md:w-[35px] h-[20px] md:h-[35px] rounded-2xl cursor-pointer"
+              style={{backgroundColor: isCharacterLimitIncreased ? 'green' : '#D42978'}}
+              onClick={onLimitChange}
+            >
               <img src="/images/plus.svg" alt="" className="max-w-[60%]" />
             </div>
           </div>
@@ -361,7 +365,6 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
               type="checkbox"
               className="w-[14px] h-[14px] bg-[#202020] border border-[#999999]"
               style={{ accentColor: "#D42978" }}
-              onChange={handleCharacterLimitIncrease}
             />
             <p className="text-xs md:text-base text-[#999999]">
               Don’t make this video public on Tring
