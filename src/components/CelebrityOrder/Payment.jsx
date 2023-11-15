@@ -4,7 +4,6 @@ import "react-phone-input-2/lib/style.css";
 import PaymentExtrasSection from "./PaymentExtrasSection";
 import TicketDesign from "./TicketDesign";
 import { useStateContext } from "../../StateContext";
-// addOnnPrice
 function Payment({ isLoading, celebrityDetailsData }) {
   const { orderData, setOrderData } = useStateContext();
 
