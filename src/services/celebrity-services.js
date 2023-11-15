@@ -23,6 +23,16 @@ class CelebrityService {
   }
 
 
+  /**
+   * getCelebritiesByCategories
+   * @param {Array} categories - Array of categories to filter celebrities
+   * @returns
+   */
+  async getCelebritiesByCategories(categories) {
+    const { data } = await axios.post(`${apiUrl}/api/celebrity/getCelebritiesByCategories`, { categories });
+    return data?.data;
+  }
+
    /**
    * getAllFeaturedCelebrities
    * @returns
