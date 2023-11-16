@@ -6,9 +6,10 @@ import TicketDesign from "./TicketDesign";
 import { useStateContext } from "../../StateContext";
 import { useCheckTokenAvailavleForUser } from "../../hooks/order-hook";
 import OrderServices from "../../services/order-services";
-
+import PaymentModal from "../../components/Modals/PaymentModal";
 function Payment({ isLoading, celebrityDetailsData }) {
-  const { orderData, setOrderData } = useStateContext();
+  const { orderData, setOrderData, setPaymentModal, paymentModal } =
+    useStateContext();
   const [userId, setUserId] = useState("");
   const [couponName, setCouponName] = useState("");
   const [couponError, setCouponError] = useState("");
@@ -18,12 +19,32 @@ function Payment({ isLoading, celebrityDetailsData }) {
   //   isLoading: checkCouponAvailibilityLoading,
   // } = useCheckTokenAvailavleForUser(userId, couponName);
 
-  // console.log("checkCouponAvailibility: ", checkCouponAvailibility);
+  // console.log("celebrityDetailsData: ", celebrityDetailsData);
 
   const handleAddCoupon = async () => {
     try {
       const response = await OrderServices.CheckCoupen(userId, couponName);
-      console.log("response: ", response.data); // You can handle the response as needed
+      console.log("response: ", response?.data?.data?.priceOff); // You can handle the response as needed
+      console.log("coupenDiscount: ", orderData.coupenDiscount);
+
+      console.log(
+        typeof response?.data?.data?.priceOff,
+        typeof orderData.coupenDiscount
+      );
+      console.log(
+        "orderData add: ",
+        response?.data?.data?.priceOff + orderData.coupenDiscount
+      );
+      let newCouponDiscount =
+        response?.data?.data?.priceOff + orderData.coupenDiscount;
+      setOrderData({
+        ...orderData,
+        coupenDiscount: newCouponDiscount,
+      });
+      setCouponError("coupen applied successfully!");
+      setTimeout(() => {
+        setCouponError("");
+      }, 3000);
     } catch (error) {
       console.error("Error fetching coupon data:", error);
       setCouponError(error?.response?.data?.message);
@@ -36,6 +57,11 @@ function Payment({ isLoading, celebrityDetailsData }) {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUserId(userInfo?.userId);
+    // coupenDiscount
+    // setOrderData({
+    //   ...orderData,
+    //   coupenDiscount: orderData.coupenDiscount,
+    // });
   }, []);
 
   return (
@@ -73,21 +99,6 @@ function Payment({ isLoading, celebrityDetailsData }) {
               </span>
             </div>
           </div>
-
-          {/* Charges */}
-          {/* <div
-            className=""
-            style={{ borderBottomWidth: 5, borderBottomColor: "#E9E9E9" }}
-          >
-            <div className="flex my-4 justify-between text-sm md:text-base">
-              <span>Video Message</span>
-              <span className="text-[#4E4E4E]">₹150</span>
-            </div>
-            <div className="flex my-4 justify-between text-sm md:text-base">
-              <span>Service Fees</span>
-              <span className="text-[#4E4E4E]">₹7.50</span>
-            </div>
-          </div> */}
 
           {/* Coupon Code */}
           <div className="flex justify-between items-center gap-3 p-1 mt-5 border-[1px] rounded-xl border-[#D2D1D1]">
@@ -178,23 +189,40 @@ function Payment({ isLoading, celebrityDetailsData }) {
                   <img src="/images/confirmation__discount.svg" alt="" />
                   Coupon Discount
                 </span>
-                <span className="text-[#4E4E4E]">-₹550</span>
+                <span className="text-[#4E4E4E]">
+                  -₹ {orderData.coupenDiscount}
+                </span>
               </div>
             </div>
 
             <div className="flex justify-between py-2 border-b-2 text-sm md:text-base">
               <span>Prime Amount</span>
               <span className="text-[#4E4E4E]">
-                Rs {orderData.price + orderData?.addOnnPrice - 550}
+                Rs{" "}
+                {orderData.price +
+                  orderData?.addOnnPrice -
+                  orderData?.coupenDiscount}
               </span>
             </div>
             <div className="flex justify-between py-2 border-b-2 text-sm md:text-base">
-              <span>Prime Discount</span>
-              <span>-₹1650</span>
+              <span>Fan Discount</span>
+              <span>
+                -₹
+                {celebrityDetailsData?.fanDiscount
+                  ? celebrityDetailsData?.fanDiscount
+                  : 1600}
+              </span>
             </div>
             <div className="flex justify-between py-2 font-semibold md:text-lg text-base">
               <span>Total</span>
-              <span>₹11149</span>
+              <span>
+                Rs{" "}
+                {orderData.price +
+                  orderData?.addOnnPrice -
+                  orderData?.coupenDiscount -
+                  //  celebrityDetailsData?.fanDiscount
+                  1600}
+              </span>
             </div>
           </div>
 
@@ -203,7 +231,10 @@ function Payment({ isLoading, celebrityDetailsData }) {
               Secure and fast payments via Card, UPI, Netbanking and more By
               continuing, you agree to our terms
             </p>
-            <button className="w-full md:w-[50%] lg:w-[25%] bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0">
+            <button
+              className="w-full md:w-[50%] lg:w-[25%] bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 md:mb-1 mt-2 md:mt-0"
+              onClick={() => setPaymentModal(true)}
+            >
               Continue
             </button>
           </div>
@@ -220,6 +251,7 @@ function Payment({ isLoading, celebrityDetailsData }) {
           ))}
         </div>
       </div>
+      {paymentModal && <PaymentModal />}
 
       <PaymentExtrasSection />
     </div>

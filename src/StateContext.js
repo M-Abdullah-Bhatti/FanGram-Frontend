@@ -7,6 +7,8 @@ const StateContext = createContext();
 export function StateProvider({ children }) {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
+  const [paymentModal, setPaymentModal] = useState(false);
+
   const [orderData, setOrderData] = useState({
     bookingTo: { name: "", gender: "He/Him" },
     bookingBy: { name: "", gender: "He/Him" },
@@ -20,6 +22,7 @@ export function StateProvider({ children }) {
     billingNumber: "",
     bookingEmail: "",
     addOnnPrice: 0,
+    coupenDiscount: 550,
   });
 
   return (
@@ -29,6 +32,8 @@ export function StateProvider({ children }) {
         setOpenLoginModal,
         openSignupModal,
         setOpenSignupModal,
+        paymentModal,
+        setPaymentModal,
         orderData,
         setOrderData,
       }}

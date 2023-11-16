@@ -25,11 +25,11 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
     if (isCharacterLimitIncreased == false) {
       console.log("make it true");
       setIsCharacterLimitIncreased(true);
-      setOrderData({ ...orderData, addOnnPrice: orderData.price + 600 });
+      setOrderData({ ...orderData, addOnnPrice: orderData.addOnnPrice + 600 });
     } else {
       console.log("make it false");
       setIsCharacterLimitIncreased(false);
-      setOrderData({ ...orderData, addOnnPrice: orderData.price - 600 });
+      setOrderData({ ...orderData, addOnnPrice: orderData.addOnnPrice - 600 });
     }
   };
 
@@ -67,13 +67,33 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
   // const handleExtraSelection = () => {
   //   console.log("Hello");
   // };
+  // const handleExtraSelection = (extra, isSelected) => {
+  //   setOrderData((currentOrderData) => {
+  //     const newExtras = isSelected
+  //       ? [...currentOrderData.extras, extra]
+  //       : currentOrderData.extras.filter((e) => e.id !== extra.id);
+
+  //     return { ...currentOrderData, extras: newExtras };
+  //   });
+  // };
+
   const handleExtraSelection = (extra, isSelected) => {
     setOrderData((currentOrderData) => {
+      console.log("currentOrderData: ", currentOrderData.addOnn, extra.price);
+      // Managing extras selection
       const newExtras = isSelected
         ? [...currentOrderData.extras, extra]
         : currentOrderData.extras.filter((e) => e.id !== extra.id);
 
-      return { ...currentOrderData, extras: newExtras };
+      // Calculating the new addOnn total
+      let newAddOnn = currentOrderData.addOnnPrice;
+      if (isSelected) {
+        newAddOnn += extra.price; // Add price if selected
+      } else {
+        newAddOnn -= extra.price; // Subtract price if deselected
+      }
+
+      return { ...currentOrderData, extras: newExtras, addOnnPrice: newAddOnn };
     });
   };
 
