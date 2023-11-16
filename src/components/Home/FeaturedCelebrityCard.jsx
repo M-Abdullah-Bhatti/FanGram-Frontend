@@ -1,16 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import { useAddFavorite } from "../../hooks/celebrity-hooks";
 
 function FeaturedCelebrityCard({ celebrity }) {
+
+  // const {user} = useSelector(state=>state.user);
+  // user.favorites.contain(celebrity._id)
+  const [isFavorite, setIsFavorite] = useState(false);
+  const addFavoriteMutation = useAddFavorite(celebrity?._id, '6550de64d526b91721886925');
+
+  const handleFavoriteClick = async () => {
+    try {
+      await addFavoriteMutation.mutateAsync();
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.error('Error adding/removing favorite:', error.message);
+    }
+  };
+
   return (
     <div className="w-full md:min-w-[325px] md:w-1/2 lg:w-1/3 h-96 md:h-[425px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg overflow-hidden">
-      <Link to={`/celebrity/${celebrity?._id}`}>
+      {/* <Link to={`/celebrity/${celebrity?._id}`}> */}
         <img
           src={celebrity?.celebrityImage?.url}
           alt="celebrity"
           className="object-fill w-full h-full"
         />
-        <div className="absolute top-4 right-4 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+        <div className="absolute top-4 right-4 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full"
+        style={{backgroundColor: isFavorite ? 'red' : '#FCAE4B'}}
+          onClick={handleFavoriteClick}
+        >
           <img src="/images/heart.png" alt="heart" />
         </div>
         <div
@@ -42,7 +61,7 @@ function FeaturedCelebrityCard({ celebrity }) {
             </button>
           </div>
         </div>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 }

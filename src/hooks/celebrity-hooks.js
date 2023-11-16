@@ -1,4 +1,4 @@
-import {  useQuery  } from "@tanstack/react-query";
+import {  useMutation, useQuery  } from "@tanstack/react-query";
 import CelebrityService from "../services/celebrity-services";
 
 const useGetAllCelebrities = () => {
@@ -34,7 +34,9 @@ const useGetCelebrityVideos = (id) => {
   })
 };
 
-
+const useAddFavorite = (celebrityId, userId) => {
+  return useMutation(() => CelebrityService.addFavorite(celebrityId, userId));
+};
 
 
 export {
@@ -42,5 +44,6 @@ export {
   useGetAllFeaturedCelebrities,
   useGetCelebrityDetails,
   useGetCelebrityVideos,
-  useGetCelebritiesByCategories
+  useGetCelebritiesByCategories,
+  useAddFavorite
 };

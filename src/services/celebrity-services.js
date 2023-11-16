@@ -53,6 +53,20 @@ class CelebrityService {
     return data?.data
   }
 
+  
+  /**
+   * Add to Favorite
+   * @returns
+   */
+  async addFavorite(celebrityId, userId) {
+    try {
+      const response = await axios.put(`${apiUrl}/api/user/addFavorite/${celebrityId}`, { userId });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Error adding/removing favorite');
+    }
+  }
+
 
 
   
