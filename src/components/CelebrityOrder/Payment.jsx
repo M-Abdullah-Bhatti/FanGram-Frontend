@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import PaymentExtrasSection from "./PaymentExtrasSection";
 import TicketDesign from "./TicketDesign";
 import { useStateContext } from "../../StateContext";
+import { useCheckTokenAvailavleForUser } from "../../hooks/order-hook";
+import OrderServices from "../../services/order-services";
+
 function Payment({ isLoading, celebrityDetailsData }) {
   const { orderData, setOrderData } = useStateContext();
+  const [userId, setUserId] = useState("");
+  const [couponName, setCouponName] = useState("");
+  const [couponError, setCouponError] = useState("");
+
+  // const {
+  //   data: checkCouponAvailibility,
+  //   isLoading: checkCouponAvailibilityLoading,
+  // } = useCheckTokenAvailavleForUser(userId, couponName);
+
+  // console.log("checkCouponAvailibility: ", checkCouponAvailibility);
+
+  const handleAddCoupon = async () => {
+    try {
+      const response = await OrderServices.CheckCoupen(userId, couponName);
+      console.log("response: ", response.data); // You can handle the response as needed
+    } catch (error) {
+      console.error("Error fetching coupon data:", error);
+      setCouponError(error?.response?.data?.message);
+      setTimeout(() => {
+        setCouponError("");
+      }, 3000);
+    }
+  };
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    setUserId(userInfo?.userId);
+  }, []);
 
   return (
     <div className="mt-12 md:mt-24 lg:mx-32">
@@ -44,7 +75,7 @@ function Payment({ isLoading, celebrityDetailsData }) {
           </div>
 
           {/* Charges */}
-          <div
+          {/* <div
             className=""
             style={{ borderBottomWidth: 5, borderBottomColor: "#E9E9E9" }}
           >
@@ -56,20 +87,31 @@ function Payment({ isLoading, celebrityDetailsData }) {
               <span>Service Fees</span>
               <span className="text-[#4E4E4E]">₹7.50</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Coupon Code */}
           <div className="flex justify-between items-center gap-3 p-1 mt-5 border-[1px] rounded-xl border-[#D2D1D1]">
             <input
               type="text"
+              value={couponName}
+              onChange={(e) => setCouponName(e.target.value)}
               placeholder="Coupon Code"
               className="outline-none w-full h-full px-2 bg-transparent focus:bg-transparent text-black"
             />
 
-            <button className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-6">
+            <button
+              className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-6"
+              onClick={handleAddCoupon}
+            >
               Add
             </button>
           </div>
+
+          {couponError && (
+            <div>
+              <p className="text-sm mt-2 text-red-600">{couponError}</p>
+            </div>
+          )}
 
           {/* Total */}
           {/* <div className="flex items-center justify-between my-3 md:my-4 text-base md:text-2xl">
