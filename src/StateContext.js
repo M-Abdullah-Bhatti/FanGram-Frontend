@@ -9,6 +9,8 @@ export function StateProvider({ children }) {
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
 
+  console.log("Hello it is context");
+
   const [orderData, setOrderData] = useState({
     bookingTo: { name: "", gender: "He/Him" },
     bookingBy: { name: "", gender: "He/Him" },

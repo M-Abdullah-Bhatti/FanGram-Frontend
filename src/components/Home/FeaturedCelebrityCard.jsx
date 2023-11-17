@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAddFavorite } from "../../hooks/celebrity-hooks";
 
 function FeaturedCelebrityCard({ celebrity }) {
-  // const {user} = useSelector(state=>state.user);
-  // user.favorites.contain(celebrity._id)
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
   const [userId, setUserId] = useState("");
