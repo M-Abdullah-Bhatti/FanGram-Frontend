@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
 
-function Header({ data, loading }) {
+function Header({ data, loading, isFavorite }) {
   return (
     <div className="flex flex-col lg:hidden justify-center bg-[#161616] rounded-xl gap-4 overflow-hidden px-2 py-4">
       <div className="flex items-center justify-center gap-2 md:gap-4">
@@ -15,7 +15,9 @@ function Header({ data, loading }) {
         <p className="text-xs md:text-base">
           India’s largest celebrity engagement platform
         </p>
-        <div className="bg-[#FCAE4B] w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full">
+        <div className="w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full"
+          style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
+        >
           <img src="/images/heart.png" alt="heart" className="max-w-[60%]" />
         </div>
       </div>

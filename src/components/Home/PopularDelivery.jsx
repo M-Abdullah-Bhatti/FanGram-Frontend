@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
-import { featuredCelebrityData } from "../../Data";
+// import { featuredCelebrityData } from "../../Data";
 import PopularDeliveryCard from "./PopularDeliveryCard";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import 'swiper/css';
+import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
 
 function PopularDelivery() {
   const scrollContainerRef = useRef(null);
@@ -21,6 +22,12 @@ function PopularDelivery() {
       scrollContainerRef.current.scrollLeft += 320;
     }
   };
+
+  const {
+    data: popularCelebritiesData,
+  } = useGetCelebritiesByCategories(["Model", "Popular"]);
+
+  console.log("popularCelebritiesData", popularCelebritiesData);
 
   return (
     <div className="w-full bg-black text-white mb-12">
@@ -53,8 +60,8 @@ function PopularDelivery() {
         style={{ scrollBehavior: "smooth", scrollbarWidth: "thin", scrollbarColor: "transparent transparent", msOverflowStyle: "none", }}
       >
         <div className="flex space-x-4 py-4">
-          {featuredCelebrityData.map((card, i) => (
-            <PopularDeliveryCard celebrity={card} key={i} />
+          {popularCelebritiesData && popularCelebritiesData.map((celebrity, i) => (
+            <PopularDeliveryCard celebrity={celebrity} key={i} />
           ))}
         </div>
       </div>
@@ -71,7 +78,7 @@ function PopularDelivery() {
             slideActiveClass="activeSlide"
             className="swiper-container"
           >
-            {featuredCelebrityData.map((slide, index) => (
+            {popularCelebritiesData && popularCelebritiesData.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div className="flex">
                   <PopularDeliveryCard celebrity={slide} />

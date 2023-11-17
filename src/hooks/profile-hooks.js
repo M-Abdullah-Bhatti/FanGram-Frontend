@@ -24,4 +24,16 @@ const useGetFavoriteCelebrities = (userId) => {
   });
 };
 
-export { useUpdateUser, useGetFavoriteCelebrities };
+const useIsFavoriteCelebrity = (userId, celebrityId) => {
+  const getFavoriteCelebritiesQuery = useGetFavoriteCelebrities(userId);
+
+  return {
+    isFavorite: getFavoriteCelebritiesQuery.isSuccess
+      ? getFavoriteCelebritiesQuery.data.some((fav) => fav._id === celebrityId)
+      : false,
+    isLoading: getFavoriteCelebritiesQuery.isLoading,
+    isError: getFavoriteCelebritiesQuery.isError,
+  };
+};
+
+export { useUpdateUser, useGetFavoriteCelebrities, useIsFavoriteCelebrity };

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAddFavorite } from "../../hooks/celebrity-hooks";
+import { useIsFavoriteCelebrity } from "../../hooks/profile-hooks";
 
 function FeaturedCelebrityCard({ celebrity }) {
-  // const {user} = useSelector(state=>state.user);
-  // user.favorites.contain(celebrity._id)
   const navigate = useNavigate();
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [userId, setUserId] = useState("");
+  // const [isFavorite, setIsFavorite] = useState(false);
+  const [userId, setUserId] = useState("6550de64d526b91721886925");
 
-  const addFavoriteMutation = useAddFavorite(celebrity?._id, userId);
+  const addFavoriteMutation = useAddFavorite(celebrity?._id, '6550de64d526b91721886925');
+  const { isFavorite, isLoading, isError } = useIsFavoriteCelebrity('6550de64d526b91721886925', celebrity?._id);
 
   const handleFavoriteClick = async () => {
     try {
       await addFavoriteMutation.mutateAsync();
-      setIsFavorite(!isFavorite);
+      // setIsFavorite(!isFavorite);
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
     }
@@ -22,8 +22,8 @@ function FeaturedCelebrityCard({ celebrity }) {
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
     setUserId(userInfo?.userId);
+
   }, []);
 
   return (
@@ -35,7 +35,7 @@ function FeaturedCelebrityCard({ celebrity }) {
         className="object-fill w-full h-full"
       />
       <div
-        className="absolute top-4 right-4 bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full"
+        className="absolute top-4 right-4 w-[40px] h-[40px] flex justify-center items-center rounded-full"
         style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
         onClick={handleFavoriteClick}
       >

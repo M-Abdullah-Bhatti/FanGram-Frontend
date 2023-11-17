@@ -12,6 +12,7 @@ import {
   useGetCelebrityVideos,
 } from "../hooks/celebrity-hooks";
 import { useNavigate, useParams } from "react-router-dom";
+import { useIsFavoriteCelebrity } from "../hooks/profile-hooks";
 
 function CelebrityPage() {
   const params = useParams();
@@ -22,6 +23,9 @@ function CelebrityPage() {
 
   const { data: celebrityVideos, isLoading: celebrityVideosLoading } =
     useGetCelebrityVideos(params?.id);
+
+  const { isFavorite, isLoading, isError } = useIsFavoriteCelebrity('6550de64d526b91721886925', celebrityDetailsData?._id);
+  console.log(celebrityDetailsData?._id)
 
   return (
     <div className="py-6 bg-black text-white">
@@ -46,10 +50,11 @@ function CelebrityPage() {
           </svg>
           {celebrityDetailsLoading ? "Loading ..." : celebrityDetailsData?.name}
         </h1>
-        <Header data={celebrityDetailsData} loading={celebrityDetailsLoading} />
+        <Header data={celebrityDetailsData} loading={celebrityDetailsLoading} isFavorite={isFavorite} />
         <CelebrityHeader
           data={celebrityDetailsData}
           loading={celebrityDetailsLoading}
+          isFavorite={isFavorite}
         />
       </div>
       {celebrityVideosLoading ? (

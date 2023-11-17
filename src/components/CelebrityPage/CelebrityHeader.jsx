@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
 
-function CelebrityHeader({ data, loading }) {
+function CelebrityHeader({ data, loading, isFavorite }) {
   // console.log("data: ", data);
   return (
     <div className="hidden lg:flex bg-[#161616] relative rounded-xl overflow-hidden px-4 md:px-8 py-6 text-white">
@@ -54,7 +54,9 @@ function CelebrityHeader({ data, loading }) {
           <div className="flex items-center space-x-2">
             {/* <img src="/images/flag.svg" alt="flag" />
             <p>India’s largest celebrity engagement platform</p> */}
-            <div className="bg-[#FCAE4B] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+            <div className="w-[40px] h-[40px] flex justify-center items-center rounded-full"
+              style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
+            >
               <img src="/images/heart.png" alt="heart" />
             </div>
           </div>
