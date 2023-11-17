@@ -1,51 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useGetAllFAQs } from "../../hooks/faq-hooks";
 
 const FAQS = () => {
-  const [Questions, setQuestions] = useState([
-    {
-      question: "Lorem ipsum is placeholder text commonly",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
-      isOpen: false,
-    },
-    {
-      question: "Lorem ipsum is placeholder text commonly",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
-      isOpen: false,
-    },
-    {
-      question: "Lorem ipsum is placeholder text commonly",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
-      isOpen: false,
-    },
-    {
-      question: "Lorem ipsum is placeholder text commonly",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
-      isOpen: false,
-    },
-    {
-      question: "Lorem ipsum is placeholder text commonly",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
-      isOpen: false,
-    },
-    {
-      question: "Lorem ipsum is placeholder text commonly",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in",
-      isOpen: false,
-    },
-  ]);
+  const { data: faqsData, isLoading: faqsLoading } = useGetAllFAQs();
+
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    if (faqsData) {
+      setQuestions(faqsData.map((faq) => ({ ...faq, isOpen: false })));
+    }
+  }, [faqsData]);
 
   const handleClick = (index) => {
-    const newArr = [...Questions];
-    newArr[index].isOpen = !newArr[index].isOpen;
-    setQuestions(newArr);
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((item, i) => {
+        if (i === index) {
+          return { ...item, isOpen: !item.isOpen };
+        }
+        return { ...item, isOpen: false };
+      })
+    );
   };
+
   return (
     <div className=" relative    w-full text-[#fff]   bg-black pb-10 ">
       <div className="flex flex-col space-y-2 lg:space-y-4 font-BalsamiqSans items-center w-[90%] sm:w-[80%] md:w-[70%] mx-auto h-auto">
@@ -54,7 +32,7 @@ const FAQS = () => {
         </h3>
 
         <div className="flex flex-col space-y-4 w-full items-center  ">
-          {Questions.map((item, index) => (
+          {questions.map((item, index) => (
             <div key={index} className="relative  w-full ">
               <div
                 className={clsx(
@@ -67,8 +45,9 @@ const FAQS = () => {
                 </p>
               </div>
               <div
+                onClick={() => handleClick(index)}
                 className={clsx(
-                  "top-0 left-0  w-full ",
+                  "top-0 left-0  w-full cursor-pointer ",
                   `${item.isOpen ? "absolute" : "relative"}`
                 )}
               >
@@ -101,11 +80,7 @@ const FAQS = () => {
                   </div>
 
                   <button
-                    onClick={() => handleClick(index)}
-                    // className={clsx(
-                    //   " py-3 px-2 rounded-full ",
-                    //   `${item.isOpen ? "bg-[#F1F6FF]" : "bg-black "}`
-                    // )}
+                  // onClick={() => handleClick(index)}
                   >
                     {item.isOpen ? (
                       <img
