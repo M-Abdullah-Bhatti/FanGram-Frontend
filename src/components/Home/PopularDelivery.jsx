@@ -5,7 +5,7 @@ import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
+import "swiper/css";
 import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
 
 function PopularDelivery() {
@@ -23,22 +23,27 @@ function PopularDelivery() {
     }
   };
 
-  const {
-    data: popularCelebritiesData,
-  } = useGetCelebritiesByCategories(["Model", "Popular"]);
+  const { data: popularCelebritiesData } = useGetCelebritiesByCategories([
+    "Model",
+    "Popular",
+  ]);
 
   console.log("popularCelebritiesData", popularCelebritiesData);
 
   return (
     <div className="w-full bg-black text-white mb-12">
       <div className="flex items-center justify-between py-4">
-      <div className="flex items-center space-x-8">
-        <h2 className="text-3xl md:text-4xl font-semibold">Next Day Delivery</h2>
-        <div className="hidden md:flex border border-[#D42978] text-[#D42978] rounded-3xl py-1 px-4">
-          <span className="font-semibold text-lg cursor-pointer">See All</span>
+        <div className="flex items-center space-x-8">
+          <h2 className="text-3xl md:text-4xl font-semibold">
+            Next Day Delivery
+          </h2>
+          <div className="hidden md:flex border border-[#D42978] text-[#D42978] rounded-3xl py-1 px-4">
+            <span className="font-semibold text-lg cursor-pointer">
+              See All
+            </span>
+          </div>
         </div>
-      </div>
-      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4">
           <button
             onClick={scrollLeft}
             className="w-[50px] h-[50px] text-lg border border-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
@@ -52,33 +57,40 @@ function PopularDelivery() {
           >
             <img src="/images/forward.svg" alt="forward" />
           </button>
-      </div>
+        </div>
       </div>
       <div
-        className="hidden md:flex overflow-x-scroll no-scrollbar" 
+        className="hidden md:flex overflow-x-scroll no-scrollbar"
         ref={scrollContainerRef}
-        style={{ scrollBehavior: "smooth", scrollbarWidth: "thin", scrollbarColor: "transparent transparent", msOverflowStyle: "none", }}
+        style={{
+          scrollBehavior: "smooth",
+          scrollbarWidth: "thin",
+          scrollbarColor: "transparent transparent",
+          msOverflowStyle: "none",
+        }}
       >
         <div className="flex space-x-4 py-4">
-          {popularCelebritiesData && popularCelebritiesData.map((celebrity, i) => (
-            <PopularDeliveryCard celebrity={celebrity} key={i} />
-          ))}
+          {popularCelebritiesData &&
+            popularCelebritiesData.map((celebrity, i) => (
+              <PopularDeliveryCard celebrity={celebrity} key={i} />
+            ))}
         </div>
       </div>
 
       {/* Mobile Swiper */}
       <div className="md:hidden w-full flex justify-center items-center hero__caurosel  ">
-          <Swiper
-            modules={[Navigation, Pagination, A11y, Autoplay]}
-            slidesPerView={2}
-            spaceBetween={10}
-            slidesPerGroup={1}
-            autoplay={true}
-            pagination={true}
-            slideActiveClass="activeSlide"
-            className="swiper-container"
-          >
-            {popularCelebritiesData && popularCelebritiesData.map((slide, index) => (
+        <Swiper
+          modules={[Navigation, Pagination, A11y, Autoplay]}
+          slidesPerView={2}
+          spaceBetween={10}
+          slidesPerGroup={1}
+          autoplay={true}
+          pagination={true}
+          slideActiveClass="activeSlide"
+          className="swiper-container"
+        >
+          {popularCelebritiesData &&
+            popularCelebritiesData.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div className="flex">
                   <PopularDeliveryCard celebrity={slide} />
@@ -86,10 +98,12 @@ function PopularDelivery() {
                 <div className="h-10"></div>
               </SwiperSlide>
             ))}
-          </Swiper>
+        </Swiper>
       </div>
 
-      <p className="flex py-[8px] mx-[25%] md:hidden border border-[#D42978] text-[#D42978] rounded-3xl justify-center font-semibold cursor-pointer">See All</p>
+      <p className="flex py-[8px] mx-[25%] md:hidden border border-[#D42978] text-[#D42978] rounded-3xl justify-center font-semibold cursor-pointer">
+        See All
+      </p>
     </div>
   );
 }
