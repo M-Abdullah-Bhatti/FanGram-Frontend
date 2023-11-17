@@ -25,14 +25,17 @@ function DemoVideos({ data }) {
 
   return (
     <div className="flex w-full py-6 lg:space-x-6">
-      <div className="flex items-center">
-        <button
-          onClick={scrollLeft}
-          className="w-[50px] h-[50px] border border-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
-        >
-          <img src="/images/back.svg" alt="back" />
-        </button>
-      </div>
+      {
+        data?.length > 4 &&
+        <div className="flex items-center">
+          <button
+            onClick={scrollLeft}
+            className="w-[50px] h-[50px] border border-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
+          >
+            <img src="/images/back.svg" alt="back" />
+          </button>
+        </div>
+      }
 
       <div
         className="hidden md:flex overflow-x-scroll no-scrollbar w-full"
@@ -76,14 +79,17 @@ function DemoVideos({ data }) {
         </Swiper>
       </div>
 
-      <div className="flex items-center">
-        <button
-          onClick={scrollRight}
-          className="w-[50px] h-[50px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
-        >
-          <img src="/images/forward.svg" alt="forward" />
-        </button>
-      </div>
+      {
+        data.length > 4 &&
+        <div className="flex items-center">
+          <button
+            onClick={scrollRight}
+            className="w-[50px] h-[50px] bg-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
+          >
+            <img src="/images/forward.svg" alt="forward" />
+          </button>
+        </div>
+      }
     </div>
   );
 }

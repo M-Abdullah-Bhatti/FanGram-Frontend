@@ -30,12 +30,16 @@ class CelebrityService {
    * @returns
    */
   async getCelebritiesByCategories(categories) {
-    const { data } = await axios.get(
-      `${apiUrl}/api/celebrity/getCelebritiesByCategories`,
-      { categories }
-    );
-    console.log("DATA: ", data);
-    return data?.data;
+    try {
+      const { data } = await axios.post(
+        `${apiUrl}/api/celebrity/getCelebritiesByCategories`,
+        { categories }
+      );
+      return data?.data;
+    } catch (error) {
+      console.error("Error fetching celebrities by categories:", error);
+      throw error;
+    }
   }
 
   /**

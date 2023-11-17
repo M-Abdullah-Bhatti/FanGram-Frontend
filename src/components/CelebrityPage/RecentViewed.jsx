@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import 'swiper/css';
 
-function RecentViewed() {
+function RecentViewed({data}) {
     
     const scrollContainerRef = useRef(null);
 
@@ -27,7 +27,9 @@ function RecentViewed() {
     <div className="w-full bg-black text-white pb-10">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-3xl md:text-4xl font-semibold">Recent Viewed</h2>
-          <div className="flex items-center space-x-4">
+          {
+            data?.length > 3 &&
+            <div className="flex items-center space-x-4">
             <button onClick={scrollLeft}
               className="w-[50px] h-[50px] text-lg border border-[#D42978] hidden md:flex items-center justify-center rounded-full transition duration-300"
             >
@@ -39,6 +41,7 @@ function RecentViewed() {
               <img src="/images/forward.svg" alt="forward" />
             </button>
           </div>
+          }
         </div>
         <div
             className="hidden md:flex overflow-x-scroll no-scrollbar"
@@ -46,7 +49,7 @@ function RecentViewed() {
             style={{ scrollBehavior: "smooth" }}
         >
             <div className="flex space-x-4 py-4">
-            {cartoonData.map((card, index) => (
+            {data?.map((card, index) => (
                 <CelebrityPageCard celebrity={card} key={index} />
             ))}
             </div>

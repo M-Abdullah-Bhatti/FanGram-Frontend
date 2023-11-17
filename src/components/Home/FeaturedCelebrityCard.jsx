@@ -5,16 +5,14 @@ import { useIsFavoriteCelebrity } from "../../hooks/profile-hooks";
 
 function FeaturedCelebrityCard({ celebrity }) {
   const navigate = useNavigate();
-  // const [isFavorite, setIsFavorite] = useState(false);
-  const [userId, setUserId] = useState("6550de64d526b91721886925");
+  const [userId, setUserId] = useState("");
 
-  const addFavoriteMutation = useAddFavorite(celebrity?._id, '6550de64d526b91721886925');
-  const { isFavorite, isLoading, isError } = useIsFavoriteCelebrity('6550de64d526b91721886925', celebrity?._id);
+  const addFavoriteMutation = useAddFavorite(celebrity?._id, userId);
+  const { isFavorite } = useIsFavoriteCelebrity(userId, celebrity?._id);
 
   const handleFavoriteClick = async () => {
     try {
       await addFavoriteMutation.mutateAsync();
-      // setIsFavorite(!isFavorite);
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
     }
