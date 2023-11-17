@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { orderdeliveryicons } from "../../Data";
+import ReviewModal from "../Modals/ReviewModal";
 const svg = {
   icon: (
     <svg
@@ -102,6 +103,16 @@ const svgthree = {
   ),
 };
 const DeliveryComp = () => {
+  const [review, setReview] = useState(false);
+
+  const closeModal = () => {
+    setReview(false);
+  };
+
+  const openModal = () => {
+    setReview(true);
+  };
+
   return (
     <div className="bg-black grid place-items-center w-screen ">
       <div className="w-[90%] sm:w-[70%] lg:w-[70vmax] lg:h-[40vmax] flex items-center justify-center flex-col lg:flex-row bg-white rounded-xl my-[50px] lg:my-0">
@@ -113,7 +124,14 @@ const DeliveryComp = () => {
             <div className="absolute top-2 right-2">{svgtwo.icon}</div>
           </div>
         </div>
-        <div className="w-full px-3 pt-3  lg:w-[55%] text-black h-full text-start lg:text-center lg:pt-[12vmax] lg:px-[3vmax]  box-border bg-white rounded-xl">
+        <div className="w-full px-3 pt-3  lg:w-[55%] text-black h-full text-start lg:text-center lg:pt-[12vmax] lg:px-[3vmax]  box-border bg-white rounded-xl relative">
+          <button
+            className="w-fit bg-[#D42978] py-[10px] px-[50px] rounded-full cursor-pointer text-white font-bold  top-3 right-3 absolute"
+            onClick={openModal}
+          >
+            Give Review
+          </button>
+          {review && <ReviewModal closeModal={closeModal} />}
           <h1 className="font-bold text-2xl">Sunny Leone</h1>
           <p className="text-sm my-2">Script</p>
           <p className="mb-4 text-sm font-semibold">
