@@ -2,6 +2,27 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import CelebrityService from "../services/celebrity-services";
 
 const useGetAllCelebrities = () => {
+<<<<<<< HEAD
+
+    return useQuery({  queryKey: ['addNewCelebrity'],  queryFn: () => CelebrityService.getAllCelebrities()
+  })
+};
+
+
+const useGetAllFeaturedCelebrities = () => {
+
+    return useQuery({  queryKey: ['getAllFeaturedCelebrities'],  queryFn: () => CelebrityService.getAllFeaturedCelebrities()
+  })
+};
+
+
+
+
+
+
+const useGetCelebritiesByCategories = (categories) => {
+=======
+>>>>>>> c01d48df87473cfc772790b6d781c616c211bb12
   return useQuery({
     queryKey: ["addNewCelebrity"],
     queryFn: () => CelebrityService.getAllCelebrities(),
