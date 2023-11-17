@@ -3,34 +3,82 @@ import { FaTimes } from "react-icons/fa";
 import RequestLoader from "../Shared/RequestLoader";
 import { useStateContext } from "../../StateContext";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiUrl from "../../utils/url";
 import { useUserLogin } from "../../hooks/auth-hooks";
+import orderServices from "../../services/order-services";
+import { usePlaceOrder } from "../../hooks/order-hook";
 
 const PaymentModal = () => {
   const { paymentModal, setPaymentModal, orderData, setOrderData } =
     useStateContext();
 
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({});
 
-  const handleGoogleLogin = async () => {
-    window.open(`${apiUrl}/auth/google`, "_self");
-  };
-
-  const { mutate: addMutate, isLoading } = useUserLogin(
-    JSON.stringify(userData)
+  const [message, setMessage] = useState();
+  const { mutate: addMutate, isLoading } = usePlaceOrder(
+    JSON.stringify(orderData)
   );
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  };
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // addMutate(
+  //   {},
+  //   {
+  //     onSuccess: (response) => {
+  //       if (response?.data?.status === true) {
+  //         toast.success(response?.data?.message);
+  //         console.log(response?.data);
+  //         localStorage.setItem(
+  //           "userInfo",
+  //           JSON.stringify({
+  //             userId: response?.data?.userId,
+  //             token: response?.data?.token,
+  //           })
+  //         );
+  //         setPaymentModal(false);
+  //       }
+  //       if (response?.data?.status === false) {
+  //         toast.error(response?.data?.message);
+  //       }
+  //     },
+  //   }
+  // );
+  // };
+
+  const handleSubmit = async () => {
+    // event.preventDefault();
+    // coupon applied api
+    console.log("orderData---------- ", orderData);
+
+    if (orderData.image == undefined) {
+      setMessage("Please upload the transaction picture");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return;
+    }
+
+    if (orderData?.coupenNames && orderData?.coupenNames.length > 0) {
+      console.log("---", orderData.coupenNames);
+      try {
+        const response = await orderServices.CouponAvailed(
+          orderData.userID,
+          orderData.coupenNames
+        );
+        console.log("response: ", response?.data?.status);
+        // order place api
+      } catch (error) {
+        console.error(
+          "Error fetching coupon data:",
+          error.response?.data?.message
+        );
+        toast.error(error.response?.data?.message);
+      }
+    }
 
     addMutate(
       {},
@@ -39,14 +87,9 @@ const PaymentModal = () => {
           if (response?.data?.status === true) {
             toast.success(response?.data?.message);
             console.log(response?.data);
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify({
-                userId: response?.data?.userId,
-                token: response?.data?.token,
-              })
-            );
+
             setPaymentModal(false);
+            navigate("/");
           }
           if (response?.data?.status === false) {
             toast.error(response?.data?.message);
@@ -119,6 +162,10 @@ const PaymentModal = () => {
                     />
                   </label>
                 </div>
+
+                <span className="text-[12px] text-red-500">
+                  {message && message}
+                </span>
               </div>
               <div></div>
             </div>
@@ -136,9 +183,11 @@ const PaymentModal = () => {
           <div className="px-10 mt-auto">
             <button
               className=" w-full bg-[#D84388] text-white text-sm lg:text-xl rounded-3xl px-4 py-3 mb-3 md:mb-5 mt-2 md:mt-0"
-              // onClick={() => setPaymentModal(true)}
+              onClick={() => {
+                handleSubmit();
+              }}
             >
-              Place Order
+              {isLoading ? <RequestLoader /> : "Place Order"}
             </button>
           </div>
         </div>

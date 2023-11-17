@@ -15,7 +15,7 @@ export function StateProvider({ children }) {
     bookingTo: { name: "", gender: "He/Him" },
     bookingBy: { name: "", gender: "He/Him" },
     occasion: "",
-    language: "",
+    language: "English",
     customMessage: "",
     price: "",
     publicVideo: true,
@@ -25,6 +25,7 @@ export function StateProvider({ children }) {
     bookingEmail: "",
     addOnnPrice: 0,
     coupenDiscount: 550,
+    coupenNames: [],
   });
 
   return (
