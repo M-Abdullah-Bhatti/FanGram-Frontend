@@ -10,6 +10,7 @@ import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
 
 function PopularDelivery() {
   const scrollContainerRef = useRef(null);
+  const { data: celebritiesData} = useGetCelebritiesByCategories(['Popular']);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -23,11 +24,6 @@ function PopularDelivery() {
     }
   };
 
-  const {
-    data: popularCelebritiesData,
-  } = useGetCelebritiesByCategories(["Model", "Popular"]);
-
-  console.log("popularCelebritiesData", popularCelebritiesData);
 
   return (
     <div className="w-full bg-black text-white mb-12">
@@ -60,7 +56,7 @@ function PopularDelivery() {
         style={{ scrollBehavior: "smooth", scrollbarWidth: "thin", scrollbarColor: "transparent transparent", msOverflowStyle: "none", }}
       >
         <div className="flex space-x-4 py-4">
-          {popularCelebritiesData && popularCelebritiesData.map((celebrity, i) => (
+          {celebritiesData && celebritiesData.map((celebrity, i) => (
             <PopularDeliveryCard celebrity={celebrity} key={i} />
           ))}
         </div>
@@ -78,7 +74,7 @@ function PopularDelivery() {
             slideActiveClass="activeSlide"
             className="swiper-container"
           >
-            {popularCelebritiesData && popularCelebritiesData.map((slide, index) => (
+            {celebritiesData && celebritiesData.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div className="flex">
                   <PopularDeliveryCard celebrity={slide} />

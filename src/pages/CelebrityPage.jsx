@@ -8,6 +8,7 @@ import DemoVideos from "../components/CelebrityPage/DemoVideos";
 import DiscoverMore from "../components/Shared/DiscoverMore";
 import Header from "../components/CelebrityPage/Header";
 import {
+  useGetCelebritiesByCategories,
   useGetCelebrityDetails,
   useGetCelebrityVideos,
 } from "../hooks/celebrity-hooks";
@@ -23,6 +24,8 @@ function CelebrityPage() {
 
   const { data: celebrityVideos, isLoading: celebrityVideosLoading } =
     useGetCelebrityVideos(params?.id);
+
+  const { data: celebritiesData} = useGetCelebritiesByCategories(celebrityDetailsData?.categories);
 
   const { isFavorite, isLoading, isError } = useIsFavoriteCelebrity('6550de64d526b91721886925', celebrityDetailsData?._id);
   console.log(celebrityDetailsData?._id)
@@ -67,8 +70,8 @@ function CelebrityPage() {
 
       <div className="px-6 lg:px-16">
         <Offers data={celebrityDetailsData} loading={celebrityDetailsLoading} />
-        <RecentViewed />
-        <MayAlsoLike />
+        <RecentViewed data={celebritiesData} />
+        <MayAlsoLike data={celebritiesData} />
       </div>
       <FAQS />
       <div className="px-6 lg:px-16">
