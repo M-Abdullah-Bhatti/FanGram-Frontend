@@ -31,8 +31,14 @@ class AuthService {
     return res;
   }
 
-  
-  
+  /**
+   * get user details
+   * @returns
+   */
+  async getUserDetails(id) {
+    const { data } = await axios.get(`${apiUrl}/api/user/details/${id}`);
+    return data?.data;
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

@@ -12,6 +12,7 @@ function BookingListing() {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     setUserId(userInfo?.userId);
+    console.log("uuuuuu: ", userInfo?.userId);
   }, []);
 
   return (
