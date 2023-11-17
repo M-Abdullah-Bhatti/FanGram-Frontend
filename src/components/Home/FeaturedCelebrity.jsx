@@ -104,18 +104,6 @@ function FeaturedCelebrity() {
           ))}
         </Swiper>
       </div>
-
-      {/* <div
-        className="hidden md:flex overflow-x-auto mt-12 no-scrollbar"
-        ref={secondaryScrollContainerRef}
-        style={{ scrollBehavior: "smooth" }}
-      >
-        <div className="flex space-x-4 px-8 py-4">
-          {featuredCelebritiesData?.map((card, index) => (
-            <FeaturedCelebrityCard celebrity={card} key={index} />
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 }

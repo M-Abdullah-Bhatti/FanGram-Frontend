@@ -9,11 +9,13 @@ export function StateProvider({ children }) {
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
 
+  console.log("Hello it is context");
+
   const [orderData, setOrderData] = useState({
     bookingTo: { name: "", gender: "He/Him" },
     bookingBy: { name: "", gender: "He/Him" },
     occasion: "",
-    language: "",
+    language: "English",
     customMessage: "",
     price: "",
     publicVideo: true,
@@ -23,6 +25,7 @@ export function StateProvider({ children }) {
     bookingEmail: "",
     addOnnPrice: 0,
     coupenDiscount: 550,
+    coupenNames: [],
   });
 
   return (

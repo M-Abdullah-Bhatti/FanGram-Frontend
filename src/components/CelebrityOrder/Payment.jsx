@@ -24,23 +24,15 @@ function Payment({ isLoading, celebrityDetailsData }) {
   const handleAddCoupon = async () => {
     try {
       const response = await OrderServices.CheckCoupen(userId, couponName);
-      console.log("response: ", response?.data?.data?.priceOff); // You can handle the response as needed
-      console.log("coupenDiscount: ", orderData.coupenDiscount);
 
-      console.log(
-        typeof response?.data?.data?.priceOff,
-        typeof orderData.coupenDiscount
-      );
-      console.log(
-        "orderData add: ",
-        response?.data?.data?.priceOff + orderData.coupenDiscount
-      );
       let newCouponDiscount =
         response?.data?.data?.priceOff + orderData.coupenDiscount;
-      setOrderData({
-        ...orderData,
+
+      setOrderData((prevOrderData) => ({
+        ...prevOrderData,
         coupenDiscount: newCouponDiscount,
-      });
+        coupenNames: [...prevOrderData.coupenNames, couponName],
+      }));
       setCouponError("coupen applied successfully!");
       setTimeout(() => {
         setCouponError("");

@@ -7,7 +7,7 @@ import BookingListing from "../components/MyProfilePage/BookingListing";
 import DiscoverMore from "../components/Shared/DiscoverMore";
 
 const MyProfile = () => {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <div className="w-screen px-4 lg:px-16 py-6 bg-black text-white overflow-hidden">
       <TopLinks activeTab={activeTab} setActiveTab={setActiveTab} />
