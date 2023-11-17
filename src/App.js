@@ -22,7 +22,6 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route path="/review" element={<ReviewModal />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/celebrity/:id" element={<CelebrityPage />} />
         <Route path="/order/:id" element={<CelebrityOrder />} />
