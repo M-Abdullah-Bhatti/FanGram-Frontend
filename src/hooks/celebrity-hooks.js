@@ -14,6 +14,11 @@ const useGetAllFeaturedCelebrities = () => {
   })
 };
 
+
+
+
+
+
 const useGetCelebritiesByCategories = (categories) => {
   return useQuery({
     queryKey: ['getCelebritiesByCategories', categories],
@@ -45,5 +50,5 @@ export {
   useGetCelebrityDetails,
   useGetCelebrityVideos,
   useGetCelebritiesByCategories,
-  useAddFavorite
+  useAddFavorite,
 };

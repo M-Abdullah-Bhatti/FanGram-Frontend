@@ -58,6 +58,9 @@ class CelebrityService {
     return data?.data
   }
 
+
+
+
   
   /**
    * Add to Favorite
