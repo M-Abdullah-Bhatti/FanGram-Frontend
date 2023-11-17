@@ -1,4 +1,4 @@
-import {  useQueryClient, useMutation  } from "@tanstack/react-query";
+import {  useQueryClient, useMutation, useQuery  } from "@tanstack/react-query";
 import ProfileService from "../services/profile-services";
 
 const useUpdateUser = () => {
@@ -17,4 +17,11 @@ const useUpdateUser = () => {
     );
 }
 
-export { useUpdateUser };
+const useGetFavoriteCelebrities = (userId) => {
+  return useQuery({
+    queryKey: ['getFavoriteCelebrities', userId],
+    queryFn: () => ProfileService.getFavoriteCelebrities(userId),
+  });
+};
+
+export { useUpdateUser, useGetFavoriteCelebrities };

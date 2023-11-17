@@ -21,6 +21,20 @@ class ProfileService {
     return res;
 }
 
+ /**
+  * get favorite celebrities
+  * @returns
+  */
+
+async getFavoriteCelebrities(userId) {
+  try {
+    const { data } = await axios.get(`${apiUrl}/api/user/favoriteCelebrities/${userId}`);
+    return data.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error fetching favorite celebrities');
+  }
+}
+
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
