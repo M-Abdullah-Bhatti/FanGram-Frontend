@@ -1,25 +1,23 @@
-import {  useQueryClient, useMutation, useQuery  } from "@tanstack/react-query";
+import { useQueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import ProfileService from "../services/profile-services";
 
-const useUpdateUser = () => {
-    const queryClient = useQueryClient();
-
-    return useMutation(
-        (userData) => {
-            console.log(userData);
-            return ProfileService.updateUserData(userData);
-        },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries("user");
-          },
-        }
-    );
-}
+const useUpdateUser = (userData, id) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    () => {
+      return ProfileService.updateUserData(userData, id);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("updateUser");
+      },
+    }
+  );
+};
 
 const useGetFavoriteCelebrities = (userId) => {
   return useQuery({
-    queryKey: ['getFavoriteCelebrities', userId],
+    queryKey: ["getFavoriteCelebrities", userId],
     queryFn: () => ProfileService.getFavoriteCelebrities(userId),
   });
 };
