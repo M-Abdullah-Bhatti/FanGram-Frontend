@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { categories as _CATEGORIES, searchCelebrity } from "../../Data";
 import axios from "axios";
 import apiUrl from "../../utils/url";
+import { useGetAllFeaturedCelebrities } from "../../hooks/celebrity-hooks";
+import { useStateContext } from "../../StateContext";
 
 const SearchCelebrityMain = () => {
   const [categories, setCategories] = useState("");
+
+  const { searchValue, setSearchValue } = useStateContext();
 
   console.log("categories");
   console.log(categories);
 
   const [celebrityName, setCelebrityName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+  const {
+    data: featuredCelebritiesData,
+    isLoading: featuredCelebritiesLoading,
+  } = useGetAllFeaturedCelebrities();
 
   const handleSearch = async () => {
     try {
@@ -27,6 +36,13 @@ const SearchCelebrityMain = () => {
       console.error("Error fetching search results:", error);
     }
   };
+
+  useEffect(() => {
+    setSearchResults(featuredCelebritiesData);
+    if (searchValue) {
+      setCelebrityName(searchValue);
+    }
+  }, []);
 
   return (
     <div className="bg-black px-10 py-10">
