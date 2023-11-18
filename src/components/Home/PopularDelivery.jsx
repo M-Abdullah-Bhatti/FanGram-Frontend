@@ -6,11 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import {
-  useAddFavorite,
-  useGetCelebritiesByCategories,
-} from "../../hooks/celebrity-hooks";
-import { useIsFavoriteCelebrity } from "../../hooks/profile-hooks";
 
 function PopularDelivery({ celebritiesData }) {
   const scrollContainerRef = useRef(null);

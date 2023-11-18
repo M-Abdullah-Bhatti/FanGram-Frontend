@@ -13,6 +13,7 @@ function PopularDeliveryCard({ celebrity }) {
 
   const handleFavoriteClick = async () => {
     try {
+      console.log("handleFa click");
       await addFavoriteMutation.mutateAsync();
     } catch (error) {
       console.error("Error adding/removing favorite:", error);

@@ -12,6 +12,7 @@ function FeaturedCelebrityCard({ celebrity }) {
 
   const handleFavoriteClick = async () => {
     try {
+      console.log("handle fav");
       await addFavoriteMutation.mutateAsync();
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
@@ -21,7 +22,6 @@ function FeaturedCelebrityCard({ celebrity }) {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUserId(userInfo?.userId);
-
   }, []);
 
   return (
