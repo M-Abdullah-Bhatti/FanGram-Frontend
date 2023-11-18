@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -10,10 +11,20 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
 import { heroSliderImages } from "../../Data";
+import { useStateContext } from "../../StateContext";
 
 SwiperCore.use([Navigation, Pagination]);
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const [value, setValue] = useState();
+  const { searchValue, setSearchValue } = useStateContext();
+
+  const handleSearch = () => {
+    console.log("value: ", value);
+    setSearchValue(value);
+    navigate("/search");
+  };
   return (
     <div className="flex justify-center items-center flex-col-reverse lg:flex-row gap-8 min-h-screen lg:min-h-[85vh] relative bg-[#000] py-9 md:py-unset px-6 sm:px-10 overflow-hidden">
       <img
@@ -89,11 +100,16 @@ const Hero = () => {
 
           <input
             type="text"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
             placeholder="Search Your Favourite creator"
             className="outline-none md:text-base text-sm w-full h-full px-2 bg-transparent focus:bg-transparent text-[#fff]"
           />
 
-          <button className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-3 sm:px-4 sm:text-base text-sm   ">
+          <button
+            className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-3 sm:px-4 sm:text-base text-sm   "
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>

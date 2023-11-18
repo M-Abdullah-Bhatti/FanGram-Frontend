@@ -8,6 +8,7 @@ export function StateProvider({ children }) {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
+  const [searchValue, setSearchValue] = useState();
 
   console.log("Hello it is context");
 
@@ -39,6 +40,8 @@ export function StateProvider({ children }) {
         setPaymentModal,
         orderData,
         setOrderData,
+        searchValue,
+        setSearchValue,
       }}
     >
       {children}
