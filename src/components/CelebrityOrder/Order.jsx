@@ -64,19 +64,6 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
     setCurrentIndex(1);
   };
 
-  // const handleExtraSelection = () => {
-  //   console.log("Hello");
-  // };
-  // const handleExtraSelection = (extra, isSelected) => {
-  //   setOrderData((currentOrderData) => {
-  //     const newExtras = isSelected
-  //       ? [...currentOrderData.extras, extra]
-  //       : currentOrderData.extras.filter((e) => e.id !== extra.id);
-
-  //     return { ...currentOrderData, extras: newExtras };
-  //   });
-  // };
-
   const handleExtraSelection = (extra, isSelected) => {
     setOrderData((currentOrderData) => {
       console.log("currentOrderData: ", currentOrderData.addOnn, extra.price);
@@ -480,13 +467,22 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
           Extras
         </h1>
         <div className="space-y-3 md:space-y-4">
-          {extras.map((extra, index) => (
+          {/* {extras.map((extra, index) => (
             <Extras
               extra={extra}
               key={index}
               onSelectionChange={handleExtraSelection}
             />
-          ))}
+          ))} */}
+
+          {!isLoading &&
+            celebrityDetailsData?.extras.map((extra, index) => (
+              <Extras
+                extra={extra}
+                key={index}
+                onSelectionChange={handleExtraSelection}
+              />
+            ))}
         </div>
       </div>
 

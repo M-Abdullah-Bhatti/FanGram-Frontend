@@ -20,7 +20,8 @@ function Extras({ extra, key, onSelectionChange }) {
         >
           <img
             className="min-w-[25px] md:min-w-[50px] max-w-[25px] md:max-w-[50px]"
-            src={extra.icon}
+            // src={extra.icon}
+            src="/images/order__gift.svg"
             alt=""
           />
         </div>
