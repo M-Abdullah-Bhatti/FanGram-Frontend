@@ -212,8 +212,7 @@ function Payment({ isLoading, celebrityDetailsData }) {
                 {orderData.price +
                   orderData?.addOnnPrice -
                   orderData?.coupenDiscount -
-                  //  celebrityDetailsData?.fanDiscount
-                  1600}
+                  celebrityDetailsData?.fanDiscount}
               </span>
             </div>
           </div>

@@ -12,7 +12,7 @@ import { useStateContext } from "../StateContext";
 
 function CelebrityOrder() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { setOpenLoginModal, isLoggedIn } = useStateContext();
+  const { setOpenLoginModal, isLoggedIn, setOrderData } = useStateContext();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -25,6 +25,26 @@ function CelebrityOrder() {
       navigate("/");
       setOpenLoginModal(true);
     }
+
+    return () => {
+      console.log("User leaves the CelebrityOrder page");
+      setOrderData({
+        bookingTo: { name: "", gender: "He/Him" },
+        bookingBy: { name: "", gender: "He/Him" },
+        occasion: "",
+        language: "English",
+        customMessage: "",
+        price: "",
+        publicVideo: true,
+        fastDelivery: false,
+        extras: [],
+        billingNumber: "",
+        bookingEmail: "",
+        addOnnPrice: 0,
+        coupenDiscount: 550,
+        coupenNames: [],
+      });
+    };
   }, []);
 
   return (
