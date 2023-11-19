@@ -25,10 +25,39 @@ function CelebrityPage() {
   const { data: celebrityVideos, isLoading: celebrityVideosLoading } =
     useGetCelebrityVideos(params?.id);
 
-  const { data: celebritiesData} = useGetCelebritiesByCategories(celebrityDetailsData?.categories);
+  const { data: celebritiesData } = useGetCelebritiesByCategories(
+    celebrityDetailsData?.categories
+  );
 
-  const { isFavorite, isLoading, isError } = useIsFavoriteCelebrity('6550de64d526b91721886925', celebrityDetailsData?._id);
-  console.log(celebrityDetailsData?._id)
+  const { isFavorite, isLoading, isError } = useIsFavoriteCelebrity(
+    "6550de64d526b91721886925",
+    celebrityDetailsData?._id
+  );
+  console.log(celebrityDetailsData?._id);
+
+  useEffect(() => {
+    if (celebrityDetailsData) {
+      // Retrieve and parse the 'recentlyViewed' array from local storage
+      let recent = localStorage.getItem("recentlyViewed");
+      let recentlyViewed = recent ? JSON.parse(recent) : [];
+
+      // Check if the current celebrity is already in the array
+      if (
+        !recentlyViewed.some((item) => item._id === celebrityDetailsData._id)
+      ) {
+        // Add the current celebrity's details at the beginning of the array
+        recentlyViewed.unshift(celebrityDetailsData);
+
+        // If the array length exceeds 5, remove the last item
+        if (recentlyViewed.length > 5) {
+          recentlyViewed.pop();
+        }
+
+        // Save the updated array back to local storage
+        localStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
+      }
+    }
+  }, [celebrityDetailsData]);
 
   return (
     <div className="py-6 bg-black text-white">
@@ -53,7 +82,11 @@ function CelebrityPage() {
           </svg>
           {celebrityDetailsLoading ? "Loading ..." : celebrityDetailsData?.name}
         </h1>
-        <Header data={celebrityDetailsData} loading={celebrityDetailsLoading} isFavorite={isFavorite} />
+        <Header
+          data={celebrityDetailsData}
+          loading={celebrityDetailsLoading}
+          isFavorite={isFavorite}
+        />
         <CelebrityHeader
           data={celebrityDetailsData}
           loading={celebrityDetailsLoading}

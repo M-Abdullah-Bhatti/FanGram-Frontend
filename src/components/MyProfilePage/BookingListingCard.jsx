@@ -23,7 +23,7 @@ function BookingListingCard({ booking }) {
         }}
       >
         <img
-          src={booking?.celebrityID?.celebrityImage?.url}
+          src={booking?.celebrityID?.celebrityImage}
           alt="celebrity"
           className="w-full max-h-[175px] md:max-h-[275px] object-fill"
         />

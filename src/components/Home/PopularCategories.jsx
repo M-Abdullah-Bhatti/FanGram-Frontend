@@ -4,9 +4,15 @@ import TringDhamaka from "./TringDhamaka";
 import { categories } from "../../Data";
 
 import HomeCTA from "./HomeCTA";
+import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
 
 function PopularCategories() {
   const [selected, setSelected] = useState(0);
+  const [category, setCategory] = useState(["Celebrities"]);
+
+  const { data: celebritiesData } = useGetCelebritiesByCategories(category);
+
+  console.log("celebritiesData::: ", celebritiesData);
 
   return (
     <div className="bg-black text-white px-8 md:px-16 py-4 md:py-12">
@@ -21,14 +27,20 @@ function PopularCategories() {
             style={{
               backgroundColor: index === selected ? "#D42978" : "#292929",
             }}
-            onClick={() => setSelected(index)}
+            onClick={() => {
+              console.log("selected: ", category);
+              setCategory([]);
+              let selected = category;
+              setCategory([category]);
+              setSelected(index);
+            }}
           >
             {category}
           </div>
         ))}
       </div>
-      <PopularDelivery />
-      <TringDhamaka />
+      <PopularDelivery celebritiesData={celebritiesData} />
+      {/* <TringDhamaka /> */}
 
       <HomeCTA />
     </div>

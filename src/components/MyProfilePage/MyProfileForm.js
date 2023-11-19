@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { myProfilePageIcons } from "../../Data";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useUpdateUser } from "../../hooks/profile-hooks";
-import profileServices from "../../services/profile-services";
+import { useGetUserInfo } from "../../hooks/auth-hooks";
+import { toast } from "react-toastify";
+import RequestLoader from "../Shared/RequestLoader";
 
 const MyProfileForm = () => {
   const updateUserMutation = useUpdateUser();
 
   const [userData, setUserData] = useState({
-    name: "wahid",
-    gender: "male",
+    username: "",
+    gender: "Male",
     dob: "",
     phone: "",
     email: "",
@@ -46,6 +48,8 @@ const MyProfileForm = () => {
     }
   };
 
+  const { mutate: addMutate, isLoading } = useUpdateUser(userData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserData({
@@ -64,7 +68,7 @@ const MyProfileForm = () => {
         <div className="mt-[100px] lg:mt-[50px] grid place-items-center">
           <div className="w-[10vmax] h-[10vmax]">
             <img
-              src={avatarPreview}
+              src={userData?.image}
               alt=""
               className="w-full h-full rounded-full border border-[#f1f1f1]"
             />
@@ -161,7 +165,6 @@ const MyProfileForm = () => {
             }}
             country={"pk"}
             buttonClass="countryButton"
-            // containerStyle={{ paddingLeft: "2vmax" }}
             inputStyle={{ paddingLeft: "6vmax" }}
             buttonStyle={{
               width: "5vmax",

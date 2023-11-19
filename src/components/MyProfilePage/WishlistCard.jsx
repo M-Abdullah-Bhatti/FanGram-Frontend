@@ -33,7 +33,7 @@ function WishlistCard({ celebrity, refetchFavorites }) {
       style={{ minWidth: "325px", overflow: "hidden" }}
     >
       <img
-        src={celebrity.celebrityImage.url}
+        src={celebrity.celebrityImage}
         alt="celebrity"
         className="object-fill w-full h-full"
       />

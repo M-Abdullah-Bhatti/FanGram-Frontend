@@ -65,7 +65,7 @@ function Payment({ isLoading, celebrityDetailsData }) {
           </h3>
           <div className="flex gap-2">
             <img
-              src={isLoading ? "" : celebrityDetailsData?.celebrityImage?.url}
+              src={isLoading ? "" : celebrityDetailsData?.celebrityImage}
               className="rounded-xl h-[85px]"
               alt="sunny"
             />

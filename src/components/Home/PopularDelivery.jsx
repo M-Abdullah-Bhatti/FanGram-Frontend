@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import { featuredCelebrityData } from "../../Data";
 import PopularDeliveryCard from "./PopularDeliveryCard";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -6,11 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
 
-function PopularDelivery() {
+function PopularDelivery({ celebritiesData }) {
   const scrollContainerRef = useRef(null);
-  const { data: celebritiesData } = useGetCelebritiesByCategories(["Popular"]);
+  // const { data: celebritiesData } = useGetCelebritiesByCategories(["Popular"]);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {

@@ -18,7 +18,7 @@ function CelebrityHeader({ data, loading, isFavorite }) {
         }}
       >
         <img
-          src={data?.celebrityImage?.url}
+          src={data?.celebrityImage}
           alt="celebrity"
           className="w-full h-full object-fill"
         />
@@ -54,7 +54,8 @@ function CelebrityHeader({ data, loading, isFavorite }) {
           <div className="flex items-center space-x-2">
             {/* <img src="/images/flag.svg" alt="flag" />
             <p>India’s largest celebrity engagement platform</p> */}
-            <div className="w-[40px] h-[40px] flex justify-center items-center rounded-full"
+            <div
+              className="w-[40px] h-[40px] flex justify-center items-center rounded-full"
               style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
             >
               <img src="/images/heart.png" alt="heart" />

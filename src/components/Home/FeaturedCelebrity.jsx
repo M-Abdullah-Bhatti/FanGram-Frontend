@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import FeaturedCelebrityCard from "./FeaturedCelebrityCard";
 // import { featuredCelebrityData } from "../../Data";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -10,19 +10,16 @@ import { useGetAllFeaturedCelebrities } from "../../hooks/celebrity-hooks";
 
 function FeaturedCelebrity() {
   const scrollContainerRef = useRef(null);
-  const secondaryScrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft -= 350;
-      secondaryScrollContainerRef.current.scrollLeft -= 360;
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += 350;
-      secondaryScrollContainerRef.current.scrollLeft += 350;
     }
   };
 

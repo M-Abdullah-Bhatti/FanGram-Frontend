@@ -16,9 +16,10 @@ const useGetAllFeaturedCelebrities = () => {
 };
 
 const useGetCelebritiesByCategories = (categories) => {
-  return useMutation(() =>
-    CelebrityService.getCelebritiesByCategories(categories)
-  );
+  return useQuery({
+    queryKey: ["getCelebritiesByCategories", categories],
+    queryFn: () => CelebrityService.getCelebritiesByCategories(categories),
+  });
 };
 
 const useGetCelebrityDetails = (id) => {
