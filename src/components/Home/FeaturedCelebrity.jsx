@@ -10,19 +10,16 @@ import { useGetAllFeaturedCelebrities } from "../../hooks/celebrity-hooks";
 
 function FeaturedCelebrity() {
   const scrollContainerRef = useRef(null);
-  const secondaryScrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft -= 350;
-      secondaryScrollContainerRef.current.scrollLeft -= 360;
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += 350;
-      secondaryScrollContainerRef.current.scrollLeft += 350;
     }
   };
 
