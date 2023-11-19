@@ -6,8 +6,13 @@ import { useUpdateUser } from "../../hooks/profile-hooks";
 import { useGetUserInfo } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import RequestLoader from "../Shared/RequestLoader";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "../../StateContext";
 
 const MyProfileForm = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useStateContext();
+
   const [userData, setUserData] = useState({
     username: "",
     gender: "Male",
@@ -88,16 +93,19 @@ const MyProfileForm = () => {
   }, []);
 
   useEffect(() => {
-    if (profileData) {
-      setUserData({
-        username: profileData.username || "",
-        gender: profileData.gender || "",
-        dob: profileData.dob || "",
-        phoneNumber: profileData.phoneNumber || "",
-        email: profileData.email || "",
-        image: profileData.image.url || "",
-      });
-    }
+    const fetchProfileData = () => {
+      if (profileData) {
+        setUserData({
+          username: profileData.username || "",
+          gender: profileData.gender || "",
+          dob: profileData.dob || "",
+          phoneNumber: profileData.phoneNumber || "",
+          email: profileData.email || "",
+          image: profileData.image.url || "",
+        });
+      }
+    };
+    fetchProfileData();
   }, [profileData]);
 
   return (
@@ -116,7 +124,7 @@ const MyProfileForm = () => {
           </div>
           <div
             id="registerImage"
-            className="relative overflow-hidden cursor-pointer mt-4 p-2 cursor-pointer"
+            className="relative overflow-hidden cursor-pointer mt-4 p-2"
           >
             <input
               type="file"
@@ -148,6 +156,19 @@ const MyProfileForm = () => {
                 </defs>
               </svg>
             </label>
+          </div>
+
+          <div className="mt-10">
+            <button
+              className="outline-none lg:text-base text-[14px] py-[5px] sm:py-2 px-3 sm:px-10  rounded-[40px] bg-[#D42978] text-[#fff]"
+              onClick={() => {
+                localStorage.removeItem("userInfo");
+                setIsLoggedIn(false);
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
           </div>
         </div>
         <div className="py-8 px-10">
