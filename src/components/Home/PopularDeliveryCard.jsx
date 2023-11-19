@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAddFavorite } from "../../hooks/celebrity-hooks";
 import { useIsFavoriteCelebrity } from "../../hooks/profile-hooks";
+import { useStateContext } from "../../StateContext";
 
 function PopularDeliveryCard({ celebrity }) {
   const navigate = useNavigate();
+  const { setOpenLoginModal, isLoggedIn } = useStateContext();
 
   const [userId, setUserId] = useState("");
 
@@ -13,8 +15,13 @@ function PopularDeliveryCard({ celebrity }) {
 
   const handleFavoriteClick = async () => {
     try {
-      console.log("handleFa click");
-      await addFavoriteMutation.mutateAsync();
+      if (!isLoggedIn) {
+        setOpenLoginModal(true);
+        return;
+      } else {
+        console.log("handleFa click");
+        await addFavoriteMutation.mutateAsync();
+      }
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
     }

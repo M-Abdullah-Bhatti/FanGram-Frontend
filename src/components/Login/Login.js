@@ -8,7 +8,8 @@ import apiUrl from "../../utils/url";
 import { useUserLogin } from "../../hooks/auth-hooks";
 
 const Login = () => {
-  const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
+  const { setOpenSignupModal, setOpenLoginModal, isLoggedIn, setIsLoggedIn } =
+    useStateContext();
 
   const [userData, setUserData] = useState({});
 
@@ -45,6 +46,7 @@ const Login = () => {
                 token: response?.data?.token,
               })
             );
+            setIsLoggedIn(true);
             setOpenLoginModal(false);
           }
           if (response?.data?.status === false) {

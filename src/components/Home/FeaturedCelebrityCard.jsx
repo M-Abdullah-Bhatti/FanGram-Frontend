@@ -2,18 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAddFavorite } from "../../hooks/celebrity-hooks";
 import { useIsFavoriteCelebrity } from "../../hooks/profile-hooks";
+import { useStateContext } from "../../StateContext";
 
 function FeaturedCelebrityCard({ celebrity }) {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
+
+  const { setOpenLoginModal, isLoggedIn } = useStateContext();
 
   const addFavoriteMutation = useAddFavorite(celebrity?._id, userId);
   const { isFavorite } = useIsFavoriteCelebrity(userId, celebrity?._id);
 
   const handleFavoriteClick = async () => {
     try {
-      console.log("handle fav");
-      await addFavoriteMutation.mutateAsync();
+      if (!isLoggedIn) {
+        setOpenLoginModal(true);
+        return;
+      } else {
+        console.log("handle fav");
+        await addFavoriteMutation.mutateAsync();
+      }
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
     }
@@ -32,13 +40,13 @@ function FeaturedCelebrityCard({ celebrity }) {
         alt="celebrity"
         className="object-fill w-full h-full"
       />
-      <div
+      <button
         className="absolute top-4 right-4 w-[40px] h-[40px] flex justify-center items-center rounded-full"
         style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
         onClick={handleFavoriteClick}
       >
         <img src="/images/heart.png" alt="heart" />
-      </div>
+      </button>
       <div
         className="absolute bottom-0 left-0 right-0 p-4"
         style={{

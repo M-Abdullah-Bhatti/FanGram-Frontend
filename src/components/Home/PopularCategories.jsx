@@ -5,6 +5,7 @@ import { categories } from "../../Data";
 
 import HomeCTA from "./HomeCTA";
 import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
+import { useStateContext } from "../../StateContext";
 
 function PopularCategories() {
   const [selected, setSelected] = useState(0);
