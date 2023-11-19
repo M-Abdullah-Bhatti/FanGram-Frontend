@@ -3,19 +3,34 @@ import { FaTimes } from "react-icons/fa";
 import RequestLoader from "../Shared/RequestLoader";
 import { useStateContext } from "../../StateContext";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiUrl from "../../utils/url";
+import {auth, provider} from '../../firebase.js';
+import { signInWithPopup } from 'firebase/auth';
 import { useUserLogin } from "../../hooks/auth-hooks";
+import axios from "axios";
 
 const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal, isLoggedIn, setIsLoggedIn } =
     useStateContext();
 
+  const navigate = useNavigate()
+
   const [userData, setUserData] = useState({});
 
-  const handleGoogleLogin = async () => {
-    window.open(`${apiUrl}/auth/google`, "_self");
-  };
+  const signInWithGoogle = async () => {
+
+    signInWithPopup(auth, provider).then((result) => {
+        axios.post(`${apiUrl}/auth/google`, {
+            name: result.user.displayName,
+            email: result.user.email,
+            img: result.user.photoURL
+        }).then((res)=>{
+          console.log(result);
+            navigate("/")
+        });
+    }).catch((error)=> console.log(error.message));
+}
 
   const { mutate: addMutate, isLoading } = useUserLogin(
     JSON.stringify(userData)
@@ -98,8 +113,8 @@ const Login = () => {
                 </svg>
               </div>
               <div
-                className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center "
-                onClick={handleGoogleLogin}
+                className="bg-[#EAEAEA] p-2 rounded-full ml-3 w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] flex items-center justify-center cursor-pointer"
+                onClick={signInWithGoogle}
               >
                 <svg
                   width="24"
