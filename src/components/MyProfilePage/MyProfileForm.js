@@ -6,28 +6,20 @@ import { useUpdateUser } from "../../hooks/profile-hooks";
 import { useGetUserInfo } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import RequestLoader from "../Shared/RequestLoader";
-import { useNavigate } from "react-router-dom";
-import { useStateContext } from "../../StateContext";
 
 const MyProfileForm = () => {
-  const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn } = useStateContext();
+  const updateUserMutation = useUpdateUser();
 
   const [userData, setUserData] = useState({
     username: "",
     gender: "Male",
     dob: "",
-    phoneNumber: "",
+    phone: "",
     email: "",
     image: "",
   });
   const [avatarPreview, setAvatarPreview] = useState("/images/Profile.png");
   const [avatar, setAvatar] = useState();
-  const [userId, setUserId] = useState();
-
-  const { data: profileData, isLoading: profileLoading } =
-    useGetUserInfo(userId);
-  console.log("profileData: ", profileData);
 
   const handleInputChange = (e) => {
     setUserData({
@@ -39,7 +31,7 @@ const MyProfileForm = () => {
   const handlePhoneChange = (value, data, event) => {
     setUserData({
       ...userData,
-      phoneNumber: value,
+      phone: value,
     });
   };
 
@@ -56,57 +48,16 @@ const MyProfileForm = () => {
     }
   };
 
-  const { mutate: addMutate, isLoading } = useUpdateUser(userData, userId);
+  const { mutate: addMutate, isLoading } = useUpdateUser(userData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("user data: ", userData, userId);
-    if (avatar) {
-      setUserData({
-        ...userData,
-        image: avatar,
-      });
-    }
-    console.log("userDta: ", userData);
-    // updateUserMutation.mutate(userData);
-    addMutate(
-      {},
-      {
-        onSuccess: (response) => {
-          if (response?.data?.status === true) {
-            toast.success(response?.data?.message);
-            // setOpenSignupModal(false);
-            // setOpenLoginModal(true);
-          }
-          if (response?.data?.status === false) {
-            toast.error(response?.data?.message);
-          }
-        },
-      }
-    );
+    setUserData({
+      ...userData,
+      image: avatar,
+    });
+    updateUserMutation.mutate(userData);
   };
-
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    setUserId(userInfo?.userId);
-  }, []);
-
-  useEffect(() => {
-    const fetchProfileData = () => {
-      if (profileData) {
-        setUserData({
-          username: profileData.username || "",
-          gender: profileData.gender || "",
-          dob: profileData.dob || "",
-          phoneNumber: profileData.phoneNumber || "",
-          email: profileData.email || "",
-          image: profileData.image.url || "",
-        });
-      }
-    };
-    fetchProfileData();
-  }, [profileData]);
 
   return (
     <div className="mt-[30px] lg:m-[50px] grid place-items-center">
@@ -124,7 +75,7 @@ const MyProfileForm = () => {
           </div>
           <div
             id="registerImage"
-            className="relative overflow-hidden cursor-pointer mt-4 p-2"
+            className="relative overflow-hidden cursor-pointer mt-4 p-2 cursor-pointer"
           >
             <input
               type="file"
@@ -157,19 +108,6 @@ const MyProfileForm = () => {
               </svg>
             </label>
           </div>
-
-          <div className="mt-10">
-            <button
-              className="outline-none lg:text-base text-[14px] py-[5px] sm:py-2 px-3 sm:px-10  rounded-[40px] bg-[#D42978] text-[#fff]"
-              onClick={() => {
-                localStorage.removeItem("userInfo");
-                setIsLoggedIn(false);
-                navigate("/");
-              }}
-            >
-              Logout
-            </button>
-          </div>
         </div>
         <div className="py-8 px-10">
           <label for="name">Name</label>
@@ -177,9 +115,9 @@ const MyProfileForm = () => {
           <input
             type="text"
             id="name"
-            name="username"
+            name="name"
             required
-            value={userData.username}
+            value={userData.name}
             onChange={handleInputChange}
             className="form__elements"
             placeholder="Enter Your Name"
@@ -220,13 +158,14 @@ const MyProfileForm = () => {
 
           <PhoneInput
             inputProps={{
-              name: "phoneNumber",
+              name: "phone",
               required: true,
               autoFocus: true,
               className: "form__elements",
             }}
             country={"pk"}
             buttonClass="countryButton"
+            inputStyle={{ paddingLeft: "6vmax" }}
             buttonStyle={{
               width: "5vmax",
               background: "#414141",
@@ -238,7 +177,7 @@ const MyProfileForm = () => {
               background: "white",
             }}
             prefix="+"
-            value={userData.phoneNumber}
+            value={userData.phone}
             onChange={handlePhoneChange}
           />
           <br></br>
@@ -251,7 +190,6 @@ const MyProfileForm = () => {
             id="email"
             name="email"
             required
-            disabled={true}
             value={userData.email}
             onChange={handleInputChange}
             className="form__elements"
@@ -260,17 +198,11 @@ const MyProfileForm = () => {
           <br></br>
           <br />
           <div className="grid place-items-center mt-[40px] ">
-            {/* <input
+            <input
               type="submit"
               value="Save Changes"
               className="w-fit bg-[#D42978] py-[10px] px-[50px] rounded-full cursor-pointer"
-            /> */}
-            <button
-              type="submit"
-              className="w-fit bg-[#D42978] py-[10px] px-[50px] rounded-full cursor-pointer"
-            >
-              {isLoading ? <RequestLoader /> : "Save Changes"}
-            </button>
+            />
           </div>
         </div>
       </form>
