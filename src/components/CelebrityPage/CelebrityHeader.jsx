@@ -10,13 +10,16 @@ import { useStateContext } from "../../StateContext";
 
 function CelebrityHeader({ data, loading, isFavorite }) {
   const navigate = useNavigate();
-  const { setOpenLoginModal, isLoggedIn } = useStateContext();
+  const { setOpenLoginModal, isLoggedIn, orderData, setOrderData } =
+    useStateContext();
 
-  const handleBook = (id) => {
+  const handleBook = (id, price) => {
     if (!isLoggedIn) {
       setOpenLoginModal(true);
       return;
     } else {
+      console.log("---", id, price);
+      setOrderData({ ...orderData, price: price });
       navigate(`/order/${id}`);
     }
   };
@@ -91,7 +94,7 @@ function CelebrityHeader({ data, loading, isFavorite }) {
           <span className="flex items-center bg-[#D42978] font-medium text-xs lg:text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
             {/* <Link to="/order"> */}
 
-            <button onClick={() => handleBook(data?._id)}>
+            <button onClick={() => handleBook(data?._id, data?.videoPrice)}>
               Book Video @{" "}
               <b>&#8377; {loading ? "Loading..." : data?.videoPrice}</b>
               <span className="line-through ml-2 text-sm">
@@ -104,7 +107,7 @@ function CelebrityHeader({ data, loading, isFavorite }) {
             style={{
               borderRadius: 25,
             }}
-            onClick={() => handleBook(data?._id)}
+            onClick={() => handleBook(data?._id, data?.meetAndGreetPrice)}
           >
             <span className="px-3">Meet & Greet</span>
             <span

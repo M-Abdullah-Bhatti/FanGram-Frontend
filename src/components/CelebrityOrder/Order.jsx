@@ -96,6 +96,7 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
       return { ...currentOrderData, extras: newExtras, addOnnPrice: newAddOnn };
     });
   };
+  console.log("-9q384092389", orderData);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -108,7 +109,6 @@ function Order({ setCurrentIndex, celebrityDetailsData, isLoading }) {
         ...orderData,
         userID: userInfo?.userId,
         celebrityID: params?.id,
-        price: celebrityDetailsData.meetAndGreetPrice,
       });
     }
   }, [celebrityDetailsData]); // Add celebrityDetailsData as a dependency
