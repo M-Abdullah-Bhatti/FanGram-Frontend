@@ -29,6 +29,7 @@ const headerLinks = [
 
 const Header = () => {
   const location = useLocation();
+  const { isLoggedIn, setIsLoggedIn } = useStateContext();
 
   const navigate = useNavigate();
 
@@ -46,6 +47,7 @@ const Header = () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     console.log("heaeer: ", userInfo?.userId);
     setUserId(userInfo?.userId);
+    setIsLoggedIn(true);
   }, []);
 
   return (
@@ -87,7 +89,7 @@ const Header = () => {
               <button className="hidden lg:block outline-none border-[1px] py-2 px-4 rounded-[40px] border-[#fff] text-[#fff]">
                 <Link to="/promotion">Promote My Business</Link>
               </button>
-              {userId ? (
+              {isLoggedIn ? (
                 <button
                   className="outline-none lg:text-base text-[14px] py-[5px] sm:py-2 px-3 sm:px-4  rounded-[40px] bg-[#D42978] text-[#fff]"
                   onClick={() => navigate("/myProfile")}
