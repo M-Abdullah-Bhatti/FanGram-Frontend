@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import OrderHeader from "../components/CelebrityOrder/OrderHeader";
 import HorizontalCurl from "../components/CelebrityOrder/HorizontalCurl";
 import OrderDetails from "../components/CelebrityOrder/OrderDetails";
@@ -8,15 +8,24 @@ import StepsProgress from "../components/CelebrityOrder/StepsProgress";
 import Order from "../components/CelebrityOrder/Order";
 import { useGetCelebrityDetails } from "../hooks/celebrity-hooks";
 import { useNavigate, useParams } from "react-router-dom";
+import { useStateContext } from "../StateContext";
 
 function CelebrityOrder() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { setOpenLoginModal, isLoggedIn } = useStateContext();
   const params = useParams();
   const navigate = useNavigate();
 
   console.log("Params: ", params.id);
   const { data: celebrityDetailsData, isLoading: celebrityDetailsLoading } =
     useGetCelebrityDetails(params?.id);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+      setOpenLoginModal(true);
+    }
+  }, []);
 
   return (
     <div className="bg-[#000] py-12 flex flex-col items-center overflow-hidden">
