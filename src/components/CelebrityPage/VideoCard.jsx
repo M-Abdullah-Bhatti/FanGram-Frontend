@@ -15,7 +15,7 @@ function VideoCard({ celebrity }) {
         />
       )}
       <img
-        src={celebrity?.celebrityVideos[0]?.url}
+        src={celebrity?.celebrityVideo}
         alt="logo"
         className="w-full h-full rounded-xl"
       />

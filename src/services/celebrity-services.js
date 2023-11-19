@@ -55,8 +55,8 @@ class CelebrityService {
    * getCelebrityVideo
    * @returns
    */
-  async getCelebrityVideos(id) {
-    const { data } = await axios.get(`${apiUrl}/api/video/celebrity/${id}`);
+  async getCelebrityPublicVideos(id) {
+    const { data } = await axios.get(`${apiUrl}/api/videos/celebrity/public/${id}`);
     return data?.data;
   }
 

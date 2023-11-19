@@ -29,10 +29,10 @@ const useGetCelebrityDetails = (id) => {
   });
 };
 
-const useGetCelebrityVideos = (id) => {
+const useGetCelebrityPublicVideos = (id) => {
   return useQuery({
     queryKey: ["video/celebrity"],
-    queryFn: () => CelebrityService.getCelebrityVideos(id),
+    queryFn: () => CelebrityService.getCelebrityPublicVideos(id),
   });
 };
 
@@ -44,7 +44,7 @@ export {
   useGetAllCelebrities,
   useGetAllFeaturedCelebrities,
   useGetCelebrityDetails,
-  useGetCelebrityVideos,
+  useGetCelebrityPublicVideos,
   useGetCelebritiesByCategories,
   useAddFavorite,
 };

@@ -138,7 +138,7 @@ function CelebrityHeader({ data, loading, isFavorite }) {
       </div>
 
       {/* Slider */}
-      <div className="right-5 bottom-3 w-[150px] absolute flex justify-center items-center hero__caurosel  ">
+      {/* <div className="right-5 bottom-3 w-[150px] absolute flex justify-center items-center hero__caurosel  ">
         <Swiper
           modules={[Navigation, Pagination, A11y, Autoplay]}
           slidesPerView={1}
@@ -164,7 +164,7 @@ function CelebrityHeader({ data, loading, isFavorite }) {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </div> */}
     </div>
   );
 }

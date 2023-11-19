@@ -10,7 +10,7 @@ import Header from "../components/CelebrityPage/Header";
 import {
   useGetCelebritiesByCategories,
   useGetCelebrityDetails,
-  useGetCelebrityVideos,
+  useGetCelebrityPublicVideos,
 } from "../hooks/celebrity-hooks";
 import { useNavigate, useParams } from "react-router-dom";
 import { useIsFavoriteCelebrity } from "../hooks/profile-hooks";
@@ -23,7 +23,7 @@ function CelebrityPage() {
     useGetCelebrityDetails(params?.id);
 
   const { data: celebrityVideos, isLoading: celebrityVideosLoading } =
-    useGetCelebrityVideos(params?.id);
+    useGetCelebrityPublicVideos(params?.id);
 
   const { data: celebritiesData } = useGetCelebritiesByCategories(
     celebrityDetailsData?.categories

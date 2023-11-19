@@ -48,12 +48,17 @@ function OfferTicket({ ticket }) {
           </svg>
           <h1 className="text-[8px] md:text-xl font-medium">{ticket?.title}</h1>
           <div className="text-[8px] md:text-base bg-[#D42978] text-white px-1 md:px-4 py-1 rounded-2xl">
-            <p>{ticket?.price}</p>
+            <p>Flat {ticket?.price} % off</p>
           </div>
         </div>
         <div>
           <p className="text-[#9A9A9A] text-[8px] md:text-base font-medium">
-            {ticket?.description}
+            {/* {ticket?.description} */}
+            {ticket?.title === "Buy For"
+              ? "Extra ₹100 off on this booking"
+              : ticket?.title === "Members Only"
+              ? "Additional discount for prime users"
+              : "Additional discount for Insta DM"}
           </p>
         </div>
       </div>
