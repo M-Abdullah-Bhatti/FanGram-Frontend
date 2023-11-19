@@ -150,16 +150,18 @@ export const featuredCelebrityData = [
 ];
 
 export const categories = [
-  "Popular",
-  "Trending",
-  "Movie Star",
-  "TV Star",
-  "Model",
-  "Charity",
-  "Sportsmen",
-  "Singer",
-  "Prime Time",
-  "More",
+  "Celebrities",
+  "Movies",
+  "Tv Shows",
+  "Web Series",
+  "Sports Events",
+  "Events",
+  "Wishes",
+  "Gifts",
+  "Quotes",
+  "Invitations",
+  "Captions",
+  "Aarti",
 ];
 
 export const budgets = [

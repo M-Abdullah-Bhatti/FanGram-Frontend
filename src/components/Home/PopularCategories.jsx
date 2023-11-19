@@ -8,9 +8,11 @@ import { useGetCelebritiesByCategories } from "../../hooks/celebrity-hooks";
 
 function PopularCategories() {
   const [selected, setSelected] = useState(0);
-  const [category, setCategory] = useState(["Popular"]);
+  const [category, setCategory] = useState(["Celebrities"]);
 
   const { data: celebritiesData } = useGetCelebritiesByCategories(category);
+
+  console.log("celebritiesData::: ", celebritiesData);
 
   return (
     <div className="bg-black text-white px-8 md:px-16 py-4 md:py-12">
