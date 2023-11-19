@@ -15,7 +15,8 @@ function Header({ data, loading, isFavorite }) {
         <p className="text-xs md:text-base">
           India’s largest celebrity engagement platform
         </p>
-        <div className="w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full"
+        <div
+          className="w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full"
           style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
         >
           <img src="/images/heart.png" alt="heart" className="max-w-[60%]" />
@@ -31,7 +32,7 @@ function Header({ data, loading, isFavorite }) {
           }}
         >
           <img
-            src={data?.celebrityImage?.url}
+            src={data?.celebrityImage}
             alt="celebrity"
             className="w-full h-full object-fill"
           />

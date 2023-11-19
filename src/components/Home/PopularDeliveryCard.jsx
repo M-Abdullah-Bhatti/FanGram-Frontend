@@ -36,7 +36,7 @@ function PopularDeliveryCard({ celebrity }) {
         <img src="/images/heart.png" alt="heart" className="w-[60%]" />
       </div>
       <img
-        src={celebrity?.celebrityImage?.url}
+        src={celebrity?.celebrityImage}
         alt="celebrity"
         className="h-[100px] md:h-[120px] w-[100px] md:w-[120px] rounded-full mt-4 md:mt-10"
       />

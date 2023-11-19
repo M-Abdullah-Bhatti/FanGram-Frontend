@@ -10,7 +10,7 @@ function OrderHeader({ celebrityDetailsData, isLoading }) {
         <div className="rounded-xl overflow-hidden border border-[#ccc]">
           <img
             // src="/images/order__sunny.png"
-            src={isLoading ? "" : celebrityDetailsData?.celebrityImage?.url}
+            src={isLoading ? "" : celebrityDetailsData?.celebrityImage}
             alt=""
             className="w-[75px] md:min-w-[110px]"
           />

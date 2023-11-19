@@ -103,7 +103,7 @@ const SearchCelebrityMain = () => {
                 <div className="flex flex-row items-center">
                   <div className="h-[4vmax] w-[4vmax] rounded-full mr-3">
                     <img
-                      src={item?.celebrityImage?.url}
+                      src={item?.celebrityImage}
                       alt="priya"
                       className="h-full w-full rounded-full"
                     />

@@ -28,7 +28,7 @@ function FeaturedCelebrityCard({ celebrity }) {
     <div className="w-full md:min-w-[325px] md:w-1/2 lg:w-1/3 h-96 md:h-[425px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg overflow-hidden">
       {/* <Link to={`/celebrity/${celebrity?._id}`}> */}
       <img
-        src={celebrity?.celebrityImage?.url}
+        src={celebrity?.celebrityImage}
         alt="celebrity"
         className="object-fill w-full h-full"
       />
