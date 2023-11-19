@@ -5,9 +5,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useStateContext } from "../../StateContext";
 
 function CelebrityHeader({ data, loading, isFavorite }) {
+  const navigate = useNavigate();
+  const { setOpenLoginModal, isLoggedIn } = useStateContext();
+
+  const handleBook = (id) => {
+    if (!isLoggedIn) {
+      setOpenLoginModal(true);
+      return;
+    } else {
+      navigate(`/order/${id}`);
+    }
+  };
   // console.log("data: ", data);
   return (
     <div className="hidden lg:flex bg-[#161616] relative rounded-xl overflow-hidden px-4 md:px-8 py-6 text-white">
@@ -78,19 +90,21 @@ function CelebrityHeader({ data, loading, isFavorite }) {
         <div className="w-full flex flex-wrap gap-4 pr-[150px]">
           <span className="flex items-center bg-[#D42978] font-medium text-xs lg:text-lg rounded-3xl px-4 py-2 cursor-pointer my-4">
             {/* <Link to="/order"> */}
-            <Link to={`/order/${data?._id}`}>
+
+            <button onClick={() => handleBook(data?._id)}>
               Book Video @{" "}
               <b>&#8377; {loading ? "Loading..." : data?.videoPrice}</b>
               <span className="line-through ml-2 text-sm">
                 {loading ? "Loading..." : data?.videoPrice + 1000}
               </span>
-            </Link>
+            </button>
           </span>
           <div
             class="flex w-fit items-center border border-[#D42978] cursor-pointer my-4"
             style={{
               borderRadius: 25,
             }}
+            onClick={() => handleBook(data?._id)}
           >
             <span className="px-3">Meet & Greet</span>
             <span

@@ -6,9 +6,13 @@ import { useUpdateUser } from "../../hooks/profile-hooks";
 import { useGetUserInfo } from "../../hooks/auth-hooks";
 import { toast } from "react-toastify";
 import RequestLoader from "../Shared/RequestLoader";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "../../StateContext";
 
 const MyProfileForm = () => {
   const updateUserMutation = useUpdateUser();
+  const navigate = useNavigate();
+  const { setOpenLoginModal, isLoggedIn, setIsLoggedIn } = useStateContext();
 
   const [userData, setUserData] = useState({
     username: "",
@@ -107,6 +111,19 @@ const MyProfileForm = () => {
                 </defs>
               </svg>
             </label>
+          </div>
+
+          <div className="mt-10">
+            <button
+              className="outline-none lg:text-base text-[14px] py-[5px] sm:py-2 px-3 sm:px-10  rounded-[40px] bg-[#D42978] text-[#fff]"
+              onClick={() => {
+                localStorage.removeItem("userInfo");
+                setIsLoggedIn(false);
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
           </div>
         </div>
         <div className="py-8 px-10">
