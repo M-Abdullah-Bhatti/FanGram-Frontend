@@ -31,7 +31,7 @@ function BookingListing() {
             <BookingListingCard booking={booking} key={index} />
           ))
         ) : (
-          <div>No bookings found</div> // Displayed when there's no data
+          <div>Loading Data</div> // Displayed when there's no data
         )}
       </div>
     </div>

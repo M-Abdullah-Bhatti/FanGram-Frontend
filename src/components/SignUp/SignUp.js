@@ -5,6 +5,8 @@ import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import Login from "../Login/Login";
 import { useStateContext } from "../../StateContext";
+import { auth, provider } from "../../firebase.js";
+import { signInWithPopup } from "firebase/auth";
 
 // slider
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -21,19 +23,46 @@ import apiUrl from "../../utils/url";
 import { toast } from "react-toastify";
 import { useUserSignup } from "../../hooks/auth-hooks";
 import RequestLoader from "../Shared/RequestLoader";
+import axios from "axios";
 
 const SignUp = () => {
-  const { setOpenSignupModal, setOpenLoginModal } = useStateContext();
+  const { setOpenSignupModal, setOpenLoginModal, setIsLoggedIn } =
+    useStateContext();
 
   const [userData, setUserData] = useState({});
 
-  const handleGoogleLogin = async () => {
-    window.open(`${apiUrl}/auth/google`, "_self");
-  };
+  // const handleGoogleLogin = async () => {
+  //   window.open(`${apiUrl}/auth/google`, "_self");
+  // };
 
   const { mutate: addMutate, isLoading } = useUserSignup(
     JSON.stringify(userData)
   );
+
+  const handleGoogleLogin = async () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("result: ", result);
+        axios
+          .post(`${apiUrl}/api/user/googleAuth`, {
+            username: result.user.displayName,
+            email: result.user.email,
+          })
+          .then((res) => {
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify({
+                userId: res?.data?.userId,
+                token: res?.data?.token,
+              })
+            );
+            toast.success("Login Successful");
+            setIsLoggedIn(true);
+            setOpenSignupModal(false);
+          });
+      })
+      .catch((error) => console.log(error.message));
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

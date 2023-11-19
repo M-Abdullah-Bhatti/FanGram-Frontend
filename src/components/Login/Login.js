@@ -5,8 +5,8 @@ import { useStateContext } from "../../StateContext";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import apiUrl from "../../utils/url";
-import {auth, provider} from '../../firebase.js';
-import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from "../../firebase.js";
+import { signInWithPopup } from "firebase/auth";
 import { useUserLogin } from "../../hooks/auth-hooks";
 import axios from "axios";
 
@@ -14,23 +14,34 @@ const Login = () => {
   const { setOpenSignupModal, setOpenLoginModal, isLoggedIn, setIsLoggedIn } =
     useStateContext();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({});
 
   const signInWithGoogle = async () => {
-
-    signInWithPopup(auth, provider).then((result) => {
-        axios.post(`${apiUrl}/auth/google`, {
-            name: result.user.displayName,
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("result: ", result);
+        axios
+          .post(`${apiUrl}/api/user/googleAuth`, {
+            username: result.user.displayName,
             email: result.user.email,
-            img: result.user.photoURL
-        }).then((res)=>{
-          console.log(result);
-            navigate("/")
-        });
-    }).catch((error)=> console.log(error.message));
-}
+          })
+          .then((res) => {
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify({
+                userId: res?.data?.userId,
+                token: res?.data?.token,
+              })
+            );
+            toast.success("Login Successful");
+            setIsLoggedIn(true);
+            setOpenLoginModal(false);
+          });
+      })
+      .catch((error) => console.log(error.message));
+  };
 
   const { mutate: addMutate, isLoading } = useUserLogin(
     JSON.stringify(userData)
