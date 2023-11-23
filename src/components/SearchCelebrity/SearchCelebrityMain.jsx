@@ -5,11 +5,11 @@ const SearchCelebrityMain = () => {
   return (
     <div className="bg-black px-10 py-10">
       <div className="text-white">
-        <h1 className="pb-6 font-medium md:font-semibold text-2xl text-center ">
+        <h1 className="pb-6 font-medium md:font-semibold text-2xl md:text-4xl text-center ">
           Search Celebrity
         </h1>
         {/* Search */}
-        <div className="flex justify-between items-center gap-1 sm:gap-3 w-full  md:w-3/4 p-1 my-5 border-[1px] rounded-[100px] border-[#fff]">
+        <div className="flex justify-between items-center gap-1 sm:gap-3 w-full  md:w-2/4 mx-auto p-1 my-5 border-[1px] rounded-[100px] border-[#fff]">
           <img
             src="/images/hero__search.png"
             alt="logo"
@@ -26,7 +26,7 @@ const SearchCelebrityMain = () => {
             Search
           </button>
         </div>
-        <div className="w-full flex flex-row   flex-wrap ">
+        <div className="w-full flex justify-center md:mt-5 flex-wrap ">
           {searchCelebrity.map((item) => (
             <div className="lg:w-[45%] w-full m-2 rounded-xl p-4 bg-[#202020] ">
               <div className="flex flex-row items-center">

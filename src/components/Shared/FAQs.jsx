@@ -42,10 +42,16 @@ const FAQS = () => {
   ]);
 
   const handleClick = (index) => {
-    const newArr = [...Questions];
-    newArr[index].isOpen = !newArr[index].isOpen;
-    setQuestions(newArr);
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((item, i) => {
+        if (i === index) {
+          return { ...item, isOpen: !item.isOpen };
+        }
+        return { ...item, isOpen: false };
+      })
+    );
   };
+
   return (
     <div className=" relative    w-full text-[#fff]   bg-black pb-10 ">
       <div className="flex flex-col space-y-2 lg:space-y-4 font-BalsamiqSans items-center w-[90%] sm:w-[80%] md:w-[70%] mx-auto h-auto">
@@ -67,8 +73,9 @@ const FAQS = () => {
                 </p>
               </div>
               <div
+                onClick={() => handleClick(index)}
                 className={clsx(
-                  "top-0 left-0  w-full ",
+                  "top-0 left-0  w-full cursor-pointer ",
                   `${item.isOpen ? "absolute" : "relative"}`
                 )}
               >
@@ -101,11 +108,11 @@ const FAQS = () => {
                   </div>
 
                   <button
-                    onClick={() => handleClick(index)}
-                    // className={clsx(
-                    //   " py-3 px-2 rounded-full ",
-                    //   `${item.isOpen ? "bg-[#F1F6FF]" : "bg-black "}`
-                    // )}
+                  // onClick={() => handleClick(index)}
+                  // className={clsx(
+                  //   " py-3 px-2 rounded-full ",
+                  //   `${item.isOpen ? "bg-[#F1F6FF]" : "bg-black "}`
+                  // )}
                   >
                     {item.isOpen ? (
                       <img

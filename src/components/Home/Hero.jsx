@@ -9,11 +9,14 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
 import { heroSliderImages } from "../../Data";
+import { useNavigate } from "react-router";
 
 SwiperCore.use([Navigation, Pagination]);
 
 const Hero = () => {
   const [value, setValue] = useState();
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex justify-center items-center flex-col-reverse lg:flex-row gap-8 min-h-screen lg:min-h-[85vh] relative bg-[#000] py-9 md:py-unset px-6 sm:px-10 overflow-hidden">
@@ -97,6 +100,7 @@ const Hero = () => {
           />
 
           <button
+            onClick={() => navigate("/search")}
             className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-3 sm:px-4 sm:text-base text-sm   "
           >
             Search
