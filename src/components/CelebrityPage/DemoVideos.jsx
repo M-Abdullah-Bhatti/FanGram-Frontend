@@ -10,6 +10,7 @@ import "swiper/css";
 
 function DemoVideos({ data }) {
   const scrollContainerRef = useRef(null);
+  console.log("video data is", data);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -25,8 +26,7 @@ function DemoVideos({ data }) {
 
   return (
     <div className="flex w-full py-6 lg:space-x-6">
-      {
-        data?.length > 4 &&
+      {data?.length > 4 && (
         <div className="flex items-center">
           <button
             onClick={scrollLeft}
@@ -35,7 +35,7 @@ function DemoVideos({ data }) {
             <img src="/images/back.svg" alt="back" />
           </button>
         </div>
-      }
+      )}
 
       <div
         className="hidden md:flex overflow-x-scroll no-scrollbar w-full"
@@ -79,8 +79,7 @@ function DemoVideos({ data }) {
         </Swiper>
       </div>
 
-      {
-        data.length > 4 &&
+      {data.length > 4 && (
         <div className="flex items-center">
           <button
             onClick={scrollRight}
@@ -89,7 +88,7 @@ function DemoVideos({ data }) {
             <img src="/images/forward.svg" alt="forward" />
           </button>
         </div>
-      }
+      )}
     </div>
   );
 }

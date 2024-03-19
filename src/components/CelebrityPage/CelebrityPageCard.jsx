@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function CelebrityPageCard({ celebrity }) {
+  console.log("celebrity is", celebrity);
   return (
     <div
       className="w-full md:max-w-[350px] h-[450px] bg-cover bg-center bg-no-repeat relative rounded-lg shadow-lg cursor-pointer"
       style={{ minWidth: "325px", overflow: "hidden" }}
     >
-      <Link to="/celebrity">
+      <Link to={`/celebrity/${celebrity._id}`}>
         <img
           src={celebrity?.celebrityImage}
           alt="celebrity"

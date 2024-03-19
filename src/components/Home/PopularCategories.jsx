@@ -40,6 +40,12 @@ function PopularCategories() {
           </div>
         ))}
       </div>
+      {!celebritiesData && (
+        <div className="animate-spin h-20 w-20 rounded-full mx-auto border-r-2 border-l-2 border-yellow-500"></div>
+      )}
+      {celebritiesData && celebritiesData.length == 0 && (
+        <p className="text-xl text-[#fff]">No Celebrity found</p>
+      )}
       <PopularDelivery celebritiesData={celebritiesData} />
       {/* <TringDhamaka /> */}
 

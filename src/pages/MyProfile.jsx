@@ -12,6 +12,7 @@ const MyProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
   const { setOpenLoginModal, isLoggedIn } = useStateContext();
   const navigate = useNavigate();
+  console.log("lgin", isLoggedIn);
 
   useEffect(() => {
     if (!isLoggedIn) {

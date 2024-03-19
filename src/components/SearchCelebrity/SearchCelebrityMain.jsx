@@ -10,11 +10,9 @@ const SearchCelebrityMain = () => {
 
   const { searchValue, setSearchValue } = useStateContext();
 
-  console.log("categories");
-  console.log(categories);
-
   const [celebrityName, setCelebrityName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [loading, setloading] = useState(false);
 
   const {
     data: featuredCelebritiesData,
@@ -23,25 +21,64 @@ const SearchCelebrityMain = () => {
 
   const handleSearch = async () => {
     try {
+      setloading(true);
+      // console.log("the type valeeaefsf is", celebrityName);
+
       const response = await axios.get(
         `${apiUrl}/api/celebrity/search?celebrityName=${celebrityName}&categories=${categories}`
       );
+      console.log("search res lol:", response);
+      console.log("search res val:", celebrityName);
 
       if (response.data.status) {
         setSearchResults(response.data.data);
       } else {
         console.error(response.data.message);
       }
+      setloading(false);
     } catch (error) {
+      setloading(false);
       console.error("Error fetching search results:", error);
     }
   };
+  const getCelebrityData = async (name) => {
+    try {
+      setloading(true);
 
+      const response = await axios.get(
+        `${apiUrl}/api/celebrity/search?celebrityName=${name}`
+      );
+      console.log("search res new:", response);
+
+      if (response.data.status) {
+        setSearchResults(response.data.data);
+      } else {
+        console.error(response.data.message);
+      }
+      setloading(false);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setloading(false);
+    }
+  };
   useEffect(() => {
-    setSearchResults(featuredCelebritiesData);
+    if (searchValue) {
+      return;
+    }
+    handleSearch();
+  }, [categories]);
+  useEffect(() => {
+    console.log("fdata is", featuredCelebritiesData);
+
+    // setSearchResults(featuredCelebritiesData);
     if (searchValue) {
       setCelebrityName(searchValue);
+      console.log("celebrity nameisssssss:", celebrityName);
+      getCelebrityData(searchValue);
+      setSearchValue("");
     }
+
+    console.log("search val is", searchValue);
   }, []);
 
   return (
@@ -65,11 +102,18 @@ const SearchCelebrityMain = () => {
             value={celebrityName}
             onChange={(e) => {
               setCelebrityName(e.target.value);
-              handleSearch();
+            }}
+            onKeyPress={(e) => {
+              if (e.key == "Enter") {
+                handleSearch();
+              }
             }}
           />
 
-          <button className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-3 sm:px-4 sm:text-base text-sm">
+          <button
+            onClick={() => handleSearch()}
+            className="bg-[#D42978] text-[#fff] rounded-3xl py-2 px-3 sm:px-4 sm:text-base text-sm"
+          >
             Search
           </button>
         </div>
@@ -85,7 +129,6 @@ const SearchCelebrityMain = () => {
               }}
               onClick={() => {
                 setCategories(category);
-                handleSearch();
               }}
             >
               {category}
@@ -94,28 +137,32 @@ const SearchCelebrityMain = () => {
         </div>
 
         <div className="w-full flex flex-row   flex-wrap ">
-          {searchResults.length > 0 ? (
-            searchResults.map((item, _) => (
-              <div
-                key={item._id}
-                className="lg:w-[45%] w-full m-2 rounded-xl p-4 bg-[#202020] "
-              >
-                <div className="flex flex-row items-center">
-                  <div className="h-[4vmax] w-[4vmax] rounded-full mr-3">
-                    <img
-                      src={item?.celebrityImage}
-                      alt="priya"
-                      className="h-full w-full rounded-full"
-                    />
+          {!loading ? (
+            searchResults && searchResults.length != 0 ? (
+              searchResults.map((item, _) => (
+                <div
+                  key={item._id}
+                  className="lg:w-[45%] w-full m-2 rounded-xl p-4 bg-[#202020] "
+                >
+                  <div className="flex flex-row items-center">
+                    <div className="h-[4vmax] w-[4vmax] rounded-full mr-3">
+                      <img
+                        src={item?.celebrityImage}
+                        alt="priya"
+                        className="h-full w-full rounded-full"
+                      />
+                    </div>
+                    <h2 className="font-bold">{item?.name}</h2>
                   </div>
-                  <h2 className="font-bold">{item?.name}</h2>
-                </div>
 
-                <p className="mt-2">{item?.description}</p>
-              </div>
-            ))
+                  <p className="mt-2">{item?.description}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-xl text-[#fff]">No Celebrity found</p>
+            )
           ) : (
-            <p className="text-xl text-[#fff]">No Celebrity found</p>
+            <div className="animate-spin h-20 w-20 rounded-full mx-auto border-r-2 border-l-2 border-yellow-500"></div>
           )}
         </div>
       </div>

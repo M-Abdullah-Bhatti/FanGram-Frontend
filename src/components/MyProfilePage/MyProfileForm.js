@@ -11,6 +11,10 @@ import { useStateContext } from "../../StateContext";
 
 const MyProfileForm = () => {
   const updateUserMutation = useUpdateUser();
+  const userDetailsFromLocalStorage = JSON.parse(
+    localStorage.getItem("userInfo")
+  );
+
   const navigate = useNavigate();
   const { setOpenLoginModal, isLoggedIn, setIsLoggedIn } = useStateContext();
 
@@ -52,7 +56,16 @@ const MyProfileForm = () => {
     }
   };
 
-  const { mutate: addMutate, isLoading } = useUpdateUser(userData);
+  const {
+    mutate: addMutate,
+    isLoading,
+    status,
+    isSuccess,
+    data,
+  } = useUpdateUser(
+    userData,
+    userDetailsFromLocalStorage && userDetailsFromLocalStorage.userId
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,9 +73,16 @@ const MyProfileForm = () => {
       ...userData,
       image: avatar,
     });
-    updateUserMutation.mutate(userData);
+
+    updateUserMutation.mutate({
+      userData,
+      id: userDetailsFromLocalStorage.userId,
+    });
   };
 
+  if (updateUserMutation.isSuccess) {
+    toast.success("Profile Updated Successfully");
+  }
   return (
     <div className="mt-[30px] lg:m-[50px] grid place-items-center">
       <form
@@ -217,7 +237,7 @@ const MyProfileForm = () => {
           <div className="grid place-items-center mt-[40px] ">
             <input
               type="submit"
-              value="Save Changes"
+              value={isLoading ? "Updating" : "Save Changes"}
               className="w-fit bg-[#D42978] py-[10px] px-[50px] rounded-full cursor-pointer"
             />
           </div>

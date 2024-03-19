@@ -25,7 +25,7 @@ function CelebrityHeader({ data, loading, isFavorite }) {
   };
   // console.log("data: ", data);
   return (
-    <div className="hidden lg:flex bg-[#161616] relative rounded-xl overflow-hidden px-4 md:px-8 py-6 text-white">
+    <div className="hidden lg:flex bg-[#161616] relative rounded-xl overflow-hidden px-4 md:px-8 py-6 text-white border-2 border-white">
       <div
         className="min-w-[80px] h-[100px] lg:max-h-[300px] lg:min-h-[225px] lg:min-w-[225px] rounded-2xl overflow-hidden border border-[#ccc]"
         style={{

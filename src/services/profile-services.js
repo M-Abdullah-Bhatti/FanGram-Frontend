@@ -18,7 +18,7 @@ class ProfileService {
         },
       }
     );
-
+    console.log("ressss", res);
     return res;
   }
 

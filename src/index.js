@@ -12,14 +12,13 @@ const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <ToastContainer position="top-right" autoClose={3000} />
-    <BrowserRouter>
-      <StateProvider>
-        <QueryClientProvider client={queryClient}>
-          <App />
-        </QueryClientProvider>
-      </StateProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+
+    <StateProvider>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </StateProvider>
+  </BrowserRouter>
 );

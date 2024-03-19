@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const headerLinks = [
   {
     linkText: "Categories",
-    linkTo: "/categories",
+    linkTo: "/search",
   },
 
   {
@@ -30,6 +30,7 @@ const headerLinks = [
 const Header = () => {
   const location = useLocation();
   const { isLoggedIn, setIsLoggedIn } = useStateContext();
+  console.log("login status", isLoggedIn);
 
   const navigate = useNavigate();
 
@@ -43,12 +44,12 @@ const Header = () => {
     setOpenNavbar(!openNavbar);
   };
 
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    console.log("heaeer: ", userInfo?.userId);
-    setUserId(userInfo?.userId);
-    setIsLoggedIn(true);
-  }, []);
+  // useEffect(() => {
+  //   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  //   console.log("heaeer: ", userInfo?.userId);
+  //   setUserId(userInfo?.userId);
+  //   setIsLoggedIn(true);
+  // }, []);
 
   return (
     <div className=" bg-[#000] py-3 border-b-[1px] border-[#4b4b4b]">

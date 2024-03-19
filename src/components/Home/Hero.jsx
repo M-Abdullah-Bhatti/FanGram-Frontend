@@ -102,6 +102,11 @@ const Hero = () => {
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key == "Enter") {
+                handleSearch();
+              }
+            }}
             placeholder="Search Your Favourite creator"
             className="outline-none md:text-base text-sm w-full h-full px-2 bg-transparent focus:bg-transparent text-[#fff]"
           />

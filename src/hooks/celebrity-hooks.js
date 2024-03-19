@@ -26,6 +26,7 @@ const useGetCelebrityDetails = (id) => {
   return useQuery({
     queryKey: ["details"],
     queryFn: () => CelebrityService.getCelebrityDetails(id),
+    refetchOnWindowFocus: false,
   });
 };
 
@@ -33,6 +34,7 @@ const useGetCelebrityPublicVideos = (id) => {
   return useQuery({
     queryKey: ["video/celebrity"],
     queryFn: () => CelebrityService.getCelebrityPublicVideos(id),
+    refetchOnWindowFocus: false,
   });
 };
 

@@ -5,12 +5,12 @@ function VideoCard({ celebrity }) {
   const [openVideoModal, setOpenVideoModal] = useState(false);
   const handleOpen = () => setOpenVideoModal(true);
   const handleClose = () => setOpenVideoModal(false);
-
+  console.log("vidddd", celebrity);
   return (
     <div className="w-full md:min-w-[300px] max-h-[400px] relative">
       {openVideoModal && (
         <VideoPlayerModal
-          url="https://www.youtube.com/watch?v=krOjUoK7ZD0"
+          url={celebrity.celebrityVideo}
           handleClose={handleClose}
         />
       )}

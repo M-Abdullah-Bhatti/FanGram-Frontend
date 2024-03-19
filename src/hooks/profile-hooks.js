@@ -3,9 +3,11 @@ import ProfileService from "../services/profile-services";
 
 const useUpdateUser = (userData, id) => {
   const queryClient = useQueryClient();
+
   return useMutation(
-    () => {
-      return ProfileService.updateUserData(userData, id);
+    (data) => {
+      return ProfileService.updateUserData(data.userData, data.id);
+      // console.log("mutatttt", data, userIdObj);
     },
     {
       onSuccess: () => {
@@ -19,6 +21,7 @@ const useGetFavoriteCelebrities = (userId) => {
   return useQuery({
     queryKey: ["getFavoriteCelebrities", userId],
     queryFn: () => ProfileService.getFavoriteCelebrities(userId),
+    refetchOnWindowFocus: false,
   });
 };
 

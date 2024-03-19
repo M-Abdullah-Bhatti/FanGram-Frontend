@@ -1,17 +1,29 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Create the context
 const StateContext = createContext();
 
 // Create a provider component
 export function StateProvider({ children }) {
+  const userDetailsFromLocalStorage = JSON.parse(
+    localStorage.getItem("userInfo")
+  );
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
   const [searchValue, setSearchValue] = useState();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    userDetailsFromLocalStorage && userDetailsFromLocalStorage.userId
+      ? true
+      : false
+  );
 
   console.log("Hello it is context");
+  // useEffect(() => {
+  //   if (userDetailsFromLocalStorage && userDetailsFromLocalStorage.userId) {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, []);
 
   const [orderData, setOrderData] = useState({
     bookingTo: { name: "", gender: "He/Him" },

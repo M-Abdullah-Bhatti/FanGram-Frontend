@@ -26,12 +26,14 @@ function BookingListing() {
 
     <div className="my-8 md:my-16">
       <div className="space-y-6">
-        {!isLoading && myBookingData?.data?.data?.length > 0 ? (
+        {isLoading ? (
+          <div className="animate-spin h-20 w-20 rounded-full mx-auto border-r-2 border-l-2 border-yellow-500"></div>
+        ) : myBookingData?.data?.data?.length > 0 ? (
           myBookingData.data.data.map((booking, index) => (
             <BookingListingCard booking={booking} key={index} />
           ))
         ) : (
-          <div>Loading Data</div> // Displayed when there's no data
+          <div>No Data available</div> // Displayed when there's no data
         )}
       </div>
     </div>
