@@ -76,6 +76,7 @@ function CelebrityPage() {
   //     refetchCelebrityDetails();
   //   }
   // }, [params?.id]);
+  console.log("aziz", celebrityVideos);
   useEffect(() => {
     refetchCelebrityDetails();
     refetchCelebrityDetailsVideos();
@@ -121,7 +122,7 @@ function CelebrityPage() {
           </div>
           {celebrityVideosLoading || refetchCelebrityDetailsVideoLoading ? (
             <h1 className="text-center text-xl text-slate-300">
-              Fetching {celebrityDetailsData?.name}'s Videos
+              Fetching {celebrityDetailsData?.name}'s Videos...
             </h1>
           ) : (
             <div className="px-6 lg:px-1">

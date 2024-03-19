@@ -10,7 +10,7 @@ function VideoCard({ celebrity }) {
     <div className="w-full md:min-w-[300px] max-h-[400px] relative">
       {openVideoModal && (
         <VideoPlayerModal
-          url={celebrity.celebrityVideo}
+          url="https://www.youtube.com/watch?v=kvWKDDgiH-Y"
           handleClose={handleClose}
         />
       )}
