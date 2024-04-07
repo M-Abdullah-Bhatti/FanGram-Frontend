@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import RequestLoader from "../Shared/RequestLoader";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../../StateContext";
+import axios from "axios";
 
 const MyProfileForm = () => {
   const updateUserMutation = useUpdateUser();
@@ -28,7 +29,32 @@ const MyProfileForm = () => {
   });
   const [avatarPreview, setAvatarPreview] = useState("/images/Profile.png");
   const [avatar, setAvatar] = useState();
+  const [updateStatusLoading, setupdateStatusLoading] = useState(false);
+  const fetchUserInfo = async () => {
+    try {
+      const res = await axios.get(
+        `https://calm-gray-haddock-sock.cyclic.app/api/user/details/${userDetailsFromLocalStorage.userId}`
+      );
+      console.log("user infofoo", res.data.data);
+      const userDataFromApi = res.data.data; // Assuming this is the object returned from the API
+      setUserData((userData) => ({
+        ...userData,
+        username: userDataFromApi.username || "",
 
+        gender: userDataFromApi.gender || "Male",
+        dob: userDataFromApi.dob || "",
+        phone: userDataFromApi.phone || "",
+        email: userDataFromApi.email || "",
+        image: userDataFromApi.image.url || "",
+      }));
+    } catch (error) {
+      console.log("error occured while fetching user info:", error);
+      toast.error("error occured while fetching user info:", error);
+    }
+  };
+  useEffect(() => {
+    fetchUserInfo();
+  }, [updateUserMutation.isSuccess]);
   const handleInputChange = (e) => {
     setUserData({
       ...userData,
@@ -44,45 +70,80 @@ const MyProfileForm = () => {
   };
 
   const registerDataChange = (e) => {
-    if (e.target.name === "avatar") {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
+    console.log("img is", e.target.files[0]);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setAvatarPreview(reader.result);
+        setAvatar(reader.result);
+        setUserData((userData) => ({
+          ...userData,
+
+          image: reader.result,
+        }));
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
-  const {
-    mutate: addMutate,
-    isLoading,
-    status,
-    isSuccess,
-    data,
-  } = useUpdateUser(
-    userData,
-    userDetailsFromLocalStorage && userDetailsFromLocalStorage.userId
-  );
+  // const {
+  //   mutate: addMutate,
+  //   isLoading,
+  //   status,
+  //   isSuccess,
+  //   data,
+  // } = useUpdateUser(
+  //   userData,
+  //   userDetailsFromLocalStorage && userDetailsFromLocalStorage.userId
+  // );
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setupdateStatusLoading(true);
+  //   setUserData({
+  //     ...userData,
+  //     image: avatar,
+  //   });
+  //   console.log("user new data :", userData);
+
+  //   updateUserMutation.mutate({
+  //     userData,
+  //     id: userDetailsFromLocalStorage.userId,
+  //   });
+  // };
+  // if (updateUserMutation.isSuccess) {
+  //   toast.success("Profile Updated Successfully");
+  //   setupdateStatusLoading(false);
+  //   console.log("load", updateUserMutation.isLoading);
+  // }
+  // if (updateUserMutation.isLoading) {
+  //   setupdateStatusLoading(true);
+  // }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setupdateStatusLoading(true);
     setUserData({
       ...userData,
       image: avatar,
     });
+    console.log("user new data :", userData);
 
-    updateUserMutation.mutate({
-      userData,
-      id: userDetailsFromLocalStorage.userId,
-    });
+    try {
+      await updateUserMutation.mutateAsync({
+        userData,
+        id: userDetailsFromLocalStorage.userId,
+      });
+      toast.success("Profile Updated Successfully");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast.error("Error updating profile");
+    } finally {
+      setupdateStatusLoading(false);
+    }
   };
 
-  if (updateUserMutation.isSuccess) {
-    toast.success("Profile Updated Successfully");
-  }
   return (
     <div className="mt-[30px] lg:m-[50px] grid place-items-center">
       <form
@@ -92,14 +153,14 @@ const MyProfileForm = () => {
         <div className="mt-[100px] lg:mt-[50px] grid place-items-center">
           <div className="w-[10vmax] h-[10vmax]">
             <img
-              src={userData?.image}
+              src={userData?.image || (avatarPreview && avatarPreview)}
               alt=""
               className="w-full h-full rounded-full border border-[#f1f1f1]"
             />
           </div>
           <div
             id="registerImage"
-            className="relative overflow-hidden cursor-pointer mt-4 p-2 cursor-pointer"
+            className="relative overflow-hidden  mt-4 p-2 cursor-pointer"
           >
             <input
               type="file"
@@ -152,9 +213,9 @@ const MyProfileForm = () => {
           <input
             type="text"
             id="name"
-            name="name"
+            name="username"
             required
-            value={userData.name}
+            value={userData.username}
             onChange={handleInputChange}
             className="form__elements"
             placeholder="Enter Your Name"
@@ -237,7 +298,8 @@ const MyProfileForm = () => {
           <div className="grid place-items-center mt-[40px] ">
             <input
               type="submit"
-              value={isLoading ? "Updating" : "Save Changes"}
+              value={updateStatusLoading ? "Updating...." : "Save Changes"}
+              disabled={updateStatusLoading}
               className="w-fit bg-[#D42978] py-[10px] px-[50px] rounded-full cursor-pointer"
             />
           </div>

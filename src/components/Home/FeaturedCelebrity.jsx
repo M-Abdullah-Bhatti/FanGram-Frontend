@@ -63,7 +63,7 @@ function FeaturedCelebrity() {
         style={{ scrollBehavior: "smooth" }}
       >
         {featuredCelebritiesLoading ? (
-          <p className="text-xl text-[#fff] font-semibold">Loading ...</p>
+          <div className="animate-spin h-20 w-20 rounded-full mx-auto border-r-2 border-l-2 border-yellow-500"></div>
         ) : (
           <div className="flex space-x-4 px-8 py-4">
             {featuredCelebritiesData?.map((card, index) => (

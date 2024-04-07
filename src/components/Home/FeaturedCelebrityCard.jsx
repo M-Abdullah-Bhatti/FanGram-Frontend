@@ -10,8 +10,13 @@ function FeaturedCelebrityCard({ celebrity }) {
 
   const { setOpenLoginModal, isLoggedIn } = useStateContext();
 
-  const addFavoriteMutation = useAddFavorite(celebrity?._id, userId);
-  const { isFavorite } = useIsFavoriteCelebrity(userId, celebrity?._id);
+  const {
+    isLoading: addFavoriteCelebrityLoading,
+    mutateAsync: addFavoriteCelebrityMutateAsync,
+    isSuccess: addFavoriteCelebritySuccess,
+  } = useAddFavorite(celebrity?._id, userId);
+  const { isFavorite, isLoading: getFavoriteCelebrityLoading } =
+    useIsFavoriteCelebrity(userId, celebrity?._id);
 
   const handleFavoriteClick = async () => {
     try {
@@ -20,7 +25,7 @@ function FeaturedCelebrityCard({ celebrity }) {
         return;
       } else {
         console.log("handle fav");
-        await addFavoriteMutation.mutateAsync();
+        await addFavoriteCelebrityMutateAsync();
       }
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
@@ -42,10 +47,17 @@ function FeaturedCelebrityCard({ celebrity }) {
       />
       <button
         className="absolute top-4 right-4 w-[40px] h-[40px] flex justify-center items-center rounded-full"
-        style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
+        style={{
+          backgroundColor:
+            isFavorite || addFavoriteCelebritySuccess ? "red" : "#FCAE4B",
+        }}
         onClick={handleFavoriteClick}
       >
-        <img src="/images/heart.png" alt="heart" />
+        {addFavoriteCelebrityLoading || getFavoriteCelebrityLoading ? (
+          <div className="animate-spin h-6 w-6 rounded-full mx-auto border-r-2 border-l-2 border-white"></div>
+        ) : (
+          <img src="/images/heart.png" alt="heart" />
+        )}
       </button>
       <div
         className="absolute bottom-0 left-0 right-0 p-4"
