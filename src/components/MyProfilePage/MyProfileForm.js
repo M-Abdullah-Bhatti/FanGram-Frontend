@@ -23,7 +23,7 @@ const MyProfileForm = () => {
     username: "",
     gender: "Male",
     dob: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
     image: "",
   });
@@ -43,7 +43,7 @@ const MyProfileForm = () => {
 
         gender: userDataFromApi.gender || "Male",
         dob: userDataFromApi.dob || "",
-        phone: userDataFromApi.phone || "",
+        phoneNumber: userDataFromApi.phoneNumber || "",
         email: userDataFromApi.email || "",
         image: userDataFromApi.image.url || "",
       }));
@@ -65,7 +65,7 @@ const MyProfileForm = () => {
   const handlePhoneChange = (value, data, event) => {
     setUserData({
       ...userData,
-      phone: value,
+      phoneNumber: value,
     });
   };
 
@@ -256,7 +256,7 @@ const MyProfileForm = () => {
 
           <PhoneInput
             inputProps={{
-              name: "phone",
+              name: "phoneNumber",
               required: true,
               autoFocus: true,
               className: "form__elements",
@@ -275,7 +275,7 @@ const MyProfileForm = () => {
               background: "white",
             }}
             prefix="+"
-            value={userData.phone}
+            value={userData.phoneNumber}
             onChange={handlePhoneChange}
           />
           <br></br>
