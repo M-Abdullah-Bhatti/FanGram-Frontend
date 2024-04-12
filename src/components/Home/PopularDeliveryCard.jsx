@@ -10,8 +10,13 @@ function PopularDeliveryCard({ celebrity }) {
 
   const [userId, setUserId] = useState("");
 
-  const addFavoriteMutation = useAddFavorite(celebrity?._id, userId);
-  const { isFavorite } = useIsFavoriteCelebrity(userId, celebrity?._id);
+  const {
+    isLoading: addFavoriteCelebrityLoading,
+    mutateAsync: addFavoriteCelebrityMutateAsync,
+    isSuccess: addFavoriteCelebritySuccess,
+  } = useAddFavorite(celebrity?._id, userId);
+  const { isFavorite, isLoading: getFavoriteCelebrityLoading } =
+    useIsFavoriteCelebrity(userId, celebrity?._id);
 
   const handleFavoriteClick = async () => {
     try {
@@ -19,8 +24,8 @@ function PopularDeliveryCard({ celebrity }) {
         setOpenLoginModal(true);
         return;
       } else {
-        console.log("handleFa click");
-        await addFavoriteMutation.mutateAsync();
+        console.log("handle fav");
+        await addFavoriteCelebrityMutateAsync();
       }
     } catch (error) {
       console.error("Error adding/removing favorite:", error);
@@ -36,11 +41,18 @@ function PopularDeliveryCard({ celebrity }) {
     // <Link to="/celebrity">
     <div className="w-full md:w-[50%] gap-0.5 lg:w-[30%] min-h-[300px] md:min-w-[310px] md:min-h-[400px] bg-[#292929] relative flex flex-col items-center justify-center rounded-lg shadow-lg px-2 md:px-4 py-3 md:px-8 space-y-2 mb-4 md:mb-0">
       <div
-        className="absolute top-2 md:top-3 right-3 bg-[#FCAE4B] w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full"
-        style={{ backgroundColor: isFavorite ? "red" : "#FCAE4B" }}
+        className="absolute cursor-pointer top-2 md:top-3 right-3 bg-[#FCAE4B] w-[25px] md:w-[40px] h-[25px] md:h-[40px] flex justify-center items-center rounded-full"
+        style={{
+          backgroundColor:
+            isFavorite || addFavoriteCelebritySuccess ? "red" : "#FCAE4B",
+        }}
         onClick={handleFavoriteClick}
       >
-        <img src="/images/heart.png" alt="heart" className="w-[60%]" />
+        {addFavoriteCelebrityLoading || getFavoriteCelebrityLoading ? (
+          <div className="animate-spin h-6 w-6 rounded-full mx-auto border-r-2 border-l-2 border-white"></div>
+        ) : (
+          <img src="/images/heart.png" alt="heart" />
+        )}
       </div>
       <img
         src={celebrity?.celebrityImage}
