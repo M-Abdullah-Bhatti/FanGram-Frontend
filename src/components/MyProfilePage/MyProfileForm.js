@@ -44,8 +44,9 @@ const MyProfileForm = () => {
         gender: userDataFromApi.gender || "Male",
         dob: userDataFromApi.dob || "",
         phoneNumber: userDataFromApi.phoneNumber || "",
+        // phoneNumber: "+913080129892" || "",
         email: userDataFromApi.email || "",
-        image: userDataFromApi.image.url || "",
+        image: userDataFromApi.image?.url || "",
       }));
     } catch (error) {
       console.log("error occured while fetching user info:", error);
@@ -261,7 +262,7 @@ const MyProfileForm = () => {
               autoFocus: true,
               className: "form__elements",
             }}
-            country={"pk"}
+            // country={"pk"}
             buttonClass="countryButton"
             inputStyle={{ paddingLeft: "6vmax" }}
             buttonStyle={{
