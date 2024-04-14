@@ -7,19 +7,23 @@ import { useNavigate } from "react-router-dom";
 
 const headerLinks = [
   {
+    linkText: "Home",
+    linkTo: "/",
+  },
+  {
     linkText: "Categories",
     linkTo: "/search",
   },
 
-  {
-    linkText: "Gifting",
-    linkTo: "/gifting",
-  },
+  // {
+  //   linkText: "Gifting",
+  //   linkTo: "/gifting",
+  // },
 
-  {
-    linkText: "How to Fangram",
-    linkTo: "/how_to_fangram",
-  },
+  // {
+  //   linkText: "How to Fangram",
+  //   linkTo: "/how_to_fangram",
+  // },
 
   {
     linkText: "Support",

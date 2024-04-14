@@ -5,13 +5,45 @@ import { useGetAllFAQs } from "../../hooks/faq-hooks";
 const FAQS = () => {
   const { data: faqsData, isLoading: faqsLoading } = useGetAllFAQs();
 
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "How do I book a celebrity for promotion on your website?",
+      answer:
+        "To book a celebrity for promotion, simply browse our extensive roster, select the desired celebrity, and follow the booking instructions provided on their profile page.",
+      isOpen: false,
+    },
+    {
+      question: "What types of promotions can I book celebrities for?",
+      answer:
+        "Our website offers a diverse range of promotional opportunities, including brand endorsements, event appearances, social media campaigns, and more.",
+      isOpen: false,
+    },
+    {
+      question:
+        "Are there different pricing options available for booking celebrities?",
+      answer:
+        "Yes, our website features a range of pricing options to accommodate different budgets and promotional needs. Celebrity booking fees may vary based on factors such as popularity, demand, and the nature of the promotion.",
+      isOpen: false,
+    },
+    {
+      question: "Can I contact celebrities directly through your website?",
+      answer:
+        "Absolutely! Our platform facilitates direct communication between users and celebrities, allowing you to discuss booking details, negotiate terms, and coordinate promotional campaigns seamlessly.",
+      isOpen: false,
+    },
+    {
+      question: "What measures do you take to ensure a smooth booking process?",
+      answer:
+        "We prioritize user satisfaction and strive to ensure a seamless booking experience from start to finish. Our website features robust security measures, verified celebrity profiles, and dedicated customer support to address any questions or concerns promptly.",
+      isOpen: false,
+    },
+  ]);
 
-  useEffect(() => {
-    if (faqsData) {
-      setQuestions(faqsData.map((faq) => ({ ...faq, isOpen: false })));
-    }
-  }, [faqsData]);
+  // useEffect(() => {
+  //   if (faqsData) {
+  //     setQuestions(faqsData.map((faq) => ({ ...faq, isOpen: false })));
+  //   }
+  // }, [faqsData]);
 
   const handleClick = (index) => {
     setQuestions((prevQuestions) =>
