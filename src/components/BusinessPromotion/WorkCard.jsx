@@ -1,10 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function WorkCard() {
+function WorkCard({ details }) {
+  console.log("detailss", details);
   return (
     <div className="workCardWidth relative py-6">
       <img
-        src="/images/sunny__vi.png"
+        src={details.img}
         alt=""
         className="w-full h-[200px] lg:h-[300px] rounded-2xl bg-[#D9D9D9]"
       />
@@ -17,9 +18,11 @@ function WorkCard() {
       >
         <img src="/images/feedbackplay.png" alt="logo" />
       </div>
-      <p className="px-2 md:px-0 text-xs lg:text-base mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      <p className="px-2 md:px-0 text-white text-xs lg:text-base mt-2">
+        {details && details.contentText}
+      </p>
     </div>
-  )
+  );
 }
 
-export default WorkCard
+export default WorkCard;
