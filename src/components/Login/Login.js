@@ -203,7 +203,7 @@ const Login = () => {
                   className="text-[10px] lg:text-base px-2 md:px-4 w-full py-3 rounded-lg outline-none bg-[#EAEAEA]"
                 />
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   required
                   onChange={handleInputChange}

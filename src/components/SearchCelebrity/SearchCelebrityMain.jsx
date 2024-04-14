@@ -118,7 +118,7 @@ const SearchCelebrityMain = () => {
           </button>
         </div>
 
-        <div className="flex md:flex-wrap overflow-x-scroll no-scrollbar md:overflow-hidden py-2 md:py-4">
+        <div className="flex md:flex-wrap justify-center overflow-x-scroll no-scrollbar md:overflow-hidden py-2 md:py-4">
           {_CATEGORIES.map((category, index) => (
             <div
               key={index}
@@ -136,7 +136,7 @@ const SearchCelebrityMain = () => {
           ))}
         </div>
 
-        <div className="w-full flex flex-row   flex-wrap ">
+        <div className="w-full flex flex-row justify-center   flex-wrap ">
           {!loading ? (
             searchResults && searchResults.length != 0 ? (
               searchResults.map((item, _) => (

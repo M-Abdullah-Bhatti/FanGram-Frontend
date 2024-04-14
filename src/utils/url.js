@@ -4,7 +4,8 @@ const environment = "production";
 let apiUrl;
 if (environment === "production") {
   // apiUrl = "https://calm-gray-haddock-sock.cyclic.app";
-  apiUrl = "https://fangram-backend.vercel.app";
+  // apiUrl = "https://fangram-backend.vercel.app";
+  apiUrl = "https://fan-gram-backend.vercel.app";
 } else {
   apiUrl = "http://localhost:5000";
 }
