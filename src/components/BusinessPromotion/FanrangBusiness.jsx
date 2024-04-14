@@ -47,7 +47,7 @@ function FanrangBusiness() {
         {/* Dividing Line */}
         <p className="text-center underline text-sm md:text-2xl text-[#D84388] my-6 cursor-pointer">Click here to see additional benefits</p>
 
-        <div className="hidden md:flex flex-wrap gap-1 md:gap-4 my-6 mt-12">
+        <div className="hidden md:flex justify-center flex-wrap gap-1 md:gap-4 my-6 mt-12">
             {
                 additionalBenefits.map((benefit, index)=> (
                     <AdditionalBenefits benefit={benefit} key={index} />
