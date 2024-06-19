@@ -12,8 +12,8 @@ import AdditionalBenefits from './AdditionalBenefits';
 function FanrangBusiness() {
   return (
     <div className="w-full mt-6">
-        <h2 className="font-semibold text-xl md:text-3xl lg:text-[45px] text-left md:text-center mb-2 md:mb-16">How does Fanrang for Business Work?</h2>
-        <div className="hidden md:flex flex-wrap gap-1 md:gap-4">
+        <h2 className="font-semibold text-xl md:text-3xl lg:text-[45px] text-left md:text-center mb-2 md:mb-16">How does Fangram for Business Work?</h2>
+        <div className="hidden md:flex justify-center flex-wrap gap-1 md:gap-4">
             {
                 businessWork.map((work, index)=> (
                     <BusinessInfoCard work={work} key={index} />
@@ -47,7 +47,7 @@ function FanrangBusiness() {
         {/* Dividing Line */}
         <p className="text-center underline text-sm md:text-2xl text-[#D84388] my-6 cursor-pointer">Click here to see additional benefits</p>
 
-        <div className="hidden md:flex flex-wrap gap-1 md:gap-4 my-6 mt-12">
+        <div className="hidden md:flex justify-center flex-wrap gap-1 md:gap-4 my-6 mt-12">
             {
                 additionalBenefits.map((benefit, index)=> (
                     <AdditionalBenefits benefit={benefit} key={index} />

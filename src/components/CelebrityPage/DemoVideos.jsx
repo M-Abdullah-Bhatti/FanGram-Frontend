@@ -42,7 +42,7 @@ function DemoVideos({ data }) {
         ref={scrollContainerRef}
         style={{ scrollBehavior: "smooth" }}
       >
-        <div className="flex space-x-4 py-4">
+        <div className="flex space-x-4 py-4 w-screen">
           {data.map((card, index) => (
             <React.Fragment key={index}>
               <VideoCard celebrity={card} />

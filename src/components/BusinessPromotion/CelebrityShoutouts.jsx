@@ -1,16 +1,32 @@
+import React from "react";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SwiperCore from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 SwiperCore.use([Navigation, Pagination]);
 
 const CelebrityShoutouts = () => {
+  const images = [
+    "/images/bs1.jpg",
+    "/images/bs2.jpg",
+    "/images/bs3.jpg",
+    "/images/bs4.jpg",
+    "/images/bs5.jpg",
+    "/images/bs6.jpg",
+    "/images/bs7.jpg",
+    "/images/bs8.jpg",
+    "/images/bs9.jpg",
+    "/images/bs10.jpg",
+  ];
+
   return (
     <div className="w-full py-10">
       <h2 className="font-semibold text-center text-xl md:text-2xl lg:text-[45px] ">
@@ -19,90 +35,19 @@ const CelebrityShoutouts = () => {
       {/* Large Devices */}
       <div className="w-full hidden lg:grid grid-cols-5 gap-4 my-10 ">
         {/* Div */}
-        <div className="flex flex-col gap-3">
+        {images.map((image, index) => (
           <div
-            className="h-[300px]   rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-          <div
-            className="h-[300px]  rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-        </div>
-        {/* Div */}
-        <div className="flex flex-col gap-3 mt-10">
-          <div
-            className="h-[300px]   rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-          <div
-            className="h-[300px]  rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-        </div>
-        {/* Div */}
-        <div className="flex flex-col gap-3">
-          <div
-            className="h-[300px]   rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-          <div
-            className="h-[300px]  rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-        </div>
-        {/* Div */}
-        <div className="flex flex-col gap-3 mt-10">
-          <div
-            className="h-[300px]   rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-          <div
-            className="h-[300px]  rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-        </div>
-        {/* Div */}
-        <div className="flex flex-col gap-3">
-          <div
-            className="h-[300px]   rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-          <div
-            className="h-[300px]  rounded-xl "
-            style={{
-              background:
-                "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-            }}
-          ></div>
-        </div>
+            key={index}
+            className={`flex flex-col gap-3 ${
+              index % 2 !== 0 && index < 5 && "mt-10"
+            } ${index % 2 !== 0 && index >= 5 && "mt-[-40px]"}`}
+          >
+            <div className="h-[300px] rounded-xl overflow-hidden">
+              <img src={image} alt="" className="object-cover w-full h-full" />
+            </div>
+            {/* Add similar div for the second image */}
+          </div>
+        ))}
       </div>
       {/* Small Devices */}
       <div className="lg:hidden block mt-4 sm:mt-7 hero__caurosel w-[80%] sm:w-[40%] md:w-[30%] mx-auto">
@@ -116,17 +61,14 @@ const CelebrityShoutouts = () => {
           slideActiveClass="activeSlide"
           className="swiper-container"
         >
-          {[1, 2, 3, 4, 5].map((_, index) => (
+          {images.map((image, index) => (
             <SwiperSlide key={index}>
-              <div>
-                <div
-                  className="h-[350px] w-full   rounded-xl "
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #fff 20.71%, #D84388 109.7%)",
-                  }}
-                ></div>
-                <div className="min-h-40"></div>
+              <div className="h-[350px] w-full rounded-xl overflow-hidden">
+                <img
+                  src={image}
+                  alt=""
+                  className="object-cover w-full h-full"
+                />
               </div>
             </SwiperSlide>
           ))}

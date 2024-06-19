@@ -9,6 +9,7 @@ import RequestLoader from "../Shared/RequestLoader";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../../StateContext";
 import axios from "axios";
+import apiUrl from "../../utils/url";
 
 const MyProfileForm = () => {
   const updateUserMutation = useUpdateUser();
@@ -33,7 +34,7 @@ const MyProfileForm = () => {
   const fetchUserInfo = async () => {
     try {
       const res = await axios.get(
-        `https://calm-gray-haddock-sock.cyclic.app/api/user/details/${userDetailsFromLocalStorage.userId}`
+        `${apiUrl}/api/user/details/${userDetailsFromLocalStorage.userId}`
       );
       console.log("user infofoo", res.data.data);
       const userDataFromApi = res.data.data; // Assuming this is the object returned from the API
